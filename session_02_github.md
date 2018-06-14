@@ -1,15 +1,16 @@
 # Introduction to GitHub
 
-1. [What is Git?](#git)  
-1. [What is GitHub?](#github)  
-1. [Creating a repository](#create-repo)  
-1. [Cloning a repository](#clone)  
-1. [Introduction to feature branch and Git-flow ways of working](#feature-branch)  
-1. [Creating a branch](#create-branch)  
-1. [Pushing code](#push)  
-1. [Creating a pull request](#pull-request)  
-1. [Code Reviews](#code-review)  
-1. [Merging a pull request](#merge)  
+* [What is Git?](#git)  
+* [What is GitHub?](#github)  
+* [Creating a repository](#create-repo)  
+* [Cloning a repository](#clone)  
+* [Introduction to feature branch and Git-flow ways of working](#feature-branch)  
+* [Creating a branch](#create-branch)  
+* [Pushing code](#push)  
+* [Creating a pull request](#pull-request)  
+* [Code Reviews](#code-review)  
+* [Merging a pull request](#merge)  
+* [Further reading](#further)
 
 <a name="git"></a>
 ## What is Git?
@@ -29,7 +30,10 @@ Essentially Git is the tool and GitHub is a service provided for projects using 
 <a name="clone"></a>
 ## Cloning a repository  
 <a name="feature-branch"></a>
-## Introduction to feature branch and Git-flow ways of working  
+## Feature branches (and Git-flow)  
+TODO  
+
+There is an in depth description of git-flow branching available [here][Git-flow branching] which covers when to use release branches, hotfixes and the develop branch as well as the feature branches we have covered here.
 <a name="create-branch"></a>
 ## Creating a branch  
 <a name="push"></a>
@@ -41,7 +45,12 @@ Essentially Git is the tool and GitHub is a service provided for projects using 
 <a name="merge"></a>
 ## Merging a pull request  
 
+<a name="further"></a>
 ## Further reading
-[GitHub Enterprise Help](https://help.github.com/enterprise/user/)  
-[Pull Requests](https://help.github.com/enterprise/user/articles/about-pull-requests/)  
-[Git-flow branching](https://nvie.com/posts/a-successful-git-branching-model/)
+[GitHub Enterprise Help][GitHub Enterprise Help]  
+[Pull Requests][Pull Requests]  
+[Git-flow branching][Git-flow branching]  
+
+[GitHub Enterprise Help]: https://help.github.com/enterprise/user/  
+[Pull Requests]:https://help.github.com/enterprise/user/articles/about-pull-requests/  
+[Git-flow branching]: https://nvie.com/posts/a-successful-git-branching-model/
