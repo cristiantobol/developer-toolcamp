@@ -6,7 +6,8 @@
 * [Connecting to GitHub using SSH keys](#ssh)
 * [Cloning a repository](#clone)  
 * [Introduction to feature branch and Git-flow ways of working](#feature-branch)  
-* [Creating a branch](#create-branch)  
+* [Creating a branch](#create-branch)
+* [Committing code](#commit)  
 * [Pushing code](#push)  
 * [Creating a pull request](#pull-request)  
 * [Code Reviews](#code-review)  
@@ -71,7 +72,7 @@ Follow these instructions to add the key to GitHub.
 <a name="clone"></a>
 ## Cloning a repository  
 1. Navigate to the repository you created earlier and click the _Clone or
-download_ button. Ensure you are using **SSH / HTTPS <- TODO decide which**
+download_ button. Ensure you are using **SSH / HTTPS <- TODO decide which!**
 
   <img src="./resources/session_02_clone_https.png" alt="Clone with HTTPS"
   width="343" height="160" />
@@ -87,10 +88,21 @@ into.
 1. Run the following command to clone the repository (paste the path you copied
    to your repository):  
 ```
-git clone https://github.ibm.com/<Username>/<RepositoryName>.git
+$ git clone https://github.ibm.com/<Username>/<RepositoryName>.git
 ```
 
 1. Navigate into the folder that was just created (it will have the same name as the repository).
+
+1. Run the following command to find out the status of your local repository:
+```
+$ git status
+```
+You should see output that looks like:
+```
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+```
 
 You now have a copy of the repository on your local workstation!
 
@@ -103,9 +115,32 @@ about the other types of common branches, there is an in depth description of gi
 
 <a name="create-branch"></a>
 ## Creating a branch  
+To create your first feature branch run the following command within your
+repository folder:
+```
+$ git checkout -b my-new-branch
+```
+You should see output that looks like:
+```
+$ git checkout -b my-new-branch
+Switched to a new branch 'my-new-branch'
+```
+
+<a name="commit"></a>
+## Committing code
+We're now going to make a change to the README and then commit the change.
+
+1. Open the README.md file in a text editor and add a sentence describing your
+repository to the end of the file and save.
+
+1. Run `git status` again and you should see the following output:
+TODO
 
 <a name="push"></a>
 ## Pushing code  
+
+```
+```
 
 <a name="pull-request"></a>
 ## Creating a pull request  
