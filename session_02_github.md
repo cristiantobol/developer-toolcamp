@@ -5,7 +5,8 @@
 * [Creating a repository](#create-repo)  
 * [Connecting to GitHub using SSH keys](#ssh)
 * [Cloning a repository](#clone)  
-* [Introduction to feature branch and Git-flow ways of working](#feature-branch)  
+* [Feature branches](#feature-branch)  
+* [Git-Flow](#git-flow)
 * [Creating a branch](#create-branch)
 * [Committing code](#commit)  
 * [Pushing code](#push)  
@@ -107,11 +108,23 @@ Your branch is up-to-date with 'origin/master'.
 You now have a copy of the repository on your local workstation!
 
 <a name="feature-branch"></a>
-## Feature branches (and Git-flow)  
-TODO  
+## Feature branches  
+* All development for a particular feature takes place on a dedicated branch, instead of using the main codebase (master branch) directly.
+* Multiple developers can work on a particular feature without disturbing the main codebase.
+* Experiments can also be tried out on feature branches and then deleted or kept and merged as needed.
+* Changes can be reviewed using [Pull Requests](#pull-request) (covered later) before being merged back into the main codebase.
+* The master branch should now never contain broken code!
 
-If you feel comfortable with feature branches and you'd like to find out more
-about the other types of common branches, there is an in depth description of git-flow branching available [here][Git-flow branching] which covers when to use release branches, hotfixes and the develop branch.
+<a name="git-flow"></a>
+## Gitflow
+Gitflow is a git workflow which defines a structured approach to branching. With
+specific branches for release versions, changes for the next version, hotfixes
+to released versions etc.
+
+We won't have time to go into it in detail here but if you feel comfortable with
+feature branches and you'd like to find out more, there is an in depth
+description of git-flow branching available [here][Git-flow branching] which is
+well worth reading.
 
 <a name="create-branch"></a>
 ## Creating a branch  
@@ -133,13 +146,55 @@ We're now going to make a change to the README and then commit the change.
 1. Open the README.md file in a text editor and add a sentence describing your
 repository to the end of the file and save.
 
-1. Run `git status` again and you should see the following output:
-TODO
+1. Run **git status** again and you should see the following output:  
+  ```
+  $ git status
+  On branch my-new-branch
+  Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+  	modified:   README.md
+
+  no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+
+1. Now stage the README so it is included in the next commit:
+  ```
+  $ git add README.md
+  ```
+
+1. Run **git status** again to see the state of your repository:
+  ```
+  $ git status
+  On branch my-new-branch
+  Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+  	modified:   README.md
+  ```
+
+1. Now commit the staged file with a meaningful message of what's changed:
+  ```
+  $ git commit -m "Added repository description to the README."
+  ```
+
+We've now added the update to our local version of the repository but it the
+changes haven't been uploaded to our remote repository on GitHub yet.
 
 <a name="push"></a>
 ## Pushing code  
 
 ```
+$ git push
+fatal: The current branch my-new-branch has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin my-new-branch
+```
+
+```
+git push --set-upstream origin my-new-branch
 ```
 
 <a name="pull-request"></a>
