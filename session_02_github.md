@@ -72,8 +72,12 @@ Follow these instructions to add the key to GitHub.
 ## Cloning a repository  
 1. Navigate to the repository you created earlier and click the _Clone or
 download_ button. Ensure you are using **SSH / HTTPS <- TODO decide which**
-![Clone with HTTPS](./resources/session_02_clone_https.png)
-![Clone with SSH](./resources/session_02_clone_ssh.png)
+
+  <img src="./resources/session_02_clone_https.png" alt="Clone with HTTPS"
+  width="343" height="160" />
+
+  <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH"
+  width="342" height="158" />
 
 1. Copy the path displayed.
 
