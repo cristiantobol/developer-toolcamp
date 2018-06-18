@@ -46,7 +46,6 @@ repository with a README_
 
 <a name="ssh"></a>
 ## Connecting to GitHub using SSH keys
-**TODO - ARE WE EVEN USING SSH? I SEEM TO BE USING HTTPS!!**
 
 Now that we've created a repository we'd like to be able to download it to our
 local machine, make changes and send those changes back to GitHub. Before we do
@@ -73,10 +72,7 @@ Follow these instructions to add the key to GitHub.
 <a name="clone"></a>
 ## Cloning a repository  
 1. Navigate to the repository you created earlier and click the _Clone or
-download_ button. Ensure you are using **SSH / HTTPS <- TODO decide which!**
-
-  <img src="./resources/session_02_clone_https.png" alt="Clone with HTTPS"
-  width="343" height="160" />
+download_ button. Ensure you are using **SSH**
 
   <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH"
   width="342" height="158" />
@@ -89,7 +85,7 @@ into.
 1. Run the following command to clone the repository (paste the path you copied
    to your repository):  
 ```
-$ git clone https://github.ibm.com/<Username>/<RepositoryName>.git
+$ git clone git@github.ibm.com:<Username>/<RepositoryName>.git
 ```
 
 1. Navigate into the folder that was just created (it will have the same name as the repository).
@@ -184,18 +180,33 @@ changes haven't been uploaded to our remote repository on GitHub yet.
 
 <a name="push"></a>
 ## Pushing code  
+Now that we've staged and committed our changes we want to send them to the
+remote version of the repository so that they're available to others and also
+backed up.
 
-```
-$ git push
-fatal: The current branch my-new-branch has no upstream branch.
-To push the current branch and set the remote as upstream, use
+1. To do this you run *git push* but you will see the following error displayed
+when you try it:
+  ```
+  $ git push
+  fatal: The current branch my-new-branch has no upstream branch.
+  To push the current branch and set the remote as upstream, use
 
-    git push --set-upstream origin my-new-branch
-```
+      git push --set-upstream origin my-new-branch
+  ```
 
+  The error message is explaining that there is no remote version of the branch
+  we're working on so Git doesn't know where we want to send the code to.
+
+  The error message is really useful as it gives us the exact command we need to
+  run to create the remote version of our branch and fix the error.
+
+1. Now we run the command it suggested:
 ```
 git push --set-upstream origin my-new-branch
 ```
+
+1. Now we can check our repository on GitHub at `https://github.ibm.com/<Username>/<RepositoryName>` and see that our description has
+appeared in the README.md file.
 
 <a name="pull-request"></a>
 ## Creating a pull request  
