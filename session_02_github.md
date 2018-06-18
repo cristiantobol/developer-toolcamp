@@ -73,9 +73,7 @@ Follow these instructions to add the key to GitHub.
 ## Cloning a repository  
 1. Navigate to the repository you created earlier and click the _Clone or
 download_ button. Ensure you are using **SSH**
-
-  <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH"
-  width="342" height="158" />
+    <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH" width="342" height="158" />
 
 1. Copy the path displayed.
 
@@ -84,24 +82,23 @@ into.
 
 1. Run the following command to clone the repository (paste the path you copied
    to your repository):  
-```
-$ git clone git@github.ibm.com:<Username>/<RepositoryName>.git
-```
+    ```
+    $ git clone git@github.ibm.com:<Username>/<RepositoryName>.git
+    ```
 
 1. Navigate into the folder that was just created (it will have the same name as the repository).
 
 1. Run the following command to find out the status of your local repository:
-```
-$ git status
-```
-You should see output that looks like:
-```
-$ git status
-On branch master
-Your branch is up-to-date with 'origin/master'.
-```
-
-You now have a copy of the repository on your local workstation!
+    ```
+    $ git status
+    ```
+    You should see output that looks like:
+    ```
+    $ git status
+    On branch master
+    Your branch is up-to-date with 'origin/master'.
+    ```
+    You now have a copy of the repository on your local workstation!
 
 <a name="feature-branch"></a>
 ## Feature branches  
@@ -143,37 +140,37 @@ We're now going to make a change to the README and then commit the change.
 repository to the end of the file and save.
 
 1. Run **git status** again and you should see the following output:  
-  ```
-  $ git status
-  On branch my-new-branch
-  Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git checkout -- <file>..." to discard changes in working directory)
+    ```
+    $ git status
+    On branch my-new-branch
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git checkout -- <file>..." to discard changes in working directory)
 
-  	modified:   README.md
+    	modified:   README.md
 
-  no changes added to commit (use "git add" and/or "git commit -a")
-  ```
+    no changes added to commit (use "git add" and/or "git commit -a")
+    ```
 
 1. Now stage the README so it is included in the next commit:
-  ```
-  $ git add README.md
-  ```
+    ```
+    $ git add README.md
+    ```
 
 1. Run **git status** again to see the state of your repository:
-  ```
-  $ git status
-  On branch my-new-branch
-  Changes to be committed:
-    (use "git reset HEAD <file>..." to unstage)
+    ```
+    $ git status
+    On branch my-new-branch
+    Changes to be committed:
+      (use "git reset HEAD <file>..." to unstage)
 
-  	modified:   README.md
-  ```
+    	modified:   README.md
+    ```
 
 1. Now commit the staged file with a meaningful message of what's changed:
-  ```
-  $ git commit -m "Added repository description to the README."
-  ```
+    ```
+    $ git commit -m "Added repository description to the README."
+    ```
 
 We've now added the update to our local version of the repository but it the
 changes haven't been uploaded to our remote repository on GitHub yet.
@@ -186,27 +183,26 @@ backed up.
 
 1. To do this you run *git push* but you will see the following error displayed
 when you try it:
-  ```
-  $ git push
-  fatal: The current branch my-new-branch has no upstream branch.
-  To push the current branch and set the remote as upstream, use
+    ```
+    $ git push
+    fatal: The current branch my-new-branch has no upstream branch.
+    To push the current branch and set the remote as upstream, use
 
-      git push --set-upstream origin my-new-branch
-  ```
-
-  The error message is explaining that there is no remote version of the branch
-  we're working on so Git doesn't know where we want to send the code to.
-
-  The error message is really useful as it gives us the exact command we need to
-  run to create the remote version of our branch and fix the error.
+        git push --set-upstream origin my-new-branch
+    ```
+    The error message is explaining that there is no remote version of the
+    branch we're working on so Git doesn't know where we want to send the code
+    to.
+    The error message is really useful as it gives us the exact command we need
+    to run to create the remote version of our branch and fix the error.
 
 1. Now we run the command it suggested:
-```
-git push --set-upstream origin my-new-branch
-```
+    ```
+    git push --set-upstream origin my-new-branch
+    ```
 
-1. Now we can check our repository on GitHub at `https://github.ibm.com/<Username>/<RepositoryName>` and see that our description has
-appeared in the README.md file.
+1. Now we can check our repository on GitHub at `https://github.ibm.com/<Username>/<RepositoryName>`
+and see that our description has appeared in the README.md file.
 
 <a name="pull-request"></a>
 ## Creating a pull request  
