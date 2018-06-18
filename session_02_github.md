@@ -192,7 +192,7 @@ when you try it:
     ```
     The error message is explaining that there is no remote version of the
     branch we're working on so Git doesn't know where we want to send the code
-    to.
+    to.  
     The error message is really useful as it gives us the exact command we need
     to run to create the remote version of our branch and fix the error.
 
@@ -206,12 +206,42 @@ and see that our description has appeared in the README.md file.
 
 <a name="pull-request"></a>
 ## Creating a pull request  
+Pull requests provide an opportunity to get others to review your code before it
+is added to the main code base. In many development projects a minimum of 1
+review is needed before you can merge in your changes.
+
+1. To create a pull request for the code you've just changed, click on the
+_Pull requests_ tab near the top of GitHub page for your repository.
+
+1. Next click the _New pull request_ button.
+
+1. On the new _Compare changes_ page leave the base set to `master` and change
+the compare to `my-new-branch`.  
+You'll now see an overview of any commits you've made and any files that have
+changed.
+
+1. Click the _Create pull request_ button.
+
+There's lots more information about pull requests available [here][Pull Requests]
 
 <a name="code-review"></a>
 ## Code Reviews  
+Once the pull request has been created you can add anyone who is a collaborator
+on the repository as a reviewer to request that they look through what you've
+done.
+
+They can comment on individual files, specific lines within those files or the
+pull request as a whole.
+
+We don't currently have any collaborators on our personal repository we created
+so we will skip this step and move on to merging the pull request.
+
+Please see [inviting collaborators to a personal repository](https://help.github.com/enterprise/user/articles/inviting-collaborators-to-a-personal-repository/) if you'd like to see how it's done.
 
 <a name="merge"></a>
 ## Merging a pull request  
+TODO - merging in GitHub, deleting the remote branch, deleting the local branch
+and returning to master branch.
 
 <a name="further"></a>
 ## Further reading
