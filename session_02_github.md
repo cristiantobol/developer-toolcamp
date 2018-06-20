@@ -13,6 +13,7 @@
 * [Creating a pull request](#pull-request)  
 * [Code Reviews](#code-review)  
 * [Merging a pull request](#merge)  
+* [Pull updates to your local repository](#pull)
 * [Further reading](#further)
 
 <a name="git"></a>
@@ -73,7 +74,8 @@ Follow these instructions to add the key to GitHub.
 ## Cloning a repository  
 1. Navigate to the repository you created earlier and click the _Clone or
 download_ button. Ensure you are using **SSH**
-    <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH" width="342" height="158" />
+    <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH"
+    width="342" height="158" />
 
 1. Copy the path displayed.
 
@@ -86,7 +88,8 @@ into.
     $ git clone git@github.ibm.com:<Username>/<RepositoryName>.git
     ```
 
-1. Navigate into the folder that was just created (it will have the same name as the repository).
+1. Navigate into the folder that was just created (it will have the same name as
+   the repository).
 
 1. Run the following command to find out the status of your local repository:
     ```
@@ -102,10 +105,14 @@ into.
 
 <a name="feature-branch"></a>
 ## Feature branches  
-* All development for a particular feature takes place on a dedicated branch, instead of using the main codebase (master branch) directly.
-* Multiple developers can work on a particular feature without disturbing the main codebase.
-* Experiments can also be tried out on feature branches and then deleted or kept and merged as needed.
-* Changes can be reviewed using [Pull Requests](#pull-request) (covered later) before being merged back into the main codebase.
+* All development for a particular feature takes place on a dedicated branch,
+instead of using the main codebase (master branch) directly.
+* Multiple developers can work on a particular feature without disturbing the
+main codebase.
+* Experiments can also be tried out on feature branches and then deleted or kept
+ and merged as needed.
+* Changes can be reviewed using [Pull Requests](#pull-request) (covered later)
+before being merged back into the main codebase.
 * The master branch should now never contain broken code!
 
 <a name="git-flow"></a>
@@ -198,11 +205,12 @@ when you try it:
 
 1. Now we run the command it suggested:
     ```
-    git push --set-upstream origin my-new-branch
+    $ git push --set-upstream origin my-new-branch
     ```
 
-1. Now we can check our repository on GitHub at `https://github.ibm.com/<Username>/<RepositoryName>`
-and see that our description has appeared in the README.md file.
+1. Now we can check our repository on GitHub at
+`https://github.ibm.com/<Username>/<RepositoryName>` and see that our
+description has appeared in the README.md file.
 
 <a name="pull-request"></a>
 ## Creating a pull request  
@@ -236,19 +244,64 @@ pull request as a whole.
 We don't currently have any collaborators on our personal repository we created
 so we will skip this step and move on to merging the pull request.
 
-Please see [inviting collaborators to a personal repository](https://help.github.com/enterprise/user/articles/inviting-collaborators-to-a-personal-repository/) if you'd like to see how it's done.
+Please see [inviting collaborators to a personal repository](https://help.github.com/enterprise/user/articles/inviting-collaborators-to-a-personal-repository/)
+if you'd like to see how it's done.
 
 <a name="merge"></a>
 ## Merging a pull request  
-TODO - merging in GitHub, deleting the remote branch, deleting the local branch
-and returning to master branch.
+You can merge the pull request once others have finished reviewing and are happy
+with the changes by pressing the _Merge pull request_ button and then the
+_Confirm Merge_ button that is displayed after.  
+
+Once it has successfully merged a _Delete branch_ button is displayed on the
+pull request. It is generally a good idea to delete the branch at this point as
+it has now served it's purpose and all of your changes are now part of the main
+code base.  
+
+Leaving lots of old branches hanging around makes it tricky to see which
+branches are still being worked on.
+
+<a name="pull"></a>
+## Pull updates to your local repository
+We now need to update our local copy of the repository so that the master branch
+there contains the newly merged code as well.
+
+Navigate back to your repository folder in your terminal and run the following
+to switch back to the **master** branch:
+
+```
+$ git checkout master
+```
+
+We've now switched back to the master branch but we haven't picked up the latest
+changes. Have a look at the contents of the README.md file to confirm your
+changes aren't there.
+
+We need to run another git command to pull down the latest changes from the
+remote repository:
+
+```
+$ git pull
+```
+
+Check the README.md file again and you should now see your changes there.
+
+Congratulations! You've successfully made updates to a code repository using a
+feature branch and merged them into the main code base using a Pull Request.
+
+Git and GitHub are really widely used so they're really valuable skills to have.
+There's also loads of help and resources available online for them. Some links
+are available in the [Further Reading](#further) section for aspects of that
+we've not had time to cover in this introductory session.
 
 <a name="further"></a>
 ## Further reading
 [GitHub Enterprise Help][GitHub Enterprise Help]  
+[Merge Conflicts][Merge Conflicts]  
 [Pull Requests][Pull Requests]  
 [Git-flow branching][Git-flow branching]  
 
 [GitHub Enterprise Help]: https://help.github.com/enterprise/user/  
+[Merge Conflicts]: https://help.github.com/enterprise/2.13/user/articles/resolving-a-merge-conflict-using-the-command-line/
 [Pull Requests]: https://help.github.com/enterprise/user/articles/about-pull-requests/  
 [Git-flow branching]: https://nvie.com/posts/a-successful-git-branching-model/
