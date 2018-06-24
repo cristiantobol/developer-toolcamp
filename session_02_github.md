@@ -5,8 +5,8 @@
 * [Creating a repository](#create-repo)  
 * [Connecting to GitHub using SSH keys](#ssh)
 * [Cloning a repository](#clone)  
-* [Feature branches](#feature-branch)  
-* [Git-Flow](#git-flow)
+* [What are feature branches?](#feature-branch)  
+* [What is Git-Flow?](#git-flow)
 * [Creating a branch](#create-branch)
 * [Committing code](#commit)  
 * [Pushing code](#push)  
@@ -39,7 +39,7 @@ Git.
 We're now going to create our own Git repository, hosted on GitHub.
 1. Go to https://github.ibm.com/. If you're reading this online, you're probably
 there already!
-1. Click the + button in the top right corner and select _New repository_
+1. Click the **+** button in the top right corner and select _New repository_
 ![new repository menu](./resources/session_02_new_repo.png)
 1. Add a repository name and make sure to tick the box to _Initialize this
 repository with a README_
@@ -56,7 +56,7 @@ and that we're allowed to perform those operations.
 We're going to connect using SSH keys so that we don't have to supply our
 username or password each time we interact with GitHub.
 
-GitHub enterprise has good instructions for setting this up already, so we'll
+GitHub Enterprise has good instructions for setting this up already, so we'll
 follow those directly:
 
 1. [Checking for existing SSH keys](https://help.github.com/enterprise/user/articles/checking-for-existing-ssh-keys)
@@ -77,7 +77,7 @@ download_ button. Ensure you are using **SSH**
     <img src="./resources/session_02_clone_ssh.png" alt="Clone with SSH"
     width="342" height="158" />
 
-1. Copy the path displayed.
+1. Copy the path displayed that starts _git@github..._
 
 1. Open a terminal and navigate to the folder you want to clone the repository
 into.
@@ -104,25 +104,31 @@ into.
     You now have a copy of the repository on your local workstation!
 
 <a name="feature-branch"></a>
-## Feature branches  
-* All development for a particular feature takes place on a dedicated branch,
-instead of using the main codebase (master branch) directly.
+## What are feature branches?  
+With a feature branch, instead of using the main codebase (master branch)
+directly, all development for a particular feature takes place on a dedicated
+branch.  
+
+The benefits of using feature branches are:
 * Multiple developers can work on a particular feature without disturbing the
 main codebase.
+
 * Experiments can also be tried out on feature branches and then deleted or kept
- and merged as needed.
+and merged as needed.
+
 * Changes can be reviewed using [Pull Requests](#pull-request) (covered later)
-before being merged back into the main codebase.
-* The master branch should now never contain broken code!
+before being merged back into the main codebase.  
+
+* The master branch hopefully contains broken code very infrequently!
 
 <a name="git-flow"></a>
-## Gitflow
+## What is Gitflow
 Gitflow is a git workflow which defines a structured approach to branching. With
 specific branches for release versions, changes for the next version, hotfixes
 to released versions etc.
 
-We won't have time to go into it in detail here but if you feel comfortable with
-feature branches and you'd like to find out more, there is an in depth
+We won't have time to go into it in detail here but once you feel comfortable
+with feature branches and you'd like to find out more, there is an in depth
 description of git-flow branching available [here][Git-flow branching] which is
 well worth reading.
 
@@ -179,16 +185,16 @@ repository to the end of the file and save.
     $ git commit -m "Added repository description to the README."
     ```
 
-We've now added the update to our local version of the repository but it the
-changes haven't been uploaded to our remote repository on GitHub yet.
+We've now added the updated README file to our local version of the repository
+but the changes haven't been uploaded to our remote repository on GitHub yet.
 
 <a name="push"></a>
 ## Pushing code  
 Now that we've staged and committed our changes we want to send them to the
-remote version of the repository so that they're available to others and also
-backed up.
+remote version of the repository so that they're available to others and we also
+have a back up of them then too.
 
-1. To do this you run *git push* but you will see the following error displayed
+1. To do this you run **git push** but you will see the following error displayed
 when you try it:
     ```
     $ git push
@@ -200,23 +206,26 @@ when you try it:
     The error message is explaining that there is no remote version of the
     branch we're working on so Git doesn't know where we want to send the code
     to.  
+
     The error message is really useful as it gives us the exact command we need
     to run to create the remote version of our branch and fix the error.
 
-1. Now we run the command it suggested:
+1. Next we run the command it suggested:
     ```
     $ git push --set-upstream origin my-new-branch
     ```
+    Our updates will now have gone to the remote version of our branch.
 
-1. Now we can check our repository on GitHub at
+1. To verify this we can check our repository on GitHub at
 `https://github.ibm.com/<Username>/<RepositoryName>` and see that our
 description has appeared in the README.md file.
 
 <a name="pull-request"></a>
 ## Creating a pull request  
 Pull requests provide an opportunity to get others to review your code before it
-is added to the main code base. In many development projects a minimum of 1
-review is needed before you can merge in your changes.
+is added to the main code base. In many development projects a minimum of a
+review from a least one other developer is needed before you can merge in your
+changes.
 
 1. To create a pull request for the code you've just changed, click on the
 _Pull requests_ tab near the top of GitHub page for your repository.
@@ -266,40 +275,39 @@ branches are still being worked on.
 We now need to update our local copy of the repository so that the master branch
 there contains the newly merged code as well.
 
-Navigate back to your repository folder in your terminal and run the following
+1. Navigate back to your repository folder in your terminal and run the following
 to switch back to the **master** branch:
+  ```
+  $ git checkout master
+  ```
 
-```
-$ git checkout master
-```
+  We've now switched back to the master branch but we haven't picked up the
+  latest changes. Have a look at the contents of the README.md file to confirm
+  your changes aren't there.
 
-We've now switched back to the master branch but we haven't picked up the latest
-changes. Have a look at the contents of the README.md file to confirm your
-changes aren't there.
-
-We need to run another git command to pull down the latest changes from the
+1. We need to run another git command to pull down the latest changes from the
 remote repository:
+  ```
+  $ git pull
+  ```
 
-```
-$ git pull
-```
-
-Check the README.md file again and you should now see your changes there.
+  Check the README.md file again and you should now see your changes there.
 
 Congratulations! You've successfully made updates to a code repository using a
 feature branch and merged them into the main code base using a Pull Request.
 
-Git and GitHub are really widely used so they're really valuable skills to have.
-There's also loads of help and resources available online for them. Some links
-are available in the [Further Reading](#further) section for aspects of that
-we've not had time to cover in this introductory session.
-
 <a name="further"></a>
 ## Further reading
-[GitHub Enterprise Help][GitHub Enterprise Help]  
+Git and GitHub are really widely used so they're really valuable skills to have.
+There's also loads of help and resources available online for them.  
+
+Some links are available below for aspects that we've not had time to cover
+fully in this introductory session:
+
 [Merge Conflicts][Merge Conflicts]  
 [Pull Requests][Pull Requests]  
 [Git-flow branching][Git-flow branching]  
+[General GitHub Enterprise Help][GitHub Enterprise Help]  
 
 [GitHub Enterprise Help]: https://help.github.com/enterprise/user/  
 [Merge Conflicts]: https://help.github.com/enterprise/user/articles/resolving-a-merge-conflict-using-the-command-line/
