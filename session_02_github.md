@@ -302,6 +302,6 @@ we've not had time to cover in this introductory session.
 [Git-flow branching][Git-flow branching]  
 
 [GitHub Enterprise Help]: https://help.github.com/enterprise/user/  
-[Merge Conflicts]: https://help.github.com/enterprise/2.13/user/articles/resolving-a-merge-conflict-using-the-command-line/
+[Merge Conflicts]: https://help.github.com/enterprise/user/articles/resolving-a-merge-conflict-using-the-command-line/
 [Pull Requests]: https://help.github.com/enterprise/user/articles/about-pull-requests/  
 [Git-flow branching]: https://nvie.com/posts/a-successful-git-branching-model/
