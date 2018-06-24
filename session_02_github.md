@@ -194,8 +194,8 @@ Now that we've staged and committed our changes we want to send them to the
 remote version of the repository so that they're available to others and we also
 have a back up of them then too.
 
-1. To do this you run **git push** but you will see the following error displayed
-when you try it:
+1. To do this you run **git push** but you will see the following error
+displayed when you try it:
     ```
     $ git push
     fatal: The current branch my-new-branch has no upstream branch.
@@ -275,21 +275,21 @@ branches are still being worked on.
 We now need to update our local copy of the repository so that the master branch
 there contains the newly merged code as well.
 
-1. Navigate back to your repository folder in your terminal and run the following
-to switch back to the **master** branch:
-  ```
-  $ git checkout master
-  ```
-  We've now switched back to the master branch but we haven't picked up the
-  latest changes. Have a look at the contents of the README.md file to confirm
-  your changes aren't there.
+1. Navigate back to your repository folder in your terminal and run the
+following to switch back to the **master** branch:
+    ```
+    $ git checkout master
+    ```
+    We've now switched back to the master branch but we haven't picked up the
+    latest changes. Have a look at the contents of the README.md file to confirm
+    your changes aren't there.
 
 1. We need to run another git command to pull down the latest changes from the
 remote repository:
-  ```
-  $ git pull
-  ```
-  Check the README.md file again and you should now see your changes there.
+    ```
+    $ git pull
+    ```
+    Check the README.md file again and you should now see your changes there.
 
 Congratulations! You've successfully made updates to a code repository using a
 feature branch and merged them into the main code base using a Pull Request.
