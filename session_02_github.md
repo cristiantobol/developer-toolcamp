@@ -280,7 +280,6 @@ to switch back to the **master** branch:
   ```
   $ git checkout master
   ```
-
   We've now switched back to the master branch but we haven't picked up the
   latest changes. Have a look at the contents of the README.md file to confirm
   your changes aren't there.
@@ -290,7 +289,6 @@ remote repository:
   ```
   $ git pull
   ```
-
   Check the README.md file again and you should now see your changes there.
 
 Congratulations! You've successfully made updates to a code repository using a
