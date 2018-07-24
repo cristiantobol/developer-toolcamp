@@ -37,28 +37,31 @@ For a system to be RESTful it must adhere to the following 6 constraints:
     * **Resource manipulation through representations**
     A client receives enough information about a resource to modify or delete it.
     * **Self-descriptive messages**
-    Each response includes enough information for the client to know how to process it. E.g. media type states JSON encoding.
-    * **Hypermedia as the engine of application state** The ability to follow links in responses to other actions that are available. Instead of this being hard-coded in the client.
+    Each response includes enough information for the client to know how to
+    process it. E.g. media type states JSON encoding.
+    * **Hypermedia as the engine of application state** The ability to follow
+    links in responses to other actions that are available. Instead of this
+    being hard-coded in the client.
 
 <a name="methods"></a>
 ## HTTP Methods
 A RESTful API uses HTTP requests to perform CRUD operations on data. CRUD stands
 for Create, Read, Update and Delete.
 
-**GET** method requests data without producing any side effects.
-E.g `GET /companies/3/employees` returns a list of all employees from company 3.
+**GET** method requests data without producing any side effects.  
+e.g `GET /recipes` returns a list of all Recipes in the database.
 
-**POST** method requests the server to create a new resource in the database.
-E.g `POST /companies/3/employees` creates a new Employee of company 3.
+**POST** method requests the server to create a new resource in the database.  
+e.g `POST /recipes` creates a new Recipe.
 
 **PUT** method requests the server to update a resource or create it if it
-doesn’t exist.
-E.g. `PUT /companies/3/employees/john` will request the server to update or
-create the john resource in employees collection under company 3.
+doesn’t exist.  
+e.g. `PUT /recipes/123456` will request the server to update or create the
+Recipe with the unique ID *123456* in the Recipes collection.
 
-**DELETE** method requests the server to remove the resource from the database.
-E.g `DELETE /companies/3/employees/john/` will request the server to delete the
-john resource from the employees collection under the company 3.
+**DELETE** method requests the server to remove the resource from the database.  
+e.g `DELETE /recipes/123456/` will request the server to delete the Recipe with
+the unique ID *123456* in the Recipes collection.
 
 <a name="express"></a>
 ## Express
@@ -66,8 +69,94 @@ Express is a JavaScript web framework for Node.js
 
 <a name="mongo"></a>
 ## MongoDB
+MongoDB is a document database.
+
+MongoDB stores data in flexible, JSON-like documents, meaning fields can vary
+from document to document and data structure can be changed over time.
+
+This fits well with building a REST API as we often want to return JSON
+documents as our responses. We're able to return these very quickly if we're
+storing them in exactly the same format we need to supply them in.
+
+## Clone the REST API starting repository
+We have created a starter project for building a REST API. Navigate to the
+parent folder you wish to clone into and then run:
+```
+$ git clone git@github.ibm.com:Stephen-Kitchen-CIC-UK/dev-toolcamp-rest-api.git
+```
+
+Before we get started with the code we're going to set up the MongoDB database
+and add some test data to it.
+
+## Install MongoDB
+We'll use [home brew](https://brew.sh/) to install mongo. You will need to
+install it if you haven't already. You can use the following to check if it is
+installed:
+```
+$ brew -v
+```
+
+You can also check if MongoDB is installed by running:
+```
+$ mongo --version
+```
+
+If MongoDB is not installed run the following:
+```
+$ brew install mongodb
+```
+
+After downloading Mongo, create the “db” directory. This is where the Mongo data
+files will live. You can create the directory in the default location by
+running:
+```
+$ mkdir -p /data/db
+```
+
+Make sure that the /data/db directory has the right permissions by running:
+```
+$ sudo chown -R `id -un` /data/db
+```
+
+Now start the Mongo daemon that runs the Mongo server by running:
+```
+$ mongod
+```
+You can stop this by pressing `ctrl-c` but we want to leave it running whenever
+we need to use Mongo.
+
+To check everything is working you can enter the Mongo shell by opening another
+terminal (this is so that **mongod** can remain running) and then run:
+```
+$ mongo
+```
+
+The Mongo shell application allows you to access data in MongoDB. Now that we
+have verified everything is working we can exit the Mongo shell by running:
+```
+> quit()
+```
+
+## Import MongoDB test data
+Some test data has been pre-created for you as part of the REST API starter
+project you cloned. It is the file called `importData.json` within the cloned
+folder.
+
+The data is JSON encoded and contains an Array with multiple recipes represented
+as individual objects. To import this data into MongoDB we need to make sure
+`mongod` is running and then run the following command:
+```
+$ mongoimport --db RecipesDB --collection recipes --drop --file ./importData.json --jsonArray
+```
+This command imports the data into a new database called *RecipesDB* and a
+collection within that database called *recipes*. It also includes the argument
+`--drop` which will cause any existing data in that collection to be deleted.
+Removing this argument would cause the data to be appended to what was already
+there.
+
 
 <a name="further"></a>
 ## Further reading
 https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9
 https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
+https://www.mongodb.com/what-is-mongodb
