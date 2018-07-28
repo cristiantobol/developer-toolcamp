@@ -66,6 +66,7 @@ the unique ID *123456* in the Recipes collection.
 <a name="express"></a>
 ## Express
 Express is a JavaScript web framework for Node.js
+TODO - expand further.
 
 <a name="mongo"></a>
 ## MongoDB
@@ -154,6 +155,177 @@ collection within that database called *recipes*. It also includes the argument
 Removing this argument would cause the data to be appended to what was already
 there.
 
+## Install dependencies
+Before being able to use the REST API project we've cloned we need to install
+the dependencies it needs to run. These are defined in the `package.json` file
+and can be installed by running within the project folder:
+```
+$ npm install
+```
+
+## Create the initial server
+### Add the server code
+First we will create an initial server using _express_ by copying the code below into the `server.js` file.
+
+**server.js**
+```javaScript
+import express from 'express';
+
+const app = express();
+const port = 9000;
+
+app.listen(port);
+
+console.log(`Recipe RESTful API server started on: ${port}`);
+```
+
+Here we've imported _express_ and created an express application which will
+listen for incoming requests from clients on port 9000.  
+
+We've also added a message to display on the command line so that we know our
+REST API has started.
+
+### Start the REST API
+We can now start the REST API by running the following command within the
+project folder:
+```
+$ npm start
+```  
+
+### Access the REST API
+Next try accessing http://localhost:9000/recipes in your browser. You should see
+the following message: `Cannot GET /recipes`. This shows us that the REST API is
+running but doesn't yet know how to respond when we send a GET request to the
+`/recipes` path (or any other path).  
+
+We'll now add the code needed to return the data we imported into MongoDB
+earlier.
+
+## Create the Model
+The model will define the structure of the data.
+### Mongoose
+TODO
+
+### Add the model code
+**recipeModel.js**
+```javaScript
+import mongoose, { Schema } from 'mongoose';
+
+const recipeSchema = new Schema({
+  dateAdded: {
+    type: Date,
+    default: Date.now,
+  },
+  difficulty: {
+    type: Number,
+    default: 1,
+  },
+  image: {
+    type: String,
+  },
+  ingredients: {
+    type: Array,
+  },
+  method: {
+    type: Array,
+  },
+  title: {
+    type: String,
+    required: 'Please enter the recipe title.',
+  },
+});
+
+export default mongoose.model('Recipes', recipeSchema);
+```
+
+## Create the Controller
+**recipeController.js**
+```javaScript
+import mongoose from 'mongoose';
+
+const RecipeModel = mongoose.model('Recipes');
+
+export function listAllRecipes(request, response) {
+  RecipeModel.find({}, (err, recipe) => {
+    if (err) {
+      response.send(err);
+    }
+    response.json(recipe);
+  });
+}
+```
+
+## Create the Route
+The routes will determine what action the REST API takes in response to a client
+request.  
+The client request will include a path (URI) and a HTTP method (GET, PUT, POST,
+DELETE etc). Together the path and method are referred to as an _endpoint_.
+
+We will now add some code to match requests to GET http://localhost:9000/recipes
+to the use the `listAllRecipes` function we just wrote in the controller.
+
+**recipeRoutes.js**
+```javaScript
+import { listAllRecipes } from './recipeController';
+
+function recipeRoutes(app) {
+  app.route('/recipes').get(listAllRecipes)
+}
+
+export default recipeRoutes;
+```
+
+## Update the server
+TODO
+### Add the updated server code
+TODO  
+**server.js**
+```javaScript
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+import recipeModel from './recipeModel';
+import recipeRoutes from './recipeRoutes';
+
+const app = express();
+const port = 9000;
+
+mongoose.connect('mongodb://localhost/RecipesDB');
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+recipeRoutes(app);
+
+app.listen(port);
+
+console.log(`Recipe RESTful API server started on: ${port}`);
+```
+### body-parser
+TODO
+### CORS
+TODO
+### Re-start the server
+In order for the code changes we've just made to take effect we need to stop
+and then re-start the server.
+
+Find the terminal which the server is running in and press `ctrl-c` to stop the
+process.
+
+Start the server again by running the same command as earlier:
+```
+$ npm start
+```
+
+### View updated results
+If we now try accessing the same adress as before, http://localhost:9000/recipes
+in the browser, you should now see a JSON response listing all recipes in the
+MongoDB database.
+
+Success!! We now have a REST API which will be able to query from other
+applications.
 
 <a name="further"></a>
 ## Further reading
