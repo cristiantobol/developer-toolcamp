@@ -65,8 +65,13 @@ the unique ID *123456* in the Recipes collection.
 
 <a name="express"></a>
 ## Express
-Express is a JavaScript web framework for Node.js
-TODO - expand further.
+Express is a JavaScript web framework for Node.js. It helps you to organise your
+web application into an Model-View-Controller (MVC) architecture on the server
+side.
+
+Express helps you to manage things like handling routes and requests. Without it
+you would have to manually parse payloads, handle cookies and sessions and
+select the correct route pattern based on something like regular expressions.
 
 <a name="mongo"></a>
 ## MongoDB
@@ -202,11 +207,21 @@ We'll now add the code needed to return the data we imported into MongoDB
 earlier.
 
 ## Create the Model
-The model will define the structure of the data.
+The model defines the structure of the data that the REST API works with. It
+defines the shape of the data provided to the REST API and also returned by the
+REST API to the clients querying it.
+
 ### Mongoose
-TODO
+We'll be using Mongoose which provides us with an easier way to interact with
+data in MongoDB. It allows us to create Schemas and Models which dictate the
+structure that the data must take to be considered valid.
 
 ### Add the model code
+We'll now add the code for our recipe model, using mongoose to define the
+schema.
+
+Copy the code below into the `recipeModel.js` file:  
+
 **recipeModel.js**
 ```javaScript
 import mongoose, { Schema } from 'mongoose';
@@ -235,10 +250,36 @@ const recipeSchema = new Schema({
   },
 });
 
-export default mongoose.model('Recipes', recipeSchema);
+export default mongoose.model('Recipes', recipeSchema, 'recipes');
 ```
+Here we've defined a new schema which lists the fields that a recipe stored in
+the database can have. The fields in our case are:
+`dateAdded, difficulty, image, ingredients, method, title`  
+
+For each field the type of the field is defined too.  
+
+We've also provided default values for `dateAdded` and `difficulty` if they're
+not supplied. For dateAdded it will be the current date and for difficulty it
+will default to `1`.
+
+Lastly we've specified that the `title` is a required field. If it is not
+supplied then the message `Please enter the recipe title.` will be returned.
+
+The last line in the file adds the schema to the mongoose model with the key
+`Recipes`. It is the model which will be imported by other files importing this
+module (recipeModel.js). It also maps this schema to the `recipes` collection
+that we've imported our data into using the `mongoimport` command we ran
+earlier.
 
 ## Create the Controller
+The controller defines the methods that interact with the model to read data
+from it and make updates to it.
+
+We're just going to define one method which will return all of the recipe
+records in the database.
+
+Copy the following code into the `recipeController.js` file:
+
 **recipeController.js**
 ```javaScript
 import mongoose from 'mongoose';
@@ -246,14 +287,22 @@ import mongoose from 'mongoose';
 const RecipeModel = mongoose.model('Recipes');
 
 export function listAllRecipes(request, response) {
-  RecipeModel.find({}, (err, recipe) => {
-    if (err) {
-      response.send(err);
+  RecipeModel.find({}, (error, recipe) => {
+    if (error) {
+      response.send(error);
     }
     response.json(recipe);
   });
 }
 ```
+
+We've created a function called `listAllRecipes` which uses the model we just
+defined. It calls a `find` on the mongo collection with the first argument set
+to `{}` which means find everything!  
+
+It then handles the error scenario by responding with the error if there is one.
+If there's no error then it responds with a JSON payload of all the recipes that
+are returned from the database.
 
 ## Create the Route
 The routes will determine what action the REST API takes in response to a client
@@ -263,6 +312,8 @@ DELETE etc). Together the path and method are referred to as an _endpoint_.
 
 We will now add some code to match requests to GET http://localhost:9000/recipes
 to the use the `listAllRecipes` function we just wrote in the controller.
+
+Copy the following code into the `recipeRoutes.js` file:
 
 **recipeRoutes.js**
 ```javaScript
@@ -275,8 +326,11 @@ function recipeRoutes(app) {
 export default recipeRoutes;
 ```
 
+TODO
+
 ## Update the server
 TODO
+
 ### Add the updated server code
 TODO  
 **server.js**
