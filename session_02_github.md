@@ -16,6 +16,11 @@
 * [Pull updates to your local repository](#pull)
 * [Further reading](#further)
 
+## Session Objective
+This session will give you an overview of the main concepts and commands in Git
+and will get your machine set up so that you can start contributing to projects
+on GitHub.
+
 <a name="git"></a>
 ## What is Git?
 **Git** is a version control and source code management tool. It provides many
