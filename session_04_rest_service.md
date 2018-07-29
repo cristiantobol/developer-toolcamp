@@ -4,6 +4,15 @@
 * [HTTP Methods](#methods)
 * [Express](#express)
 * [MongoDB](#mongo)
+* [Clone the REST API starting repository](#clone)
+* [Install MongoDB](#install-mongo)
+* [Import MongoDB test data](#import-data)
+* [Install NPM dependencies](#install-dependencies)
+* [Create the initial server](#create-server)
+* [Create the Model](#create-model)
+* [Create the Controller](#create-controller)
+* [Create the Route](#create-route)
+* [Update the server](#update-server)
 * [Further reading](#further)
 
 ## Session Objective
@@ -84,6 +93,7 @@ This fits well with building a REST API as we often want to return JSON
 documents as our responses. We're able to return these very quickly if we're
 storing them in exactly the same format we need to supply them in.
 
+<a name="clone"></a>
 ## Clone the REST API starting repository
 We have created a starter project for building a REST API. Navigate to the
 parent folder you wish to clone into and then run:
@@ -94,6 +104,7 @@ $ git clone git@github.ibm.com:Stephen-Kitchen-CIC-UK/dev-toolcamp-rest-api.git
 Before we get started with the code we're going to set up the MongoDB database
 and add some test data to it.
 
+<a name="install-mongo"></a>
 ## Install MongoDB
 We'll use [home brew](https://brew.sh/) to install mongo. You will need to
 install it if you haven't already. You can use the following to check if it is
@@ -143,6 +154,7 @@ have verified everything is working we can exit the Mongo shell by running:
 > quit()
 ```
 
+<a name="import-data"></a>
 ## Import MongoDB test data
 Some test data has been pre-created for you as part of the REST API starter
 project you cloned. It is the file called `importData.json` within the cloned
@@ -160,7 +172,8 @@ collection within that database called *recipes*. It also includes the argument
 Removing this argument would cause the data to be appended to what was already
 there.
 
-## Install dependencies
+<a name="install-dependencies"></a>
+## Install NPM dependencies
 Before being able to use the REST API project we've cloned we need to install
 the dependencies it needs to run. These are defined in the `package.json` file
 and can be installed by running within the project folder:
@@ -168,6 +181,7 @@ and can be installed by running within the project folder:
 $ npm install
 ```
 
+<a name="create-server"></a>
 ## Create the initial server
 ### Add the server code
 First we will create an initial server using _express_ by copying the code below into the `server.js` file.
@@ -206,6 +220,7 @@ running but doesn't yet know how to respond when we send a GET request to the
 We'll now add the code needed to return the data we imported into MongoDB
 earlier.
 
+<a name="create-model"></a>
 ## Create the Model
 The model defines the structure of the data that the REST API works with. It
 defines the shape of the data provided to the REST API and also returned by the
@@ -271,6 +286,7 @@ module (recipeModel.js). It also maps this schema to the `recipes` collection
 that we've imported our data into using the `mongoimport` command we ran
 earlier.
 
+<a name="create-controller"></a>
 ## Create the Controller
 The controller defines the methods that interact with the model to read data
 from it and make updates to it.
@@ -304,6 +320,7 @@ It then handles the error scenario by responding with the error if there is one.
 If there's no error then it responds with a JSON payload of all the recipes that
 are returned from the database.
 
+<a name="create-route"></a>
 ## Create the Route
 The routes will determine what action the REST API takes in response to a client
 request.  
@@ -328,9 +345,9 @@ export default recipeRoutes;
 
 TODO
 
-## Update the server
-TODO
 
+<a name="update-server"></a>
+## Update the server
 ### Add the updated server code
 TODO  
 **server.js**
