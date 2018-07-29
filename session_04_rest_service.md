@@ -343,16 +343,26 @@ function recipeRoutes(app) {
 export default recipeRoutes;
 ```
 
-TODO
+We're importing `listAllRecipes` that we've just added to the controller module.
+We're then creating a function called `recipeRoutes` which will hold all routes
+for our REST API.  
 
+Currently there is just one route where `/recipes` defines the path we will go
+to in the browser and the `.get()` relates to the fact that it is for `GET`
+requests.  
+
+We've now set up a route for `GET` requests to `/recipes` to call our
+`listAllRecipes` function.
+
+We export the `recipeRoutes` function so that we can call it from the server.
 
 <a name="update-server"></a>
 ## Update the server
 ### Add the updated server code
-TODO  
+Copy the following code into the `server.js` file:
+
 **server.js**
 ```javaScript
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -365,19 +375,50 @@ const port = 9000;
 mongoose.connect('mongodb://localhost/RecipesDB');
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 recipeRoutes(app);
-
 app.listen(port);
 
 console.log(`Recipe RESTful API server started on: ${port}`);
 ```
-### body-parser
-TODO
+
+### Connect to MongoDB
+We're using mongoose again. This time to connect to the MongoDB database. We've
+specified `RecipesDB` as the name of the database we want to connect to. This
+matches with the name of the database that we imported data into with the import
+command earlier:
+```javaScript
+mongoose.connect('mongodb://localhost/RecipesDB');
+```
+
 ### CORS
-TODO
+CORS stands for Cross-Origin Resource Sharing. It uses additional HTTP headers
+to tell a browser to give a web application permission to access selected
+resources from a **different origin** (domain, protocol, port) than its own.  
+
+For security reasons, browsers restrict cross-origin HTTP requests triggered by
+scripts. So a web application by default can often only make requests to its own
+origin. To extend this, responses from another origin need to include the
+correct CORS headers.
+
+The following line enables CORS for all origins and routes:  
+```javaScript
+app.use(cors());
+```
+
+This prevents errors in the browser when any other client applications attempt
+to access our REST API. This quickly solves the problem but it is an insecure
+approach to use for an application that is deployed publicly.  
+
+More information on how to set up CORS properly using a _whitelist_ can be found
+in the [further reading](#further) section.
+
+### routes
+Lastly we've added the `recipeRoutes` to the app to allow us to hook in the code
+we just wrote in the routes, controller and model.
+```javaScript
+recipeRoutes(app);
+```
+
 ### Re-start the server
 In order for the code changes we've just made to take effect we need to stop
 and then re-start the server.
@@ -391,7 +432,7 @@ $ npm start
 ```
 
 ### View updated results
-If we now try accessing the same adress as before, http://localhost:9000/recipes
+If we now try accessing the same address as before, http://localhost:9000/recipes
 in the browser, you should now see a JSON response listing all recipes in the
 MongoDB database.
 
@@ -403,3 +444,4 @@ applications.
 https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9
 https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
 https://www.mongodb.com/what-is-mongodb
+https://www.npmjs.com/package/cors#usage
