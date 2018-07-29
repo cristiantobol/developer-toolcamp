@@ -4,8 +4,8 @@
 * [HTTP Methods](#methods)
 * [Express](#express)
 * [MongoDB](#mongo)
-* [Clone the REST API starting repository](#clone)
 * [Install MongoDB](#install-mongo)
+* [Clone the REST API starting repository](#clone)
 * [Import MongoDB test data](#import-data)
 * [Install NPM dependencies](#install-dependencies)
 * [Create the initial server](#create-server)
@@ -18,7 +18,7 @@
 ## Session Objective
 This session will give you an overview of what a RESTful API is and we will
 create a RESTful service hosted on your machine that handles requests to view
-and modify data.
+data stored in a MongoDB database.
 
 <a name="rest-api"></a>
 ## What is a Restful API?
@@ -57,19 +57,21 @@ For a system to be RESTful it must adhere to the following 6 constraints:
 A RESTful API uses HTTP requests to perform CRUD operations on data. CRUD stands
 for Create, Read, Update and Delete.
 
-**GET** method requests data without producing any side effects.  
-e.g `GET /recipes` returns a list of all Recipes in the database.
+The **GET** method requests data without producing any side effects.  
+e.g `GET /recipes` could return a list of all Recipes in the database.
 
-**POST** method requests the server to create a new resource in the database.  
-e.g `POST /recipes` creates a new Recipe.
+The **POST** method requests the server to create a new resource in the
+database.  
+e.g `POST /recipes` could create a new Recipe.
 
-**PUT** method requests the server to update a resource or create it if it
+The **PUT** method requests the server to update a resource or create it if it
 doesn’t exist.  
-e.g. `PUT /recipes/123456` will request the server to update or create the
+e.g. `PUT /recipes/123456` could request the server to update or create the
 Recipe with the unique ID *123456* in the Recipes collection.
 
-**DELETE** method requests the server to remove the resource from the database.  
-e.g `DELETE /recipes/123456/` will request the server to delete the Recipe with
+The **DELETE** method requests the server to remove the resource from the
+database.  
+e.g `DELETE /recipes/123456/` could request the server to delete the Recipe with
 the unique ID *123456* in the Recipes collection.
 
 <a name="express"></a>
@@ -82,6 +84,8 @@ Express helps you to manage things like handling routes and requests. Without it
 you would have to manually parse payloads, handle cookies and sessions and
 select the correct route pattern based on something like regular expressions.
 
+We will be using Express as the framework for our REST API.
+
 <a name="mongo"></a>
 ## MongoDB
 MongoDB is a document database.
@@ -93,16 +97,7 @@ This fits well with building a REST API as we often want to return JSON
 documents as our responses. We're able to return these very quickly if we're
 storing them in exactly the same format we need to supply them in.
 
-<a name="clone"></a>
-## Clone the REST API starting repository
-We have created a starter project for building a REST API. Navigate to the
-parent folder you wish to clone into and then run:
-```
-$ git clone git@github.ibm.com:Stephen-Kitchen-CIC-UK/dev-toolcamp-rest-api.git
-```
-
-Before we get started with the code we're going to set up the MongoDB database
-and add some test data to it.
+We will be using MongoDB as the database for our REST API.
 
 <a name="install-mongo"></a>
 ## Install MongoDB
@@ -153,6 +148,17 @@ have verified everything is working we can exit the Mongo shell by running:
 ```
 > quit()
 ```
+
+<a name="clone"></a>
+## Clone the REST API starting repository
+A REST API starter project has been created for you. First navigate to the
+parent folder you wish to clone the repository into, and then run:
+```
+$ git clone git@github.ibm.com:Stephen-Kitchen-CIC-UK/dev-toolcamp-rest-api.git
+```
+
+Before we get started with the code though we're going to import some test data
+into a MongoDB database.
 
 <a name="import-data"></a>
 ## Import MongoDB test data
@@ -412,9 +418,9 @@ approach to use for an application that is deployed publicly.
 More information on how to set up CORS properly using a _whitelist_ can be found
 in the [further reading](#further) section.
 
-### routes
+### Routes
 Lastly we've added the `recipeRoutes` to the app to allow us to hook in the code
-we just wrote in the routes, controller and model.
+we just wrote in the routes, controller and model modules.
 ```javaScript
 recipeRoutes(app);
 ```
@@ -436,12 +442,12 @@ If we now try accessing the same address as before, http://localhost:9000/recipe
 in the browser, you should now see a JSON response listing all recipes in the
 MongoDB database.
 
-Success!! We now have a REST API which will be able to query from other
+Success!! We now have a REST API which we will be able to query from other
 applications.
 
 <a name="further"></a>
 ## Further reading
-https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9
-https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd
-https://www.mongodb.com/what-is-mongodb
-https://www.npmjs.com/package/cors#usage
+[Best Practice for REST API design](https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9)  
+[Tutorial to create a REST API with GET, POST, PUT, DELETE](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)  
+[What is MongoDB?](https://www.mongodb.com/what-is-mongodb)  
+[How to implement CORS](https://www.npmjs.com/package/cors#usage)
