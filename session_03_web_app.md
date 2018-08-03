@@ -59,18 +59,18 @@ Emmet is built into VSCode by default and allows you to use shortcuts to create 
 
 1. In VSCode, click into the body of the index.html file.
  
-1. Type `!` and press ENTER.
+2. Type `!` and press ENTER.
 
 This will create a blank html template which we will use for index.html.
 <img src="./resources/session_03_index_template.png" alt="Create a blank index template" />
 
-1. Click into the section inside the `<body></body>` tags. Type the following text:
+3. Click into the section inside the `<body></body>` tags. Type the following text:
 
 ```
 <h1>Hello, Developer Toolcamp</h1>
 ```
 
-1. Save the file (cmd S).
+4. Save the file (cmd S).
 
 <a name="package"></a>
 ## Setting up the package.json file
@@ -81,10 +81,10 @@ This will create a blank html template which we will use for index.html.
 $ npm init
 ```
 
-1. Accept all of the blank defaults by clicking enter to each question.  We can populate the values manually later.
+2. Accept all of the blank defaults by clicking enter to each question.  We can populate the values manually later.
 <img src="./resources/session_03_npm_init.png" alt="Create the node application" />
 
-1. Switch back to your IDE and you will see that there is now a file called **package.json** in the project file structure.
+3. Switch back to your IDE and you will see that there is now a file called **package.json** in the project file structure.
 
 Package.json is responsible for:
 * Lists all of the packages that are used and depended on by your project
@@ -104,7 +104,7 @@ Click into the **package.json** file and you will see that Express is listed in 
 
 <img src="./resources/session_03_express_installed.png" alt="Express installed on package.json" />
 
-1. Take a look at the version:
+2. Take a look at the version:
 
 ```
 “Express”: “^3.0.1”
@@ -121,9 +121,9 @@ The “^” character means that we are telling the project to use a version of 
 
 1. Switch back to the IDE and create a new folder called “public”.
 
-1. Then, inside the “public” folder, create a new file called **server.js**.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
+2. Then, inside the “public” folder, create a new file called **server.js**.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
 
-1. Type the following text into the server.js file:
+3. Type the following text into the server.js file:
 
 ```
 const express = require('express');
@@ -141,7 +141,7 @@ app.listen(3000, () => console.log('Example app listening on port 3000!'));
 "start": "node server.js",
 ```
 
-1. To start the application, switch to the terminal and type:
+2. To start the application, switch to the terminal and type:
 
 ```
 $ npm start
