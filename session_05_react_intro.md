@@ -5,24 +5,74 @@
 * [Further reading](#further)
 
 ## Session Objective
-This session will give you an introduction to React in JavaScript. We will build
-a React application which talks to the REST API we created and displays the data
-from it.
+This session will give you an introduction to using React in your JavaScript. We
+will build a React application which communicates with the REST API we created
+in the last session and displays data from it.
 
 <a name="react"></a>
 ## What is React?
+Talk about JSX
 
 <a name="material-ui"></a>
 ## What is Material UI?
+
+## Clone the repository
+
+## Explanation of all the files already in the project
+* `public/index.html`  
+The entry point for the application.
+Sets the title on the browser window.
+Provides a div with id "root" that we can reference and build the application within.  
+
+* `src/index.js`  
+Connects the App wrapper imported from `App.jsx` to the div with id "root" from
+`index.html`.
+
+* `src/components/App.jsx`
+App is the wrapper for our application. We will nest all the React code we
+write within this component.
+
+* `.gitignore`  
+Contains a list of all the files we don't want Git to include in the Git
+repository.
+
+* `package.json`  
+Defines which dependencies to install when we run `npm install` and how to start
+the application when we call `npm start`.
 
 ## CSS and where to store it.
 Explain different approaches available.
 Explain it's all been pre-built for app but need to use same id's
 
-## Explanation of all the files already in the project
+## Install and run the application.
+Within the repository folder that you've cloned run the following to install all
+required dependencies:
+```
+$ npm install
+```
+
+Once the install process finishes run the following to start the application
+running:
+```
+$ npm start
+```
+
+You should see a new tab automatically appear in your browser but if it doesn't
+you can navigate to http://localhost:3000/ to see the application running on
+your machine.
 
 ## Add a title
-Explain props
+Currently the application doesn't look very exciting. It just displays the words
+"Developer toolcamp UI". We're going to add a title using some components from
+the material-ui package.  
+
+First of all we need to install material-ui. We can do this by running:
+```
+$ npm install --save @material-ui/core
+```
+
+
+Explain props  
 Add to app.jsx to start with
 
 ## Add a grid with 1 tile
@@ -36,6 +86,10 @@ One for RecipeGridList
 
 ## Get data asynchronously from the REST API
 Explain request-promise-native
+```
+$ npm install --save request
+$ npm install --save request-promise-native
+```
 Explain promises
 Log to the console to begin with
 Handle error with console log too
