@@ -13,8 +13,7 @@ This session will cover the following:
 Finding and working with NPM packages
 
 **Hands on session:**
-Using Lodash for common tasks
-Using Moment to format dates
+Using Lodash for common tasks and using Moment to format dates
 
 <a name="lodash"></a>
 ## What is Lodash?
