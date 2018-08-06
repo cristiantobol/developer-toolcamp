@@ -16,6 +16,8 @@ Talk about JSX
 <a name="material-ui"></a>
 ## What is Material UI?
 
+## What are we building?
+
 ## Clone the repository
 
 ## Explanation of all the files already in the project
@@ -71,16 +73,173 @@ First of all we need to install material-ui. We can do this by running:
 $ npm install --save @material-ui/core
 ```
 
+We're going to use the AppBar from material UI so we will import it and add the
+component using JSX syntax.
 
-Explain props  
-Add to app.jsx to start with
+**App.jsx**
+```javaScript
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
-## Add a grid with 1 tile
-Hard-code the values to display at first
-Grab image from google on the fly.
-Add to app.jsx to start with
+class App extends React.Component {
 
-## Refactor title and grid into separate components
+  render() {
+
+    return (
+      <div>
+        <AppBar>
+          <Toolbar>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Have a look at the running application. It will have automatically updated to
+show the changes you've made and you should now see an app bar across the top
+of the page.
+
+We'd like to display a title on there so we'll use another material ui component
+called Typography to add the word _Recipes_.
+
+Add the following import at the top of the file:
+```javaScript
+import Typography from '@material-ui/core/Typography';
+```
+And the following code nested inside the Toolbar component tags:
+```javaScript
+<Typography>
+  Recipes
+</Typography>
+```
+
+The application should now display the word Recipes which is great but the font
+is a bit small and the colour is hard to read on the background. We'll use the
+components props to fix that.
+
+### Props
+Props are arbitrary inputs provided to React components. They are always read
+only and are defined by the component itself. When we use a component we can
+pass props to alter the way it looks or behaves.  
+
+On the `Typography` component we are going to use two of the props defined for
+us called `color` and `variant`. Update your app code to look like the code
+below:
+
+```javaScript
+<Typography color="inherit" variant="title">
+  Recipes
+</Typography>
+```
+
+Now take a look in the browser again and you'll see the title is much easier to
+read and looks like a title now.
+
+We need to use the API documentation for components we import to see what's
+available. The docs for Typography can be found
+[here](https://material-ui.com/api/typography/).
+
+## Add the recipe grid
+Next we're going to add a grid to hold our recipes. Initially this will just be
+one recipe but we'll later expand to read any number of recipes from our REST
+API.
+
+We'll be using more material-ui components so we'll import them into the app
+now. Copy the following and paste with the other imports at the top of the `App.jsx` file:
+```javaScript
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+```
+
+First of all we'll add a `GridList` component just beneath the closing
+`</AppBar>` which will create a grid to hold the recipe tiles.
+
+```javaScript
+<GridList cellHeight={180} cols={4}>
+</GridList>
+```
+
+We've used props again here to set the height that each recipe image will be
+limited to (180px) and also to set the number of columns which will define the
+number of tiles to display on each row (4).
+
+The grid list is not visible in the App until it's got something in it. So we're
+going to add a recipe tile manually, hard-coding the title and the path to the
+image.
+
+Place the `GridListTile` code below inside the `GridList` tags you just added:
+```javaScript
+<GridListTile>
+  <img
+    src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
+    alt="New York Cheesecake"
+  />
+  <GridListTileBar
+    title="New York Cheesecake"
+    subtitle="Difficulty: 2"
+  />
+</GridListTile>
+```
+
+Find your own recipe image online and then Right-Click > 'Copy Image Address'
+to update the `src` prop of `img`. Update the `title` prop of `GridListTileBar`
+to set a new recipe title too.
+
+Your `App.jsx` file should look similar to the one below now:
+
+**App.jsx**
+```javaScript
+// 3rd Party
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <AppBar>
+          <Toolbar>
+            <Typography color="inherit" variant="title">
+              Recipes
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <GridList cellHeight={180} cols={4}>
+          <GridListTile>
+            <img
+              src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
+              alt="New York Cheesecake"
+            />
+            <GridListTileBar
+              title="New York Cheesecake"
+              subtitle="Difficulty: 2"
+            />
+          </GridListTile>
+        </GridList>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+## Refactoring title and grid into separate components
+> Components let you split the UI into independent, reusable pieces, and think
+about each piece in isolation.
+
 One for TitleBar
 One for RecipeGridList
 
