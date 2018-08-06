@@ -9,7 +9,7 @@
 * [What is git?](#git)
 * [Installing git?](#installinggit)
 * [Configuring Git for IBM GitHub Enterprise](#ibmgit)
-
+* [Further reading](#further)
 
 ## Session Objective
 This session will cover the following:
@@ -98,3 +98,10 @@ Adding the ssh keys to your IBM GitHub Enterprise account
 1. Login to your IBM Github Enterpise account at https://github.ibm.com/
 2. Follow the instructions to add a new ssh key, making sure to substitute any mention of github.com with github.ibm.com.
 https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+<a name="further"></a>
+## Further reading
+[VSCode](https://code.visualstudio.com/download)  
+[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)
+[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)
+[What is Node.js?](https://www.oreilly.com/ideas/what-is-node)

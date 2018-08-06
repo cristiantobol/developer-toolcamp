@@ -135,7 +135,7 @@ app.listen(3000, () => console.log('Example app listening on port 3000!'));
 ```
 
 <a name="start"></a>
-## Starting the applciation
+## Starting the application
 
 1. Open “package.json”.  Add the following text to the “start” section:
 
