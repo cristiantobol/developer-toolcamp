@@ -4,8 +4,8 @@
 * [Setting up the project files](#setup)  
 * [Creating the basic index page template with Emmet](#emmet)
 * [Setting up the package.json file](#package)
-* [Installing Express](#express)
-* [Configuring Express](#confexpress)
+* [Installing express](#express)
+* [Configuring express](#confexpress)
 * [Starting the applciation](#start)
 
 ## Session Objective
@@ -92,28 +92,30 @@ Package.json is responsible for:
 * Makes your project build reproducible and therefore consistent when working with teams
 
 <a name="express"></a>
-## Installing Express
-1. Switch to the terminal and type the following command to install Express:
+## Installing express
+1. Switch to the terminal and type the following command to install express:
 
 ```
-$ npm install Express –save
+$ npm install express –save
 ```
 
 1. Switch back to your IDE and you will now see a new folder called “node_modules”.  
-Click into the **package.json** file and you will see that Express is listed in the Dependencies section.
+Click into the **package.json** file and you will see that express is listed in the Dependencies section.
+
+Please note that express has a lower case `'e'`! `Express` is a deprecated version.
 
 <img src="./resources/session_03_express_installed.png" alt="Express installed on package.json" />
 
 2. Take a look at the version:
 
 ```
-“Express”: “^3.0.1”
+"express": "^4.16.3"
 ```
 
 The “^” character means that we are telling the project to use a version of Express that is 3.0.1 or newer, if available.  If you wish to fix the version of the package, which is quite normal on large projects where you wish to enforce consistency, then you remove the “^” character from the version:
 
 ```
-“Express”: “3.0.1”
+"express": "4.16.3"
 ```
 
 <a name="confexpress"></a>
