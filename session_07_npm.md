@@ -128,6 +128,6 @@ moment(new Date(this.props.dateAdded)).format("DD-MMM-YYYY")
 
 <a name="further"></a>
 ## Further reading
-[The Lodash module on NPM] (https://www.npmjs.com/package/lodash)  
-[The Moment module on NPM] (https://www.npmjs.com/package/moment)  
+[The Lodash module on NPM](https://www.npmjs.com/package/lodash)  
+[The Moment module on NPM](https://www.npmjs.com/package/moment)  
 
