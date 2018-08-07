@@ -6,7 +6,8 @@
 * [Setting up the package.json file](#package)
 * [Installing express](#express)
 * [Configuring express](#confexpress)
-* [Starting the applciation](#start)
+* [Starting the application](#start)
+* [Further reading](#further)
 
 ## Session Objective
 This session will give you an overview of a node.js web application and you will create a bare bones application that you can view in your web browser.

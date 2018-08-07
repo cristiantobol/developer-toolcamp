@@ -3,7 +3,7 @@
 * [Overview](#overview)
 * [How to create an NPM package](#how)
 * [Create the Header application](#create)
-* [Configure packages the header app](#configure)
+* [Configure packages in the header app](#configure)
 * [Create the component for the header](#header)
 * [Clone the React Seed Project which will consume the header](#clone)
 * [Further reading](#further)
@@ -16,7 +16,7 @@ Anatomy of an NPM package
 **Hands on session:**
 * Creating a package
 * Cloning the React Seed Project
-* Using the package in the React Seed Project
+* Using the package in the React Seed Project 
 * Including a package from a Github branch and a Github Pull Request
 
 <a name="overview"></a>
@@ -57,7 +57,7 @@ $ npm init
 1. In VS Code, take a look at the package.json file that has just been initialised.  
 
 <a name="configure"></a>
-## Configure packages the header app
+## Configure packages in the header app
 
 1. In the dev-toolcamp-ui package.json file, copy the dependencies and devDependencies sections and paste them into the package.json file of the header app.
 
