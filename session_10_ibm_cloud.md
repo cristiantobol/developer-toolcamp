@@ -1,4 +1,4 @@
-# Node Package Manager (NPM)
+# Deploying a web app to IBM Cloud
 
 * [What is IBM Cloud](#ibmcloud)
 * [Login to IBM Cloud](#login)
