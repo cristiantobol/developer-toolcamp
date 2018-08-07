@@ -1,12 +1,22 @@
 # Node Package Manager (NPM)
 
-* [What is Lodash?](#lodash)
+* [What is IBM Cloud](#ibmcloud)
+* [Login to IBM Cloud](#login)
 * [Further reading](#further)
+* [Overview of IBM Cloud services](#overview)
+* [Create an IBM Cloud project using the Node.js Starter Kit](#create)
+* [Install the CLI tools](#tools)
+* [Deploy the app](#deploy)
+
 
 ## Session Objective
 This session will cover the following:
 
 An overview of IBM cloud service offerings, installing an configuring the CLI and publishing a website to IBM Cloud.
+
+<a name="ibmcloud"></a>
+## What is IBM Cloud
+
 
 <a name="login"></a>
 ## Login to IBM Cloud
@@ -14,11 +24,17 @@ An overview of IBM cloud service offerings, installing an configuring the CLI an
 Visit IBM Cloud and browse the catalogue of services at the following URL:
 https://console.bluemix.net/catalog/
 
+<a name="overview"></a>
+## Overview of IBM Cloud services
 
-Overview of IBM Cloud services
-Create an IBM Cloud project using the Node.js Starter Kit
-Install the CLI tools
-Deploy the app
+<a name="create"></a>
+## Create an IBM Cloud project using the Node.js Starter Kit
+
+<a name="tools"></a>
+## Install the CLI tools
+
+<a name="deploy"></a>
+##Deploy the app
 
 <a name="further"></a>
 ## Further reading
