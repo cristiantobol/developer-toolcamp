@@ -478,59 +478,69 @@ If you get stuck the finished code for each file is included for you below:
 
 <details>
   <summary><b>App.jsx</b></summary>
+  <p>
+  Refactored code for App.jsx:
 
-    // 3rd Party
-    import React from 'react';
+  ```javaScript
+  // 3rd Party
+  import React from 'react';
 
-    // Custom
-    import RecipeGridList from './RecipeGridList';
-    import TitleBar from './TitleBar';
+  // Custom
+  import RecipeGridList from './RecipeGridList';
+  import TitleBar from './TitleBar';
 
-    class App extends React.Component {
-      render() {
-        return (
-          <div>
-            <TitleBar />
-            <RecipeGridList />
-          </div>
-        );
-      }
+  class App extends React.Component {
+    render() {
+      return (
+        <div>
+          <TitleBar />
+          <RecipeGridList />
+        </div>
+      );
     }
+  }
 
-    export default App;
+  export default App;
+  ```
+  </p>
 
 </details>
 
 <details>
   <summary><b>RecipeGridList.jsx</b></summary>
+  <p>
+  Refactored code for RecipeGridList.jsx:
 
-    // 3rd Party
-    import React from 'react';
-    import GridList from '@material-ui/core/GridList';
-    import GridListTile from '@material-ui/core/GridListTile';
-    import GridListTileBar from '@material-ui/core/GridListTileBar';
+  ```javaScript
+  // 3rd Party
+  import React from 'react';
+  import GridList from '@material-ui/core/GridList';
+  import GridListTile from '@material-ui/core/GridListTile';
+  import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-    // Styling
-    import './RecipeGridList.css';
+  // Styling
+  import './RecipeGridList.css';
 
-    export default class RecipeGridList extends React.Component {
-      render() {
-        return (
-          <GridList cellHeight={180} cols={4}>
-            <GridListTile className="recipe-tile">
-              <img
-                src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
-                alt="New York Cheesecake"
-              />
-              <GridListTileBar
-                title="New York Cheesecake"
-                subtitle="Difficulty: 2"
-              />
-            </GridListTile>
-          </GridList>
-        );
-      }
+  export default class RecipeGridList extends React.Component {
+    render() {
+      return (
+        <GridList cellHeight={180} cols={4}>
+          <GridListTile className="recipe-tile">
+            <img
+              src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
+              alt="New York Cheesecake"
+            />
+            <GridListTileBar
+              title="New York Cheesecake"
+              subtitle="Difficulty: 2"
+            />
+          </GridListTile>
+        </GridList>
+      );
     }
+  }
+  ```
+  </p>
 
 </details>
 
