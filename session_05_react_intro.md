@@ -475,9 +475,9 @@ to a new `React.Component` class in `RecipeGridList.jsx`. Then update the
 If you get stuck the finished code for each file is included for you below:
 
 <details>
-  <summary>**App.jsx**</summary>
-  <p>
-    ```javaScript
+  <summary><b>App.jsx</b></summary>  
+  
+    ```javaScript  
     // 3rd Party
     import React from 'react';
     import AppBar from '@material-ui/core/AppBar';
@@ -515,7 +515,6 @@ If you get stuck the finished code for each file is included for you below:
 
     export default App;
     ```
-  </p>
 </details>
 
 ## Get data asynchronously from the REST API
