@@ -476,45 +476,47 @@ If you get stuck the finished code for each file is included for you below:
 
 <details>
   <summary><b>App.jsx</b></summary>  
-  
-    ```javaScript  
-    // 3rd Party
-    import React from 'react';
-    import AppBar from '@material-ui/core/AppBar';
-    import Toolbar from '@material-ui/core/Toolbar';
-    import Typography from '@material-ui/core/Typography';
+    <p>
+    
+      ```javaScript  
+      // 3rd Party
+      import React from 'react';
+      import AppBar from '@material-ui/core/AppBar';
+      import Toolbar from '@material-ui/core/Toolbar';
+      import Typography from '@material-ui/core/Typography';
 
-    // Custom
-    import TitleBar from './TitleBar';
+      // Custom
+      import TitleBar from './TitleBar';
 
-    // Styling
-    import './App.css';
+      // Styling
+      import './App.css';
 
-    class App extends React.Component {
+      class App extends React.Component {
 
-      render() {
-        return (
-          <div>
-            <TitleBar />
-            <GridList cellHeight={180} cols={4}>
-              <GridListTile className="recipe-tile">
-                <img
-                  src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
-                  alt="New York Cheesecake"
-                />
-                <GridListTileBar
-                  title="New York Cheesecake"
-                  subtitle="Difficulty: 2"
-                />
-              </GridListTile>
-            </GridList>
-          </div>
-        );
+        render() {
+          return (
+            <div>
+              <TitleBar />
+              <GridList cellHeight={180} cols={4}>
+                <GridListTile className="recipe-tile">
+                  <img
+                    src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
+                    alt="New York Cheesecake"
+                  />
+                  <GridListTileBar
+                    title="New York Cheesecake"
+                    subtitle="Difficulty: 2"
+                  />
+                </GridListTile>
+              </GridList>
+            </div>
+          );
+        }
       }
-    }
 
-    export default App;
-    ```
+      export default App;
+      ```
+    </p>
 </details>
 
 ## Get data asynchronously from the REST API
