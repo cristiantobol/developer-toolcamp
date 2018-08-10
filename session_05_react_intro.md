@@ -399,9 +399,9 @@ Your two JSX files should now look similar to the following:
 ```javaScript
 // 3rd Party
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 // Custom
 import TitleBar from './TitleBar';
@@ -474,52 +474,64 @@ to a new `React.Component` class in `RecipeGridList.jsx`. Then update the
 
 If you get stuck the finished code for each file is included for you below:
 
+## TODO update RecipeGridList.css with .recipe-tile
+
 <details>
   <summary><b>App.jsx</b></summary>
 
-    <p>
+    // 3rd Party
+    import React from 'react';
 
-      ```javaScript  
-      // 3rd Party
-      import React from 'react';
-      import AppBar from '@material-ui/core/AppBar';
-      import Toolbar from '@material-ui/core/Toolbar';
-      import Typography from '@material-ui/core/Typography';
+    // Custom
+    import RecipeGridList from './RecipeGridList';
+    import TitleBar from './TitleBar';
 
-      // Custom
-      import TitleBar from './TitleBar';
-
-      // Styling
-      import './App.css';
-
-      class App extends React.Component {
-
-        render() {
-          return (
-            <div>
-              <TitleBar />
-              <GridList cellHeight={180} cols={4}>
-                <GridListTile className="recipe-tile">
-                  <img
-                    src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
-                    alt="New York Cheesecake"
-                  />
-                  <GridListTileBar
-                    title="New York Cheesecake"
-                    subtitle="Difficulty: 2"
-                  />
-                </GridListTile>
-              </GridList>
-            </div>
-          );
-        }
+    class App extends React.Component {
+      render() {
+        return (
+          <div>
+            <TitleBar />
+            <RecipeGridList />
+          </div>
+        );
       }
+    }
 
-      export default App;
-      ```
+    export default App;
 
-    </p>
-    
+</details>
+
+<details>
+  <summary><b>RecipeGridList.jsx</b></summary>
+
+    // 3rd Party
+    import React from 'react';
+    import GridList from '@material-ui/core/GridList';
+    import GridListTile from '@material-ui/core/GridListTile';
+    import GridListTileBar from '@material-ui/core/GridListTileBar';
+
+    // Styling
+    import './RecipeGridList.css';
+
+    export default class RecipeGridList extends React.Component {
+      render() {
+        return (
+          <GridList cellHeight={180} cols={4}>
+            <GridListTile className="recipe-tile">
+              <img
+                src="https://www.onceuponachef.com/images/2017/12/NY-Cheesecake-575x434.jpg"
+                alt="New York Cheesecake"
+              />
+              <GridListTileBar
+                title="New York Cheesecake"
+                subtitle="Difficulty: 2"
+              />
+            </GridListTile>
+          </GridList>
+        );
+      }
+    }
+
 </details>
 
 ## Get data asynchronously from the REST API
