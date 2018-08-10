@@ -475,9 +475,10 @@ to a new `React.Component` class in `RecipeGridList.jsx`. Then update the
 If you get stuck the finished code for each file is included for you below:
 
 <details>
-  <summary><b>App.jsx</b></summary>  
+  <summary><b>App.jsx</b></summary>
+
     <p>
-    
+
       ```javaScript  
       // 3rd Party
       import React from 'react';
@@ -516,7 +517,9 @@ If you get stuck the finished code for each file is included for you below:
 
       export default App;
       ```
+
     </p>
+    
 </details>
 
 ## Get data asynchronously from the REST API
