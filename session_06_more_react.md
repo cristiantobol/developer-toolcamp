@@ -337,15 +337,115 @@ $ npm install --save request-promise-native
 ```
 
 ## Get recipe data asynchronously from the REST API
-Log to the console to begin with
+Now import from `request-promise-native` at the top of the `App.jsx` file:
+```javaScript
+import request from 'request-promise-native';
+```
 
-Handle error with console log too
+### Create the getRecipeData method
+
+Within the App class we just have one method at the moment called `render`.
+We're going to add another called `getRecipeData` with the following code:
+```javaScript
+getRecipeData() {
+  const options = {
+    uri: 'http://localhost:9000/recipes',
+    json: true,
+  };
+
+  request(options)
+    .then((recipes) => {console.log(recipes)})
+    .catch((err) => {console.log(`Error getting recipes ${err}`)});
+}
+```
+The `options` variable sets the address we want to access (which is the address
+of our REST API). It also specifies that we would like the response in JSON
+format.
+
+The `request` from `request-promise-native` then sends a request with these
+options. This returns a `Promise` object which we chain functions to with the
+`.then` syntax.
+
+The code in `.then` will be triggered when we get a successful response from our
+REST API. Inside the `.then` we've used an arrow function to take the response
+and store it in a variable called `recipes` and we then print the variable to
+the browser console.
+
+We also chained a `.catch` to the Promise which will be triggered when we get an
+unsuccessful response. We then log this response to the browser console.
+
+If for example your REST API is not running the log in the console will look
+something like: `Error getting recipes RequestError: TypeError: Failed to fetch`
+.
+
+### Call the getRecipeData method from the constructor
+
+We've not called this method anywhere yet so we'll add a call to it now. We want
+to get this data when the App component is created so we'll add a constructor to
+it so we can call it in there. Add another method to the App class called
+`constructor` with the following code:
+```javaScript
+constructor(props) {
+  super(props);
+
+  this.getRecipeData();
+}
+```
+
+By default we don't need to create a component for a React Component unless we
+need to add something to it. In order to preserve the existing behaviour we have
+to add an argument called `props` and pass it to the parent of the `App` class
+which will be the `React.Component` class using the `super` keyword.
+
+We've then added a call to the `getRecipeData` method within the constructor
+too. We have to prefix it with `this.` because it's a method of the same class.
+
+Now go to the application running in your browser and open the console by
+pressing the `alt cmd j` keys.
+
+You'll see a log like `> (6) [{…}, {…}, {…}, {…}, {…}, {…}]`. Click the arrow
+to inspect the object and verify it matches the data you see when you visit the
+REST API at http://localhost:9000/recipes.
+
+So we've now managed to access data from our REST API but we've not displayed
+anything from it yet.
 
 ## Store the recipe data in the App component state
-Explain component state
+We need to start using a concept in React called `state` in order to achieve
+this. State is similar to `props` that we encountered earlier, but it is private and fully controlled by the component.
+
+Every time the state is updated the component will automatically re-render.
+
+A more in depth example of component state is available on the
+[React website](https://reactjs.org/docs/state-and-lifecycle.html).
+
+We can access the state through `this.state`. We also define the initial state
+in the constructor using `this.state`. However we have to use `this.setState`
+if we want to modify it anywhere outside the constructor.
+
+Update the `constructor` method so that it matches the code below:
+```javaScript
+constructor(props) {
+  super(props);
+
+  this.state = {
+    recipes: [],
+  };
+
+  this.getRecipeData = this.getRecipeData.bind(this);
+
+  this.getRecipeData();
+}
+```
+explain initial state
+explain bind
+
+Update the `.then` function of the `getRecipeData` method so that it looks like:
+```JavaScript
+.then((recipes) => {this.setState({ recipes })})
+```
 
 ## Display multiple tiles
-Store the response in component state
 Use a map to create tiles from state with just image initially
 Explain map
 
@@ -404,7 +504,10 @@ Leave as extension exercise for trainees to do this or add more fields.
 
 <a name="further"></a>
 ## Further reading
-
 [Promise Documentation][Promise Documentation]  
+
+The React website has loads of great docs and tutorials.
+Some relevant ones for this session are:  
+[React component state](https://reactjs.org/docs/state-and-lifecycle.html)
 
 [Promise Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

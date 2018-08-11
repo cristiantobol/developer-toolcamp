@@ -215,6 +215,8 @@ class App extends React.Component {
 export default App;
 ```
 
+More information about props is [available from the React website](https://reactjs.org/docs/components-and-props.html)
+
 ## Add the recipe grid
 Next we're going to add a grid to hold our recipes. Initially this will just be
 one recipe but we'll later expand to read any number of recipes from our REST
@@ -324,3 +326,9 @@ $ git commit -m "code added in stage 1"
 In the next session we'll continue our work on this application from a new Git
 branch so don't worry if you weren't able to get your application working at the
 end of this session.
+
+## Further reading
+The React website has loads of great docs and tutorials.
+Some relevant ones for this session are:  
+[Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
+[React components and props](https://reactjs.org/docs/components-and-props.html)  
