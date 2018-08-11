@@ -437,22 +437,226 @@ constructor(props) {
   this.getRecipeData();
 }
 ```
-explain initial state
-explain bind
+
+Here we've created a `recipes` key in the initial state and set it's value to an
+empty array, because we don't have any recipes yet.
+
+We've also added a bind statement to bind `this` to the `getRecipeData` method.
+The purpose of this line is that it gives us access to the class instance inside
+the `getRecipeData` method, which we need in order to update the component state
+when we receive the recipes.
 
 Update the `.then` function of the `getRecipeData` method so that it looks like:
 ```JavaScript
-.then((recipes) => {this.setState({ recipes })})
+.then((recipes) => {this.setState({ recipes: recipes })})
 ```
 
+We're now storing the recipes we receive in the component state instead of
+logging them to the console. This means we'll now be able to access them in the
+render method and display the data from them in the application.
+
 ## Display multiple tiles
-Use a map to create tiles from state with just image initially
-Explain map
+We're now going to update the application to display a recipe tile for each
+recipe listed in the response.
+
+We'll define a new `prop` called recipes to pass the recipe data from the App
+to the RecipeGridList.
+
+We do this by adding the prop to the `App` components `render` method on the
+`RecipeGridList` line:
+```javaScript
+<RecipeGridList recipes={this.state.recipes} />
+```
+We need to use `{}` around the reference to the state because it is a variable
+and we want React to evaluate it to its value at render time.
+
+`RecipeGridList` will now be receiving a new prop called `recipes` but we won't
+see any difference because we've not told it to use it yet.
+
+Now in `RecipeGridList.jsx` we're going to replace `<RecipeTile />` with:
+```javaScript
+{this.props.recipes.map(tile => (<RecipeTile />))}
+```
+
+Here we're using a JavaScript map iterator to go through every entry in the
+recipes array and create a `RecipeTile` for each entry.
+
+Currently all of the tiles will look the same as we're not actually reading any
+information yet from the tile object we get from the map.
+
+For more information about using a map with an Array have a look at the
+[MDN Array.prototype.map() docs][Array Map Documentation].
+
+Have a look at the application in the browser and you'll see multiple recipe
+tiles all with the same information on them.
 
 ## Add the props to display the correct recipe image
+Let's update the images on the tiles now to use the images supplied in the REST
+API response.
+
+Each recipe in the response has an image key with a url that we can use. First
+of all we need to update `RecipeGridList` to pass the image as a prop to the
+`RecipeTile`.
+
+In `RecipeGridList.jsx` update the line containing the map to look like:
+```javaScript
+{this.props.recipes.map(tile => (<RecipeTile image={tile.image}/>))}
+```
+
+We're now using some data from the `tile` object in the map and passing it as a
+prop called `image` to `RecipeTile`.
+
+Next we need to update `RecipeTile` to use the prop instead of the hard-coded
+URL it has at the moment.
+
+In `RecipeTile.jsx` update the `img` component to look like:
+```javaScript
+<img
+  src={this.props.image}
+  alt="New York Cheesecake"
+/>
+```
+
+Take a look at the application in the browser and you'll now see multiple recipe
+tiles with different images. The title and difficulty still needs updating
+though.
 
 ## Add the props to display the correct title and difficulty
-Get trainees to try first.
+Have a go at updating the title and difficulty from the information returned
+from the REST API.
+
+You will need to update the `RecipeGridList.jsx` and `RecipeTile.jsx` files.
+
+The fields are called `title` and `difficulty` in the recipe data.
+
+If you get stuck the finished code for each file is included for you below. The
+`App.jsx` won't need updating but it's included for reference too:
+
+<details>
+  <summary><b>App.jsx</b></summary>
+  <p>
+  Existing code for App.jsx:
+
+  ```javaScript
+  import React from 'react';
+  import request from 'request-promise-native';
+
+  // Custom
+  import RecipeGridList from './RecipeGridList';
+  import TitleBar from './TitleBar';
+
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        recipes: [],
+      };
+
+      this.getRecipeData = this.getRecipeData.bind(this);
+
+      this.getRecipeData();
+    }
+
+    getRecipeData() {
+      const options = {
+        uri: 'http://localhost:9000/recipes',
+        json: true,
+      };
+
+      request(options)
+        .then((recipes) => {this.setState({ recipes: recipes })})
+        .catch((err) => {console.log(`Error getting recipes ${err}`);});
+    }
+
+    render() {
+      return (
+        <div>
+          <TitleBar />
+          <RecipeGridList recipes={this.state.recipes} />
+        </div>
+      );
+    }
+  }
+
+  export default App;
+  ```
+  </p>
+
+</details>
+
+<details>
+  <summary><b>RecipeGridList.jsx</b></summary>
+  <p>
+  Updated code for RecipeGridList.jsx:
+
+  ```javaScript
+  // 3rd Party
+  import React from 'react';
+  import GridList from '@material-ui/core/GridList';
+
+  // Custom
+  import RecipeTile from './RecipeTile';
+
+  // Styling
+  import './RecipeGridList.css';
+
+  export default class RecipeGridList extends React.Component {
+    render() {
+      return (
+        <GridList cellHeight={180} cols={4}>
+          {this.props.recipes.map(tile => (
+            <RecipeTile
+              difficulty={tile.difficulty}
+              image={tile.image}
+              title={tile.title}
+            />
+          ))}
+        </GridList>
+      );
+    }
+  }
+  ```
+  </p>
+
+</details>
+
+<details>
+  <summary><b>RecipeTile.jsx</b></summary>
+  <p>
+  Updated code for RecipeTile.jsx:
+
+  ```javaScript
+  // 3rd Party
+  import React from 'react';
+  import GridListTile from '@material-ui/core/GridListTile';
+  import GridListTileBar from '@material-ui/core/GridListTileBar';
+
+  // Styling
+  import './RecipeTile.css';
+
+  export default class RecipeTile extends React.Component {
+    render() {
+      return (
+        <GridListTile className="recipe-tile">
+          <img
+              src={this.props.image}
+              alt={this.props.title}
+          />
+          <GridListTileBar
+            title={this.props.title}
+            subtitle={"Difficulty: " + this.props.difficulty}
+          />
+        </GridListTile>
+      );
+    }
+  }
+  ```
+  </p>
+
+</details>
+
+Congratulations you now have a completed display dashboard!
 
 ## Add all the changes you've made to Git
 We'll now back-up all the changes we've made to our forked copy of the
@@ -504,10 +708,12 @@ Leave as extension exercise for trainees to do this or add more fields.
 
 <a name="further"></a>
 ## Further reading
-[Promise Documentation][Promise Documentation]  
+[Promise Documentation][Promise Documentation]
+[Array Map Documentation][Array Map Documentation]  
 
 The React website has loads of great docs and tutorials.
 Some relevant ones for this session are:  
 [React component state](https://reactjs.org/docs/state-and-lifecycle.html)
 
+[Array Map Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 [Promise Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
