@@ -679,41 +679,291 @@ Checkout the stage-3 branch:
 $ git checkout stage-3
 ```
 
-## Add recipe details page with recipe title
+## New CSS files
+There are a number of new files added after checking out this new branch.
 
-## Add state to manage which page we're on.
-Add state
-Add render decision based on state
+Due to time constraints we have included a pre-built recipe details page to
+display the ingredients, method and meta-data for each recipe.
+
+The new components used to build this page all use the same approaches we have
+already seen with information being passed as `props` and a `map` being used to
+render a list of items from an Array.
+
+You're encouraged to take a closer look at the following files in your own time
+to understand them better:
+* `RecipeDetails.jsx`
+* `RecipeMetaData.jsx`
+* `RecipeMethod.jsx`
+* `RecipeIngredients.jsx`
+
+For the next part of this tutorial we will be focusing on navigation between
+components, handling click events and presenting the user with different views.
 
 ## Add click event to tile to display details
-Explain click -> onRecipeClick -> onTileSelected
-Explain about keeping components dumb.
+A `RecipeDetails` component has been pre-built for you but we've not currently
+got any way of accessing it.
+
+We're going to set it up so that when we click on a recipe tile we will view the
+full details of that recipe.
+
+It's the `RecipeTile` component which will receive the click but we want the
+`App` component to make the decision to switch the view. So we will need to pass
+the event from the `RecipeTile` to the `RecipeGridList` and on to the `App`.
+
+### Handling the click in RecipeTile
+First of all we'll add an `onClick` handler to the `RecipeTile` by adding a new
+prop called `onClick`.
+
+Update `RecipeTile.jsx` to add the onClick to the `<GridListTile>` line:
+```javaScript
+<GridListTile className="recipe-tile" onClick={this.props.onClick}>
+```
+
+The `RecipeGridList` is responsible for creating the tiles and knowing which
+tile is which. So the tile just needs to say "I've been clicked" and doesn't
+need to provide any further information.
+
+It doesn't know what happens when it's clicked. This is all part of keeping the
+component as dumb as possible so that it is independent and can be easily
+re-used.
+
+### Handling the click in RecipeGridList
+The `RecipeGridList` now needs to supply this prop to the `RecipeTile` as it
+isn't currently.
+
+Update the `<RecipeTile>` that is created in `RecipeGridList.jsx` so that it
+has two additional props `key` and `onClick`:
+```javaScript
+<RecipeTile
+  key={tile._id}
+  title={tile.title}
+  image={tile.image}
+  difficulty={tile.difficulty}
+  onClick={() => this.props.onRecipeClick(tile._id)}
+/>
+```
+
+Here we've used a new key/field on each recipe returned by the REST API called
+`_id`. This isn't something that we had set in our initial import data, it was
+added by MongoDB when we performed the import, so that each record had a unique
+identifier. This is quite handy for us now as we need to be able to uniquely
+identify which tile was clicked on.
+
+In the last code change we set the `onClick` prop of the `RecipeTile` to trigger
+a prop on the `RecipeGridList` called `onRecipeClick`. This prop we are treating
+as a function and we've passed `tile._id` as the first argument. We'll now need
+to handle setting `onRecipeClick` in the `App` and we'll see how to access the
+unique id there.
+
+We've also used the `tile._id` to set the `key` prop on the `RecipeTile`. React
+requests that you use a unique key set in this way every time you have a list
+of components. This allows it to be selective about which ones to render and
+can improve the performance of you're application. If you don't set you will see
+an error in the console but it won't stop the application from working.
+
+### Handling the click in App
+So far we've received a click on a `RecipeTile` and we've passed that event to
+the `RecipeGridList` and enriched it with information about which tile it was.
+We now want to store that information in the `state` of the `App` so that we
+can eventually display a page about the recipe that was clicked.
+
+First of all create a method in `App.jsx` which logs the tile that has been
+clicked to the browser console:
+```javaScript
+handleTileSelected(id) {
+  console.log("Recipe " + id + " clicked!");
+}
+```
+
+Now in `App.jsx` set that as the `onRecipeClick` prop for `<RecipeGridList>` in
+the render method:
+```javaScript
+<RecipeGridList recipes={this.state.recipes} onRecipeClick={this.handleTileSelected}/>
+```
+
+Click a tile in your browser and see the different IDs being logged.
+
+Now we're going to keep track of the selected recipe in the `state` instead.
+First of all we'll update the constructor to:
+* add a placeholder for the selected recipe in the initial state
+* bind the new method `handleTileSelected` so that we can access `this` inside
+it.
+
+Update your constructor to look like:
+```javaScript
+constructor(props) {
+  super(props);
+
+  this.state = {
+    recipe: null,
+    recipes: [],
+  };
+
+  this.getRecipeData = this.getRecipeData.bind(this);
+  this.handleTileSelected = this.handleTileSelected.bind(this);
+
+  this.getRecipeData();
+}
+```
+We've initially set `recipe` to `null` because no recipe has been selected when
+the application is first loaded.
+
+Now we need to update `handleTileSelected` to find the recipe that has the same
+`id` and update the selected recipe in the state:
+```javaScript
+handleTileSelected(id) {
+  const recipe = this.state.recipes.find(tile => tile._id === id);
+  this.setState({ recipe: recipe });
+}
+```
+Please see the [MDN Array.prototype.find() docs][Array Find Documentation] for
+more information about the `.find` function.
+
+We now have a copy of the selected recipe in the state, ready to use on our
+pre-built recipe details page. So the next step is to display it!
+
+## Add App state to manage which view we're on
+In the `constructor` for the `App` add another key called `showDashboard` to the
+initial state so that it looks like:
+```javaScript
+this.state = {
+  recipe: null,
+  recipes: [],
+  showDashboard: true,
+};
+```
+
+Update the `handleTileSelected` method to set `showDashboard` to `false`,
+allowing us to trigger a view change when a tile is clicked:
+```javaScript
+handleTileSelected(id) {
+  const recipe = this.state.recipes.find(tile => tile._id === id);
+  this.setState({
+    recipe: recipe,
+    showDashboard: false,
+  });
+}
+```
+
+Import the pre-built `RecipeDetails` component so that we can use it in the
+`render` method:
+```javaScript
+import RecipeDetails from './RecipeDetails';
+```
+
+Update the `render` method to decide which view to show based on whether
+`this.state.showDashboard` is set to `true` or `false`:
+```javaScript
+render() {
+  return (
+    <div>
+      <TitleBar />
+      {this.state.showDashboard && (
+        <RecipeGridList recipes={this.state.recipes} onRecipeClick={this.handleTileSelected}/>
+      )}
+      {!this.state.showDashboard && (
+        <RecipeDetails recipe={this.state.recipe} />
+      )}
+    </div>
+  );
+}
+```
+When `this.state.showDashboard` evaluates to `true` the `RecipeGridList` will be
+rendered. When it evaluates to false the `RecipeDetails` will be shown.
+
+Try clicking on a tile in the application again now and you'll be taken to the
+details for that recipe.
 
 ## Add click event to title bar to return to dashboard
-Update css cursor too (Update classNames "title-bar__title")
+It's great that we can click on a tile now and view the details, but we have no
+way of getting back to the dashboard (unless we refresh the page).
 
-## Add ingredients
-Create as separate component straight away this time.
+The last thing we'll do is add an event when you click on the "Recipes" word in
+the title of the application to take us back to the dashboard.
 
-## Add method
-Copy-paste ingredients
-Explain that you could re-use the same component and pass a prop for
-whether to add the number and whether to add the divider.
-Leave as extension exercise for trainees.
+In `TitleBar.jsx` add a new `onTitleClick` prop which is triggered by clicking
+on the `Typography` component. We're also setting the `className` here to pick
+up a pre-defined style from `TitleBar.css` which will change the cursor to show
+it's clickable when you hover over the title:
+```javaScript
+render() {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography
+          color="inherit"
+          variant="title"
+          className="title-bar__title"
+          onClick={this.props.onTitleClick}
+        >
+          Recipes
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+}
+```
 
-## Add details
-Do we want more than difficulty and date added?
-Could convert difficulty to star rating or word like Easy, Medium, Hard.
-Leave as extension exercise for trainees to do this or add more fields.
+In `App.jsx` add a new method called `handleDashBoard` which sets the `App`
+state so that the dashboard is showing again and no recipe is selected:
+```javaScript
+handleDashBoard() {
+  this.setState({
+    showDashboard: true,
+    recipe: null,
+  });
+}
+```
+
+The handleDashBoard method needs to use `this` to set state so make sure you
+bind it in the `constructor` of `App` as well:
+```javaScript
+this.handleDashBoard = this.handleDashBoard.bind(this);
+```
+
+In the `render` method of the `App` we now need to connect the `onTitleClick`
+prop with the method we've just written:
+```javaScript
+<TitleBar onTitleClick={this.handleDashBoard} />
+```
+
+That's it! Take a look at the application in your browser and you should be able
+to navigate around the application freely now!
+
+## Possible extensions
+If you'd like to take this project further here are some ideas of things to try:
+* Convert the difficulty number to a star rating using icons or a word like Easy,
+Medium, Hard.  
+* Merge the `RecipeIngredients` and `RecipeMethod` classes into the same
+`React.Component` class and then use additonal props to set the title and decide
+whether to add a number in front of the list item and whether to display
+dividers in-between.  
+* Add some more fields to the recipe objects you imported into MongoDB. Then
+render them using new props on the existing components in the application.
+* Read about [prop-types and default props][Proptypes] and then use them in the
+application.
+* Create another view in the application for an entry form to create new
+recipes. Send these as POST requests to the REST API and see them appear back in
+the application.
 
 <a name="further"></a>
 ## Further reading
-[Promise Documentation][Promise Documentation]
-[Array Map Documentation][Array Map Documentation]  
-
 The React website has loads of great docs and tutorials.
 Some relevant ones for this session are:  
 [React component state](https://reactjs.org/docs/state-and-lifecycle.html)
 
+More infomation on some of the JavaScript objects used in this tutorial are
+available here:  
+[Promise Documentation][Promise Documentation]  
+[Array Map Documentation][Array Map Documentation]  
+[Array Find Documentation][Array Find Documentation]
+
+Some important concepts we've not had a chance to cover are:  
+[Components as a Function vs React.Component vs React.PureComponent](https://reactjs.org/docs/react-api.html)  
+[Prop types and default props][Proptypes]  
+[Component lifecycle methods](https://medium.com/@baphemot/understanding-reactjs-component-life-cycle-823a640b3e8d)
+
 [Array Map Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+[Array Find Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 [Promise Documentation]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[Proptypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
