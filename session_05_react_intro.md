@@ -110,7 +110,7 @@ You'll see there is already a number of files in it. Here's a brief description
 of what's there:
 * `public/index.html`  
 This is the entry point for the application that's served to the browser. In our
-case it sets the title on the browser window and provides a div with the id
+case it sets the title on the browser window and provides a `div` with the id
 `root` that we can reference and build the application within.  
 
 * `src/index.js`  
@@ -154,8 +154,8 @@ manage your CSS. We've listed some of them here with links to find out more:
 * [SASS/SCSS](https://sass-lang.com/) an extension to CSS to let you use
 variables, nesting and mixins to better organise your code and make it more
 maintainable and re-usable.
-* Use [BEM naming](http://getbem.com/naming/) with one of the other approaches
-above.
+* [BEM naming](http://getbem.com/naming/) can be used with one of the other
+approaches above.
 
 <a name="install"></a>
 ## Install and run the application
@@ -260,14 +260,14 @@ And the following code nested inside the `<Toolbar>` component tags:
 </Typography>
 ```
 
-The application should now display the word Recipes which is great but the font
-is a bit small and the colour is hard to read on the background. We'll use the
-components **props** to fix that.
+The application should now display the word Recipes which is what we wanted.
+However the font is a bit small and the colour is hard to read on the
+background. We'll use the components **props** to fix that.
 
 ### Props
-Props are arbitrary inputs provided to React components. They are always read
-only and are defined by the component itself. When we use a component we can
-pass props to alter the way it looks or behaves.  
+Props are arbitrary inputs provided to React components. They are always
+read-only and are defined by the component itself. When we use a component we
+can pass props to alter the way it looks or behaves.  
 
 On the `Typography` component we are going to use two of the props defined for
 us called `color` and `variant`. Update your app code to look like the code
@@ -320,8 +320,8 @@ class App extends React.Component {
 export default App;
 ```
 
-More information about props is
-[available from the React website](https://reactjs.org/docs/components-and-props.html)
+More information about props is available from the
+[React website](https://reactjs.org/docs/components-and-props.html)
 
 <a name="add-grid"></a>
 ## Add the recipe grid
@@ -330,7 +330,8 @@ one recipe but we'll later expand to read any number of recipes from our REST
 API.
 
 We'll be using more material-ui components so we'll import them into the app
-now. Copy the following and paste with the other imports at the top of the `App.jsx` file:
+now. Copy the following and paste with the other imports at the top of the
+`App.jsx` file:
 ```javaScript
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -338,8 +339,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 ```
 
 First of all we'll add a `GridList` component just beneath the closing
-`</AppBar>` which will create a grid to hold the recipe tiles.
-
+`</AppBar>` which will create a grid to hold the recipe tiles:
 ```javaScript
 <GridList cellHeight={180} cols={4}>
 </GridList>
@@ -442,6 +442,8 @@ The React website has loads of great docs and tutorials.
 Some relevant ones for this session are:  
 [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
 [React components and props](https://reactjs.org/docs/components-and-props.html)  
+
+It's also worth looking at the components and demoes available on material-ui:
 [Material-UI][Material-UI]
 
 [Material-UI]: https://material-ui.com/
