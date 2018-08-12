@@ -2,6 +2,15 @@
 
 * [What is React?](#react)
 * [What is Material UI?](#material-ui)
+* [What are we building](#what-building)
+* [Fork the repository](#fork)
+* [Clone the repository](#clone)
+* [Explanation of files already in the project](#existing-files)
+* [CSS and management approaches](#css)
+* [Install and run the application](#install)
+* [Add a title](#add-title)
+* [Add the recipe grid](#add-grid)
+* [Add all the changes you've made to Git](#commit)
 * [Further reading](#further)
 
 ## Session Objective
@@ -11,50 +20,145 @@ in the last session and displays data from it.
 
 <a name="react"></a>
 ## What is React?
-Talk about JSX
+React describes itself as:
+> A JavaScript library for building user interfaces.
+
+It allows you to combine JavaScript and HTML into objects called React
+Components that can be built dynamically as your application runs.
+
+It creates a virtual-dom to allow it to only re-render the parts of your page
+which have changed. This makes it able to handle large amounts of data and still
+perform in a responsive way for users.
+
+It's developed and used by Facebook. It's extremely popular and well documented
+online with a thriving community.
+
+Here are some snippets about React from the
+[React website](https://reactjs.org/):
+
+> Design simple views for each state in your application, and React will
+efficiently update and render just the right components when your data changes.
+
+> Build encapsulated components that manage their own state, then compose them
+to make complex UIs.
+
+### JSX
+We'll also be using the React syntax extension to JavaScript called JSX.
+
+JSX produces React “elements” which are rendered to the DOM.
+
+React with JSX couples the rendering logic with other UI logic like event
+handling, state changes and preparing data to display.
+
+> Instead of artificially separating technologies by putting markup and logic in
+separate files, React separates concerns with loosely coupled units called
+“components” that contain both.
+
+For more information see
+[Introducing JSX](https://reactjs.org/docs/introducing-jsx.html) on the React
+website.
 
 <a name="material-ui"></a>
-## What is Material UI?
+## What is Material-UI?
+We will be using [Material-UI][Material-UI] heavily in this project to take
+advantage of its pre-built components that make it very quick to create UI
+objects like grids, tiles, titles and text.
 
+[Material-UI][Material-UI] describes itself as:
+> React components that implement Google's Material Design.
+
+[Material Design](https://material.io/design/) sets out a number of rules to
+help you make UIs that are intuitive and pleasing to look at.
+
+<a name="what-building"></a>
 ## What are we building?
+At the end of the React sessions in the developer toolcamp we will have built an
+application which displays a grid of tiles displaying recipes loaded from a REST
+API.
 
+These tiles will be clickable and will take the user to another view that
+displays the full information about that recipe.
+
+This will hopefully lay lots of the groundwork you would need to be able to
+build applications and dashboards with React on projects in the future.
+
+<a name="fork"></a>
 ## Fork the repository
+Like with the REST API we will fork the repository we want to work with.
 
+Go to https://github.ibm.com/CIC-UK/developer-toolcamp-ui and click on the fork
+button in the top right hand corner.
+
+If you're given any choice of where to fork to, use your default GitHub account.
+
+<a name="clone"></a>
 ## Clone the repository
+In the forked repository click "clone or download" and ensuring it says
+"Clone with SSH" copy the path displayed.
 
-## Explanation of all the files already in the project
+Go to the folder you want to clone the repository folder into. then run:
+```
+$ git clone <paste path from forked repo>
+```
+
+<a name="existing-files"></a>
+## Explanation of files already in the project
+Once you've cloned the repository open the folder in the IDE you're using to
+view code.
+
+You'll see there is already a number of files in it. Here's a brief description
+of what's there:
 * `public/index.html`  
-The entry point for the application.
-Sets the title on the browser window.
-Provides a div with id "root" that we can reference and build the application within.  
+This is the entry point for the application that's served to the browser. In our
+case it sets the title on the browser window and provides a div with the id
+`root` that we can reference and build the application within.  
 
 * `src/index.js`  
-Connects the App wrapper imported from `App.jsx` to the div with id "root" from
-`index.html`.
+This connects the `App` component imported from `App.jsx` to the div with id
+`root` from `index.html`.
 
 * `src/components/App.jsx`
-App is the wrapper for our application. We will nest all the React code we
-write within this component.
+This file contains a React component called `App`. It is the wrapper for our
+application and we will nest all the React code we write within this component.
 
 * `src/components/App.css`
-This contains some CSS used to style the App code. We import it into App.jsx and reference it later in this tutorial.
+This file contains some CSS used to style the `App` code. We import it into
+`App.jsx` and reference it later in this tutorial.
 
 * `.gitignore`  
-Contains a list of all the files we don't want Git to include in the Git
-repository.
+This is a standard Git file which contains a list of all the files we don't want
+Git to include in the Git repository.
 
 * `package.json`  
-Defines which dependencies to install when we run `npm install` and how to start
-the application when we call `npm start`.
+This defines which dependencies to install when we run `npm install` and how to
+start the application when we call `npm start`.
 
-## CSS and where to store it.
-Explain different approaches available.
-inline vs separate file.
-BEM
-etc.
-Explain it's all been pre-built for app but need to use same id's
+<a name="css"></a>
+## CSS and management approaches
+We're not going to touch on CSS in any great detail as part of this course. It's
+a large topic worthy of its own session.
 
-## Install and run the application.
+Some CSS files have been added to the project at various stages in order to get
+components styling correctly without adding extra noise to the React session.
+
+It's worth noting that there are several different common approaches to how you
+manage your CSS. We've listed some of them here with links to find out more:
+
+* Store all style in one CSS file (often called main.css)
+* Store style in separate CSS files named after the component they style. e.g.
+`Title.css` would be used to style `Title.jsx`.
+* [JSS](https://github.com/cssinjs/jss) - Using JavaScript to express CSS.
+  * Material-UI has a utility called
+  [withStyles](https://material-ui.com/customization/css-in-js/#api) that
+  builds JSS into Material-UI.
+* [SASS/SCSS](https://sass-lang.com/) an extension to CSS to let you use
+variables, nesting and mixins to better organise your code and make it more
+maintainable and re-usable.
+* Use [BEM naming](http://getbem.com/naming/) with one of the other approaches
+above.
+
+<a name="install"></a>
+## Install and run the application
 Within the repository folder that you've cloned run the following to install all
 required dependencies:
 ```
@@ -71,6 +175,7 @@ You should see a new tab automatically appear in your browser but if it doesn't
 you can navigate to http://localhost:3000/ to see the application running on
 your machine.
 
+<a name="add-title"></a>
 ## Add a title
 Currently the application doesn't look very exciting. It just displays the words
 "Developer toolcamp UI". We're going to add a title using some components from
@@ -215,8 +320,10 @@ class App extends React.Component {
 export default App;
 ```
 
-More information about props is [available from the React website](https://reactjs.org/docs/components-and-props.html)
+More information about props is
+[available from the React website](https://reactjs.org/docs/components-and-props.html)
 
+<a name="add-grid"></a>
 ## Add the recipe grid
 Next we're going to add a grid to hold our recipes. Initially this will just be
 one recipe but we'll later expand to read any number of recipes from our REST
@@ -314,8 +421,10 @@ class App extends React.Component {
 export default App;
 ```
 
+<a name="commit"></a>
 ## Add all the changes you've made to Git
-We'll now back-up all the changes we've made to our forked copy of the developer-toolcamp-ui.
+We'll now back-up all the changes we've made to our forked copy of the
+developer-toolcamp-ui.
 
 Add, commit and push any changes you've made:
 ```
@@ -327,8 +436,12 @@ In the next session we'll continue our work on this application from a new Git
 branch so don't worry if you weren't able to get your application working at the
 end of this session.
 
+<a name="further"></a>
 ## Further reading
 The React website has loads of great docs and tutorials.
 Some relevant ones for this session are:  
 [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
 [React components and props](https://reactjs.org/docs/components-and-props.html)  
+[Material-UI][Material-UI]
+
+[Material-UI]: https://material-ui.com/
