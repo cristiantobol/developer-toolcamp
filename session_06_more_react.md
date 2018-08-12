@@ -1,7 +1,26 @@
 # More React fundamentals
 
-* [Item 1](#item1)
-* [Item 2](#item2)
+* [Checkout the stage-2 branch](#stage-2)
+* [New CSS files](#new-css)
+* [Refactoring components](#refactor-components)
+* [Refactor the title into a separate component](#refactor-title)
+* [Refactor the recipe grid into a separate component](#refactor-grid)
+* [Refactor the recipe tile into a separate component](#refactor-tile)
+* [Promises](#promises)
+* [Install request-promise-native](#request-promise-native)
+* [Get recipe data asynchronously from the REST API](#get-rest-api)
+* [Store the recipe data in the App component state](#data-in-state)
+* [Display multiple tiles](#display-multiple)
+* [Add the props to display the correct recipe image](#display-image)
+* [Add the props to display the correct title and difficulty](#display-title)
+* [Add all the changes you've made to Git](#commit-2)
+* [Checkout the stage-3 branch](#stage-3)
+* [New JSX and CSS files](#new-jsx)
+* [Add click event to tile to display details](#click-tile)
+* [Add App state to manage which view we're on](#manage-view)
+* [Add click event to title bar to return to dashboard](#click-title)
+* [Possible extensions](#extensions)
+* [Further reading](#further)
 
 ## Session Objective
 This session will continue the introduction to React. We will:
@@ -10,6 +29,7 @@ This session will continue the introduction to React. We will:
 previous session and display the data returned from it.
 * Add a detailed view of each recipe when a recipe is clicked.
 
+<a name="stage-2"></a>
 ## Checkout the stage-2 branch
 To ensure we all continue from the same baseline we will now checkout a new
 branch within the developer-toolcamp-ui repository we've been working in.
@@ -19,10 +39,12 @@ Checkout the stage-2 branch:
 $ git checkout stage-2
 ```
 
+<a name="new-css"></a>
 ## New CSS files
 You'll notice that we now have some new CSS files added to the project. We'll
 use these to style components we're about to create and import them as we go.
 
+<a name="refactor-components"></a>
 ## Refactoring components
 > Components let you split the UI into independent, reusable pieces, and think
 about each piece in isolation.
@@ -36,6 +58,7 @@ are independent of each other and could be used in isolation.
 We're now going to move them into their own components and import them back in
 to `App.jsx` to use them. Let's start with the App Title.  
 
+<a name="refactor-title"></a>
 ## Refactor the title into a separate component
 Create a new file within the `src/components` folder called `TitleBar.jsx`.  
 
@@ -150,6 +173,7 @@ export default class TitleBar extends React.Component {
 }
 ```
 
+<a name="refactor-grid"></a>
 ## Refactor the recipe grid into a separate component
 We'll now take the same approach for the section between the `<GridList>` tags
 in `App.jsx` and we'll create a new `RecipeGridList` component to hold that
@@ -232,6 +256,7 @@ If you get stuck the finished code for each file is included for you below:
 
 </details>
 
+<a name="refactor-tile"></a>
 ## Refactor the recipe tile into a separate component
 We also need to refactor the recipe tile into it's own component. We only have
 one tile at the moment but we'd like to display multiple recipes and re-use the
@@ -309,6 +334,7 @@ If you get stuck the finished code for each file is included for you below:
 
 </details>
 
+<a name="promises"></a>
 ## Promises
 So far we have just 1 recipe tile displaying data that we've hard-coded into
 the tile component. But we want to be able to display a tile for each recipe
@@ -325,6 +351,7 @@ returns a promise to supply the value at some point in the future.
 There is good [Promise documentation][Promise Documentation] available if you
 would like to learn more about how they work.  
 
+<a name="request-promise-native"></a>
 ## Install request-promise-native
 We will be using Promises via a library called `request-promise-native`. This
 library provides a convenient way of making a call to an endpoint and handling
@@ -336,6 +363,7 @@ $ npm install --save request
 $ npm install --save request-promise-native
 ```
 
+<a name="get-rest-api"></a>
 ## Get recipe data asynchronously from the REST API
 Now import from `request-promise-native` at the top of the `App.jsx` file:
 ```javaScript
@@ -410,9 +438,11 @@ REST API at http://localhost:9000/recipes.
 So we've now managed to access data from our REST API but we've not displayed
 anything from it yet.
 
+<a name="data-in-state"></a>
 ## Store the recipe data in the App component state
 We need to start using a concept in React called `state` in order to achieve
-this. State is similar to `props` that we encountered earlier, but it is private and fully controlled by the component.
+this. State is similar to `props` that we encountered earlier, but it is private
+and fully controlled by the component.
 
 Every time the state is updated the component will automatically re-render.
 
@@ -455,6 +485,7 @@ We're now storing the recipes we receive in the component state instead of
 logging them to the console. This means we'll now be able to access them in the
 render method and display the data from them in the application.
 
+<a name="display-multiple"></a>
 ## Display multiple tiles
 We're now going to update the application to display a recipe tile for each
 recipe listed in the response.
@@ -490,6 +521,7 @@ For more information about using a map with an Array have a look at the
 Have a look at the application in the browser and you'll see multiple recipe
 tiles all with the same information on them.
 
+<a name="display-image"></a>
 ## Add the props to display the correct recipe image
 Let's update the images on the tiles now to use the images supplied in the REST
 API response.
@@ -521,6 +553,7 @@ Take a look at the application in the browser and you'll now see multiple recipe
 tiles with different images. The title and difficulty still needs updating
 though.
 
+<a name="display-title"></a>
 ## Add the props to display the correct title and difficulty
 Have a go at updating the title and difficulty from the information returned
 from the REST API.
@@ -658,6 +691,7 @@ If you get stuck the finished code for each file is included for you below. The
 
 Congratulations you now have a completed display dashboard!
 
+<a name="commit-2"></a>
 ## Add all the changes you've made to Git
 We'll now back-up all the changes we've made to our forked copy of the
 developer-toolcamp-ui.
@@ -668,8 +702,10 @@ $ git add *
 $ git commit -m "code added in stage 2"
 ```
 
-We'll now continue our work on this application from a new Git branch so don't worry if you weren't able to get your application working at this point.
+We'll now continue our work on this application from a new Git branch so don't
+worry if you weren't able to get your application working at this point.
 
+<a name="stage-3"></a>
 ## Checkout the stage-3 branch
 To ensure we all continue from the same baseline we will now checkout a new
 branch within the developer-toolcamp-ui repository we've been working in.
@@ -679,7 +715,8 @@ Checkout the stage-3 branch:
 $ git checkout stage-3
 ```
 
-## New CSS files
+<a name="new-jsx"></a>
+## New JSX and CSS files
 There are a number of new files added after checking out this new branch.
 
 Due to time constraints we have included a pre-built recipe details page to
@@ -699,6 +736,7 @@ to understand them better:
 For the next part of this tutorial we will be focusing on navigation between
 components, handling click events and presenting the user with different views.
 
+<a name="click-tile"></a>
 ## Add click event to tile to display details
 A `RecipeDetails` component has been pre-built for you but we've not currently
 got any way of accessing it.
@@ -822,6 +860,7 @@ more information about the `.find` function.
 We now have a copy of the selected recipe in the state, ready to use on our
 pre-built recipe details page. So the next step is to display it!
 
+<a name="manage-view"></a>
 ## Add App state to manage which view we're on
 In the `constructor` for the `App` add another key called `showDashboard` to the
 initial state so that it looks like:
@@ -874,6 +913,7 @@ rendered. When it evaluates to false the `RecipeDetails` will be shown.
 Try clicking on a tile in the application again now and you'll be taken to the
 details for that recipe.
 
+<a name="click-title"></a>
 ## Add click event to title bar to return to dashboard
 It's great that we can click on a tile now and view the details, but we have no
 way of getting back to the dashboard (unless we refresh the page).
@@ -930,6 +970,7 @@ prop with the method we've just written:
 That's it! Take a look at the application in your browser and you should be able
 to navigate around the application freely now!
 
+<a name="extensions"></a>
 ## Possible extensions
 If you'd like to take this project further here are some ideas of things to try:
 * Convert the difficulty number to a star rating using icons or a word like Easy,
