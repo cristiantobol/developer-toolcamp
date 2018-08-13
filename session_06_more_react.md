@@ -19,6 +19,7 @@
 * [Add click event to tile to display details](#click-tile)
 * [Add App state to manage which view we're on](#manage-view)
 * [Add click event to title bar to return to dashboard](#click-title)
+* [Add all the changes you've made to Git](#commit-3)
 * [Possible extensions](#extensions)
 * [Further reading](#further)
 
@@ -27,7 +28,7 @@ This session will continue the introduction to React. We will:
 * Re-factor the App component we built.
 * Update our application to communicate with the REST API we created in a
 previous session and display the data returned from it.
-* Add a detailed view of each recipe when a recipe is clicked.
+* Navigate to a detailed view of each recipe when it is clicked.
 
 <a name="stage-2"></a>
 ## Checkout the stage-2 branch
@@ -49,11 +50,13 @@ use these to style components we're about to create and import them as we go.
 > Components let you split the UI into independent, reusable pieces, and think
 about each piece in isolation.
 
-So far all the new React code we've written has gone into `App.jsx`. This will
-quickly become unmanageable if we continue to build in this way.  
+All the React code we've written so far has gone into `App.jsx`. We can't
+continue to build our app in this way though as it will quickly become
+unmanageable.  
 
-Already we have 2 distinct components the App Title and the Recipe Grid which
-are independent of each other and could be used in isolation.  
+From the code we've written so far we can identify two distinct components which
+are independent of each other and could be used in isolation. These are the App
+Title and the Recipe Grid.  
 
 We're now going to move them into their own components and import them back in
 to `App.jsx` to use them. Let's start with the App Title.  
@@ -400,18 +403,21 @@ and store it in a variable called `recipes` and we then print the variable to
 the browser console.
 
 We also chained a `.catch` to the Promise which will be triggered when we get an
-unsuccessful response. We then log this response to the browser console.
-
-If for example your REST API is not running the log in the console will look
-something like: `Error getting recipes RequestError: TypeError: Failed to fetch`
-.
+unsuccessful response. We then log this response to the browser console. If for
+example your REST API is not running the log in the console will look something
+like:  
+`Error getting recipes RequestError: TypeError: Failed to fetch`
 
 ### Call the getRecipeData method from the constructor
 
-We've not called this method anywhere yet so we'll add a call to it now. We want
-to get this data when the App component is created so we'll add a constructor to
-it so we can call it in there. Add another method to the App class called
-`constructor` with the following code:
+We've not called the `getRecipeData` method anywhere yet so we'll add a call to
+it now.
+
+We want to get this data when the `App` component is created so we'll add a
+constructor to `App` so we can call `getRecipeData` there.
+
+Add another method called `constructor` to the `App` class with the following
+code:
 ```javaScript
 constructor(props) {
   super(props);
@@ -440,11 +446,13 @@ anything from it yet.
 
 <a name="data-in-state"></a>
 ## Store the recipe data in the App component state
-We need to start using a concept in React called `state` in order to achieve
-this. State is similar to `props` that we encountered earlier, but it is private
-and fully controlled by the component.
+We need to start using a concept in React called `state` in order to store and
+then display the REST API data. State is similar to `props` that we encountered
+earlier, but it is private and fully controlled by the component.
 
-Every time the state is updated the component will automatically re-render.
+Every time the state or props are updated the component will automatically
+re-render. Generally we use props for data that the component does not need to
+modify and state for data that it does.
 
 A more in depth example of component state is available on the
 [React website](https://reactjs.org/docs/state-and-lifecycle.html).
@@ -724,7 +732,7 @@ display the ingredients, method and meta-data for each recipe.
 
 The new components used to build this page all use the same approaches we have
 already seen with information being passed as `props` and a `map` being used to
-render a list of items from an Array.
+render lists of items from an Array.
 
 You're encouraged to take a closer look at the following files in your own time
 to understand them better:
@@ -761,9 +769,9 @@ The `RecipeGridList` is responsible for creating the tiles and knowing which
 tile is which. So the tile just needs to say "I've been clicked" and doesn't
 need to provide any further information.
 
-It doesn't know what happens when it's clicked. This is all part of keeping the
-component as dumb as possible so that it is independent and can be easily
-re-used.
+The `RecipeTile` doesn't know what happens when it's clicked which is a good
+thing. This is all part of keeping the component as dumb as possible so that it
+is independent from other components and can be easily re-used.
 
 ### Handling the click in RecipeGridList
 The `RecipeGridList` now needs to supply this prop to the `RecipeTile` as it
@@ -781,11 +789,11 @@ has two additional props `key` and `onClick`:
 />
 ```
 
-Here we've used a new key/field on each recipe returned by the REST API called
-`_id`. This isn't something that we had set in our initial import data, it was
-added by MongoDB when we performed the import, so that each record had a unique
-identifier. This is quite handy for us now as we need to be able to uniquely
-identify which tile was clicked on.
+Here we've used a new key/field available on each recipe returned by the REST
+API called `_id`. This isn't something that we had set in our initial import
+data. It was added by MongoDB when we performed the import, so that each record
+had a unique identifier. This is quite handy for us now as we need to be able
+to uniquely identify which tile was clicked on.
 
 In the last code change we set the `onClick` prop of the `RecipeTile` to trigger
 a prop on the `RecipeGridList` called `onRecipeClick`. This prop we are treating
@@ -798,6 +806,9 @@ requests that you use a unique key set in this way every time you have a list
 of components. This allows it to be selective about which ones to render and
 can improve the performance of you're application. If you don't set you will see
 an error in the console but it won't stop the application from working.
+
+The React docs have a nice explanation with more details about
+[Lists and keys](https://reactjs.org/docs/lists-and-keys.html).
 
 ### Handling the click in App
 So far we've received a click on a `RecipeTile` and we've passed that event to
@@ -821,13 +832,15 @@ the render method:
 
 Click a tile in your browser and see the different IDs being logged.
 
-Now we're going to keep track of the selected recipe in the `state` instead.
+Instead of logging this information to the console we're going to keep track of
+the selected recipe in the `state` of the `App` component.
+
 First of all we'll update the constructor to:
 * add a placeholder for the selected recipe in the initial state
 * bind the new method `handleTileSelected` so that we can access `this` inside
 it.
 
-Update your constructor to look like:
+Update your `App` constructor to look like:
 ```javaScript
 constructor(props) {
   super(props);
@@ -847,7 +860,7 @@ We've initially set `recipe` to `null` because no recipe has been selected when
 the application is first loaded.
 
 Now we need to update `handleTileSelected` to find the recipe that has the same
-`id` and update the selected recipe in the state:
+`id` and set that as the selected recipe in the state:
 ```javaScript
 handleTileSelected(id) {
   const recipe = this.state.recipes.find(tile => tile._id === id);
@@ -910,8 +923,8 @@ render() {
 When `this.state.showDashboard` evaluates to `true` the `RecipeGridList` will be
 rendered. When it evaluates to false the `RecipeDetails` will be shown.
 
-Try clicking on a tile in the application again now and you'll be taken to the
-details for that recipe.
+Try clicking on a tile in the application and you'll be taken to the details
+for that recipe.
 
 <a name="click-title"></a>
 ## Add click event to title bar to return to dashboard
@@ -922,9 +935,7 @@ The last thing we'll do is add an event when you click on the "Recipes" word in
 the title of the application to take us back to the dashboard.
 
 In `TitleBar.jsx` add a new `onTitleClick` prop which is triggered by clicking
-on the `Typography` component. We're also setting the `className` here to pick
-up a pre-defined style from `TitleBar.css` which will change the cursor to show
-it's clickable when you hover over the title:
+on the `Typography` component:
 ```javaScript
 render() {
   return (
@@ -943,9 +954,13 @@ render() {
   );
 }
 ```
+We've also made a change to set the `className`. This will pick up a pre-defined
+style from `TitleBar.css` which will change the cursor to show that it is
+clickable when you hover over the title.
 
-In `App.jsx` add a new method called `handleDashBoard` which sets the `App`
-state so that the dashboard is showing again and no recipe is selected:
+In `App.jsx` add a new method called `handleDashBoard`. This will set the `App`
+state so that the dashboard is showing again and will also clear the selected
+recipe:
 ```javaScript
 handleDashBoard() {
   this.setState({
@@ -970,11 +985,22 @@ prop with the method we've just written:
 That's it! Take a look at the application in your browser and you should be able
 to navigate around the application freely now!
 
+<a name="commit-3"></a>
+## Add all the changes you've made to Git
+We'll now back-up all the changes we've made to our forked copy of the
+developer-toolcamp-ui.
+
+Add, commit and push any changes you've made:
+```
+$ git add *
+$ git commit -m "code added in stage 3"
+```
+
 <a name="extensions"></a>
 ## Possible extensions
 If you'd like to take this project further here are some ideas of things to try:
-* Convert the difficulty number to a star rating using icons or a word like Easy,
-Medium, Hard.  
+* Convert the difficulty number to a word (like Easy, Medium, Hard) within the 
+UI code. Or display the same number of icons as the difficulty level states.  
 * Merge the `RecipeIngredients` and `RecipeMethod` classes into the same
 `React.Component` class and then use additonal props to set the title and decide
 whether to add a number in front of the list item and whether to display
