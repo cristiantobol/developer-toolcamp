@@ -5,6 +5,7 @@
 * [Express](#express)
 * [MongoDB](#mongo)
 * [Install MongoDB](#install-mongo)
+* [Fork the REST API starting repository](#fork)
 * [Clone the REST API starting repository](#clone)
 * [Import MongoDB test data](#import-data)
 * [Install NPM dependencies](#install-dependencies)
@@ -149,12 +150,27 @@ have verified everything is working we can exit the Mongo shell by running:
 > quit()
 ```
 
+<a name="fork"></a>
+## Fork the REST API starting repository
+A REST API starter project has been created for you.
+
+We will first fork the REST API repository we want to work with. This is so we
+can make updates to our own copy of it without affecting the baseline version
+used by everyone following this session.
+
+Go to https://github.ibm.com/CIC-UK/developer-toolcamp-rest-api and click on the
+fork button in the top right hand corner.
+
+If you're given any choice of where to fork to, use your default GitHub account.
+
 <a name="clone"></a>
 ## Clone the REST API starting repository
-A REST API starter project has been created for you. First navigate to the
-parent folder you wish to clone the repository into, and then run:
+In the forked repository click "clone or download" and ensuring it says
+"Clone with SSH" copy the path displayed.
+
+Go to the folder you want to clone the repository folder into. then run:
 ```
-$ git clone git@github.ibm.com:Stephen-Kitchen-CIC-UK/dev-toolcamp-rest-api.git
+$ git clone <paste path from forked repo>
 ```
 
 Before we get started with the code though we're going to import some test data
