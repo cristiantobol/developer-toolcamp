@@ -443,7 +443,7 @@ Some relevant ones for this session are:
 [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)  
 [React components and props](https://reactjs.org/docs/components-and-props.html)  
 
-It's also worth looking at the components and demoes available on material-ui:
+It's also worth looking at the components and demos available on material-ui:  
 [Material-UI][Material-UI]
 
 [Material-UI]: https://material-ui.com/
