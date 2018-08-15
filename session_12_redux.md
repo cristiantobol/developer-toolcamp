@@ -64,10 +64,8 @@ React.
 Here's a diagram that gives a bit of an overview of data-flow in Redux:
 
 <img
-  src="http://www.michaelridland.com/wp-content/uploads/2015/11/flux-diagram.png"
+  src="./resources/session_12_diagram.png"
   alt="Redux Data-flow"
-  width="70%"
-  height="70%"
 />
 
 ### Store
