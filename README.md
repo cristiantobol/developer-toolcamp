@@ -28,7 +28,7 @@ Coach: Chris Dalby
 ## [Session 9: Unit Testing](./session_09_unit_testing.md)
 Coach: Stephen Kitchen
 
-## [Session 10: IBM Cloud and Bluemix](./session_10_bluemix.md)
+## [Session 10: IBM Cloud](./session_10_ibm_cloud.md)
 Coach: Chris Dalby
 
 ## [Session 11: DevOps, Continuous Integration and Continuous Delivery(CICD)](./session_11_dev_ops.md)
