@@ -8,7 +8,12 @@
 * [Installing Node.js](#installingnode)
 * [What is git?](#git)
 * [Installing git?](#installinggit)
-* [Configuring Git for IBM GitHub Enterprise](#ibmgit)
+* [Installing the stand-alone IBM Cloud CLI](#ibmcloud)
+* [Verify IBM Cloud installation](#verifyibmcloud)
+* [Installing Homebrew](#homebrew)
+* [Installing Zsh](#zsh)
+* [Verify Zsh installation](#verifyzsh)
+* [Install MongoDb](#install-mongo)
 * [Further reading](#further)
 
 ## Session Objective
@@ -16,9 +21,11 @@ This session will cover the following:
 
 * IDE installation and extensions
 * Node.js installation
-* NPM Installation
+* NPM installation
 * Git installation
-* Configuring IBM Github Enterprise
+* IBM Cloud CLI installation
+* Homebrew installation
+* Zsh installation
 
 
 <a name="ide"></a>
@@ -41,17 +48,15 @@ https://marketplace.visualstudio.com/VSCode
 <a name="installextensions"></a>
 ## Installing VSCode extensions
 
-Installing an extension is point and click easy.
-Locate the extension that you require on the vscode marketplace.
-Click install and follow the instructions.
+* Installing an extension is point and click easy.
+* Locate the extension that you require on the vscode marketplace.
+* Click install and follow the instructions.
 
 Some recommended extensions:
 
-GitHub - Integrates github and its workflows into vscode
-https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-github
+**GitHub** - [Integrates github and its workflows into vscode](https://marketplace.visualstudio.com/items?itemName=KnisterPeter.vscode-github)
 
-Git Blame - See git blame information in the status bar.
-https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame
+**Git Blame** - [See git blame information in the status bar](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)
 
 <a name="node"></a>
 ## About Node.js
@@ -89,15 +94,72 @@ https://help.github.com/articles/setting-your-username-in-git
 1. Set your commit email address in Git
 https://help.github.com/articles/setting-your-commit-email-address-in-git
 
-<a name="ibmgit"></a>
-## Configuring Git for IBM GitHub Enterprise
-Generating ssh keys:
-https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+<a name="ibmcloud"></a>
+## Installing the stand-alone IBM Cloud CLI
 
-Adding the ssh keys to your IBM GitHub Enterprise account
-1. Login to your IBM Github Enterpise account at https://github.ibm.com/
-2. Follow the instructions to add a new ssh key, making sure to substitute any mention of github.com with github.ibm.com.
-https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+1. To install the IBM Cloud CLI for MacOS, visit the following page, select the installer appropriate for your OS and follow the instructions:
+https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use
+
+<a name="verifyibmcloud"></a>
+## Verify the Installation
+
+1. In the terminal, enter the following command:
+```
+ibmcloud dev help
+```
+The output lists the usage instructions, the current version, and the supported commands.
+
+2. Confirm the bluemix CLI tools are also available:
+```
+bluemix --help
+```
+<a name="homebrew"></a>
+## Install Homebrew
+
+*"Homebrew installs the stuff you need that Apple didn’t."*
+
+1. In a terminal, paste the following command:
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+2. Visit the Homebrew website for further details:
+https://brew.sh/
+
+<a name="zsh"></a>
+## Install Zsh
+Zsh is a command shell which add extra features to your regular terminal shell.
+
+1. Try `zsh --version` before installing Zsh from Homebrew. 
+
+2. To install from brew, type the following command:
+```
+brew install zsh zsh-completions
+```
+
+<a name="verifyzsh"></a>
+## Verify Zsh Installation
+
+1. Verify Zsh installation by running zsh --version. Expected result: zsh 5.1.1 or more recent.
+2. Make it your default shell: 
+```
+chsh -s $(which zsh)
+```
+3. Log out and login back again to use your new default shell.
+4. Test that it worked with `echo $SHELL`. Expected result: /bin/zsh or similar.
+
+<a name="install-mongo"></a>
+## Install MongoDB
+We'll use [home brew](https://brew.sh/) to install mongo.
+
+Check if MongoDB is installed by running:
+```
+$ mongo --version
+```
+
+If MongoDB is not installed run the following:
+```
+$ brew install mongodb
+```
 
 <a name="further"></a>
 ## Further reading
@@ -105,3 +167,6 @@ https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
 [VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)
 [What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)
 [What is Node.js?](https://www.oreilly.com/ideas/what-is-node)
+[What is Zsh?](https://ohmyz.sh/)
+[What is Homebrew?](https://brew.sh/)
+[MongoDb Docs](https://docs.mongodb.com/)
