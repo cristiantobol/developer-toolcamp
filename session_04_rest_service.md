@@ -4,7 +4,7 @@
 * [HTTP Methods](#methods)
 * [Express](#express)
 * [MongoDB](#mongo)
-* [Install MongoDB](#install-mongo)
+* [Configure MongoDB](#configure-mongo)
 * [Clone the REST API starting repository](#clone)
 * [Import MongoDB test data](#import-data)
 * [Install NPM dependencies](#install-dependencies)
@@ -99,26 +99,10 @@ storing them in exactly the same format we need to supply them in.
 
 We will be using MongoDB as the database for our REST API.
 
-<a name="install-mongo"></a>
-## Install MongoDB
-We'll use [home brew](https://brew.sh/) to install mongo. You will need to
-install it if you haven't already. You can use the following to check if it is
-installed:
-```
-$ brew -v
-```
+<a name="configure-mongo"></a>
+## Configure MongoDB
 
-You can also check if MongoDB is installed by running:
-```
-$ mongo --version
-```
-
-If MongoDB is not installed run the following:
-```
-$ brew install mongodb
-```
-
-After downloading Mongo, create the “db” directory. This is where the Mongo data
+Create the “db” directory. This is where the Mongo data
 files will live. You can create the directory in the default location by
 running:
 ```
