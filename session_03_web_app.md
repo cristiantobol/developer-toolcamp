@@ -40,10 +40,15 @@ v6.10.3
 <a name="setup"></a>
 ## Setting up the project files
 
-In the terminal, create a new blank file:
+1. In the terminal create a folder which will contain the public web files:
+```
+mkdir public
+```
+
+2. Create a new blank file in the folder created above:
 
 ```
-$ touch index.html
+$ touch public/index.html
 ```
 
 1. Open your IDE, *VS Code*.
@@ -130,9 +135,13 @@ The “^” character means that we are telling the project to use a version of 
 
 ```
 const express = require('express');
+const PORT = 8080;
 const app = express();
-app.use(express.static('public'))
-app.listen(3000, () => console.log('Example app listening on port 3000!'));
+
+app.use(express.static('public'));
+app.listen(PORT);
+
+console.log(`Application Server listening on port ${PORT} in your browser.`);
 ```
 
 <a name="start"></a>
@@ -150,7 +159,7 @@ app.listen(3000, () => console.log('Example app listening on port 3000!'));
 $ npm start
 ```
 
-Open a browser and type the address: http://localhost:3000
+Open a browser and type the address: http://localhost:8080
 
 You should see the content of the index.html file that we created earlier in the session.
 
