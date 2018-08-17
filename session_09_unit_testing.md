@@ -1,6 +1,11 @@
+# Unit testing
 
+* [Jest](#jest)
+* [Chai](#chai)
+* [Enzyme](#enzyme)
+* [Further reading](#further)
 
-
+<a name="jest"></a>
 ## Jest
 Jest is a test runner. It provides a formula for writing unit tests but it also
 has the ability to run those tests for you.
@@ -83,6 +88,7 @@ We have our first passing unit test!
 The process will also continue running as we make changes to the code so we can
 check back and see if the tests are passing at any point.
 
+<a name="chai"></a>
 ## Chai
 Chai provides chain-able language extensions to the JavaScript that you can
 using in your assertion statements where you are checking the result of you
@@ -135,31 +141,100 @@ describe('add', () => {
 Check the Jest test runner in your terminal and you'll see the test still
 passes.
 
+<a name="enzyme"></a>
 ## Enzyme
-```
-$ npm install --save-dev enzyme enzyme-adapter-react-16
-```
-
-### shallow
 TODO explain
 
-Let's create a new file called `App.test.js` in the `src/components` folder to
-test the `App.js` component.
+### shallow vs mount
+TODO explain
 
-**App.test.js**
+### Getting Enzyme set up
+Adding enzyme to your project is a bit more involved as it doesn't work with
+`react-scripts` out of the box.
+
+We have to add some additional file watching utilities to our Mac first for this
+to work with the Sierra OSX.
+
+### Installation
+First install [xcode](https://developer.apple.com/xcode/). This is a dependency
+for [watchman](https://facebook.github.io/watchman/) that we'll install after
+this. Unfortunately xcode isn't installed by homebrew automatically when we do
+the watchman install though:
+```
+$ xcode-select --install
+```
+
+Click "Install" in pop-up that opens. It may take about 5 minutes to install.
+
+Next install [watchman](https://facebook.github.io/watchman/) using homebrew:
+```
+$ brew install watchman
+```
+
+Lastly add the required dependencies to your package:
+```
+$ npm install --save-dev enzyme enzyme-adapter-react-16 react-test-renderer
+```
+
+### Setup repository
+Now we've finished the installs we need to add a new Jest setup file. Create a
+new file in the `src` folder called `setupTests.js`:  
+
+**setupTests.js**
+```javaScript
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+```
+This file is picked up automatically by Jest and adds the adapter for Enzyme to
+work with React v16.
+
+We're now ready to start using Enzyme in a test.
+
+### Use Enzyme shallow in a unit test
+Let's create a new file called `App.test.jsx` in the `src/components` folder to
+test the `App.jsx` component.
+
+**App.test.jsx**
 ```javaScript
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import App from './App';
 
-it('App renders without crashing', () => {
-  const component = shallow(<App />);
-  expect(component.exists()).to.equal(true);
+describe('App component', () => {
+  it('renders without errors', () => {
+    const component = shallow(<App />);
+    expect(component.exists()).to.equal(true);
+  });
 });
 ```
+TODO explain
+
+**RecipeTile.test.jsx**
+```javaScript
+import React from 'react';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
+import RecipeTile from './RecipeTile';
+
+describe('RecipeTile component', () => {
+  it('calls the onClick prop when it is clicked', () => {
+    let changed = false;
+    const props = {
+      onClick: () => { changed = true }
+    }
+    const component = shallow(<RecipeTile { ...props } />);
+    component.simulate('click')
+    expect(changed).to.equal(true);
+  });
+});
+```
+TODO explain
 
 ### mount
+TODO example and explain
 
 <a name="further"></a>
 ## Further reading
