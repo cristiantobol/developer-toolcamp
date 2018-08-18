@@ -149,6 +149,10 @@ $ chsh -s $(which zsh)
 
 <a name="install-mongo"></a>
 ## Install MongoDB
+> MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+
+> MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
+
 We'll use [home brew](https://brew.sh/) to install mongo.
 
 Check if MongoDB is installed by running:
