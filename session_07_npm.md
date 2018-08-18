@@ -39,9 +39,9 @@ To Install Lodash, in a terminal type the following command:
 $ npm install –save lodash
 ```
 
-Following installation, take a look in package.json file and you hould now see that Lodash is installed as a dependency.
+Following installation, take a look in `package.json` file and you hould now see that Lodash is installed as a dependency.
 
-```
+```json
 "dependencies": {
     "@material-ui/core": "^1.3.1",
     "@material-ui/icons": "^1.1.0",
@@ -57,13 +57,17 @@ TODO - Using Lodash to remove properties from an object
 ## What is Moment.js?
 Moment takes the hassle out of formatting date and is widely used.
 
-*“Parse, validate, manipulate, and display dates and times in JavaScript.”*
+> Parse, validate, manipulate, and display dates and times in JavaScript.
 
 1. Head over to npm to confirm the installation instructions and install Moment.js as a dev dependency.
 
+```
+$ npm install --save-dev moment
+```
+
 1. Then confirm that moment is installed in the devDependencies of package.json.
 
-```
+```json
 "devDependencies": {
     "chai": "^4.1.2",
     "enzyme": "^3.3.0",
@@ -76,7 +80,7 @@ Moment takes the hassle out of formatting date and is widely used.
 <a name="usingmoment"></a>
 ## Using Moment.js
 
-Now that we have moment.js installed, we will use Moment.js to format a “dateCreated” field that can be used to display on each item.
+Now that we have moment.js installed, we can use it to format a `dateCreated` field that will be display with each recipe.
 
 We will make the following changes to our application
 * Add the dateAdded field to the RecipeGridList component.
@@ -86,7 +90,7 @@ We will make the following changes to our application
 
 1. Open the RecipeGridList component.  Add the new dateAdded field as a prop which is passed down to the RecipeTile component.
 
-```
+```jsx
 <RecipeTile
               key={tile.id}
               title={tile.title}
@@ -99,7 +103,7 @@ We will make the following changes to our application
 
 2. Open the RecipeTile component.  Add the dateAdded field to the subtitle:
 
-```
+```jsx
 <GridListTileBar
           title={this.props.title}
           subtitle={<div><span>Difficulty: {this.props.difficulty}</span>&nbsp;&nbsp;<span>Date added: {this.props.dateAdded}</span></div>}
@@ -114,13 +118,15 @@ We will make the following changes to our application
 <a name="dateformatting"></a>
 ## Formatting dates with Moment.js
 
-The dateAdded field in RecipeTile component is an iso8601 formatted date. 
+The `dateAdded` field in `RecipeTile` component is an iso8601 formatted date. 
 
-Import moment into the RecipeTile component:
-
-`import moment from 'moment';`
-
+1. Import moment into the RecipeTile component:
+```javascript
+import moment from 'moment';
 ```
+
+
+```javascript
 moment(new Date(this.props.dateAdded)).format("DD-MMM-YYYY")
 ```
 
@@ -129,4 +135,4 @@ moment(new Date(this.props.dateAdded)).format("DD-MMM-YYYY")
 ## Further reading
 [The Lodash module on NPM](https://www.npmjs.com/package/lodash)  
 [The Moment module on NPM](https://www.npmjs.com/package/moment)  
-
+Find out more details about an [iso8601 formatted date](https://en.wikipedia.org/wiki/ISO_8601)
