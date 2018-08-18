@@ -60,14 +60,14 @@ Some recommended extensions:
 
 <a name="node"></a>
 ## About Node.js
-*“As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.”*
+> As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.
 
 In essence, Node is a JavaScript server implementation, allowing backend services to be coded in vanilla JavaScript, allowing for fully featured scalable webn applications to be developed totally in JavaScript.  We will cover Node.js in more detail in a later session. 
 
 <a name="npm"></a>
 ## About Node Package Manager (NPM)
 
-*“npm makes it easy for JavaScript developers to share and reuse code, and makes it easy to update the code that you’re sharing, so you can build amazing things.”*
+> npm makes it easy for JavaScript developers to share and reuse code, and makes it easy to update the code that you’re sharing, so you can build amazing things.
 
 NMP is bundled with the Node installation.
 
@@ -80,7 +80,7 @@ https://nodejs.org/en/download/
 <a name="git"></a>
 ## What is Git?
 
-*“Git is a mature, actively maintained open source project originally developed in 2005 by Linus Torvalds, the famous creator of the Linux operating system kernel. A staggering number of software projects rely on Git for version control, including commercial projects as well as open source.”*
+> it is a mature, actively maintained open source project originally developed in 2005 by Linus Torvalds, the famous creator of the Linux operating system kernel. A staggering number of software projects rely on Git for version control, including commercial projects as well as open source.
 **Atlassian.com**
 
 <a name="installinggit"></a>
@@ -116,7 +116,7 @@ bluemix --help
 <a name="homebrew"></a>
 ## Install Homebrew
 
-*"Homebrew installs the stuff you need that Apple didn’t."*
+> Homebrew installs the stuff you need that Apple didn’t.
 
 1. In a terminal, paste the following command:
 ```
@@ -164,9 +164,9 @@ $ brew install mongodb
 <a name="further"></a>
 ## Further reading
 [VSCode](https://code.visualstudio.com/download)  
-[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)
-[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)
-[What is Node.js?](https://www.oreilly.com/ideas/what-is-node)
-[What is Zsh?](https://ohmyz.sh/)
-[What is Homebrew?](https://brew.sh/)
-[MongoDb Docs](https://docs.mongodb.com/)
+[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode) 
+[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git) 
+[What is Node.js?](https://www.oreilly.com/ideas/what-is-node) 
+[What is Zsh?](https://ohmyz.sh/)  
+[What is Homebrew?](https://brew.sh/) 
+[MongoDb Docs](https://docs.mongodb.com/) 
