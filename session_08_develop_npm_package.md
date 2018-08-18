@@ -2,10 +2,12 @@
 
 * [Overview](#overview)
 * [How to create an NPM package](#how)
-* [Create the Header application](#create)
-* [Configure packages in the header app](#configure)
+* [Fork the Header repo](#fork)
+* [Clone the Header repo](#clone)
+* [Checkout the stage-1 branch](#checkout)
 * [Create the component for the header](#header)
 * [Clone the React Seed Project which will consume the header](#clone)
+* [Install the React Seed Project](#install)
 * [Further reading](#further)
 
 ## Session Objective
@@ -21,7 +23,9 @@ Anatomy of an NPM package
 ## Overview
 As you have already seen, there are a multitude of packages freely available to use on NPM. This session will walk through the process to create an NPM package that can be used in an application.
 
-For the purposes of this session, we will create an NPM package that will be responsible for creating the header of an application.
+For the purposes of this session, we will create an NPM package that will be responsible for creating a header component that can be used in an application.
+
+You will then clone the [React Seed Project](https://github.ibm.com/Chris-Dalby-CIC-UK/react-seed-project) and consume the new header project.
 
 <a name="how"></a>
 ## How to create an NPM Package
@@ -32,56 +36,48 @@ To create a NPM package, you have to do two things:
 
 It really is as simple as that.
 
+<a name="fork"></a>
+## Fork the Header starting repository
+A Header starter project has been created for you.
+
+We will first fork the Header repository we want to work with. This is so we
+can make updates to our own copy of it without affecting the baseline version
+used by everyone following this session.
+
+Go to https://github.ibm.com/CIC-UK/developer-toolcamp-header and click on the
+fork button in the top right hand corner.
+
+If you're given any choice of where to fork to, use your default GitHub account.
+
+<a name="clone"></a>
+## Clone the Header starting repository
+In the forked repository click `clone or download` and ensuring it says `Clone with SSH` copy the path displayed.
+
+Go to the folder you want to clone the repository folder into. then run:
+```
+$ git clone <paste path from forked repo>
+```
+
+<a name="checkout"></a>
+## Checkout the stage-1 branch
+To ensure we all start from the same baseline we will now checkout a branch within your developer-toolcamp-header repository.
+
+Checkout the stage-1 branch:
+```
+$ git checkout stage-1
+```
+
 <a name="create"></a>
-## Create the Header application
-1. In IBM Github, create a new repository called `dev-toolcamp-header` and initialise it with a blank readme file.
+## Create the files needed for the Header component
+1. Add a `.gitignore` file.
 
-1. Clone the repo to a folder on your laptop.
-
-1. Open the project in VS Code
-
-1. Switch to the terminal and navigate to the folder of the new repo.  Type the following command:
-
-```
-$ npm init
-```
-
-1. Accept all of the default values.
-
-1. Open the `dev-toolcamp-header` folder in VS Code.  
- 
-1. In VS Code, take a look at the `package.json` file that has just been initialised.  
-
-<a name="configure"></a>
-## Configure packages in the header app
-1. In the dev-toolcamp-ui package.json file, copy the dependencies and devDependencies sections and paste them into the package.json file of the header app.
-```json
-"dependencies": {
-    "@material-ui/core": "^1.3.1",
-    "npm": "^6.1.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
-  },
-  "devDependencies": {
-    "react-scripts": "^1.1.4"
-  }
-```
-
-2. Switch to the terminal and navigate to the dev-toolcamp-header folder and run the following command to install the packages:
-
-```
-$ npm install
-```
-
-3. Add a `.gitignore` file.
-
-4. Click into the `.gitignore` file and type `“node_modules”`.  This will make sure that the node_modules folder is not added to the git repository.
+2. Click into the `.gitignore` file and type `“node_modules”`.  This will make sure that the node_modules folder is not added to the git repository.
 
 <a name="header"></a>
 ## Create the component for the header
-1. In the header project create a new folder called “src”.  Then create a new file called `src/header.js`.
+1. In the header project create a new file called `index.js`.
 
-1. Add the following code to the header.js file:
+1. Add the following code to the index.js file:
 ```javascript
 import React from 'react';
 class Header extends React.Component {
@@ -94,7 +90,7 @@ class Header extends React.Component {
 export default Header;
 ```
 
-1. Push the code to the dev-toolcamp-header repository.
+1. Push the code to your developer-toolcamp-header repository.
 
 <a name="consume"></a>
 ## Clone the React Seed Project which will consume the header
@@ -102,12 +98,17 @@ export default Header;
 
 2. Clone the React Seed Project:
 ```
-git clone git@github.ibm.com:Chris-Dalby-CIC-UK/react-seed-project.git
+$ git clone git@github.ibm.com:CIC-UK/react-seed-project.git
 ```
 
-3. Navigate into the React Seed Project folder `cd react-seed-project`.
+<a name="install"></a>
+## Install the React Seed Project
+1. In the terminal, navigate into the React Seed Project folder.
 
-4. Install the project `npm install`.
+2. To install the React Seed Project, in the terminal type:
+```
+$ npm install`
+```
 
 <a href="addheader"></a>
 ## Add the header to the React Seed Project
@@ -115,16 +116,18 @@ git clone git@github.ibm.com:Chris-Dalby-CIC-UK/react-seed-project.git
 
 2. Navigate to `package.json` and add the following in the `dependences` section:
 ```json
-"dev-toolcamp-header": "git+ssh://git@github.ibm.com:Chris-Dalby-CIC-UK/dev-toolcamp-header#master",
+"developer-toolcamp-header": "git+ssh://git@github.ibm.com:<YOUR_GITHUB>/developer-toolcamp-header#stage-1",
 ```
+3. Replace `<YOUR_GITHUB>` in the git repo url above with the name of your git account.
 
-3. Expand the following folder structure for editing `src/MyComponent/MyComponent.js`
+4. Expand the following folder structure for editing `src/MyComponent/MyComponent.js`
 
-4. Import the Header and then add the <Header /> component as below:
+5. Import the Header and then add the <Header /> component as below:
 ```javascript
 import React from 'react';
+import Header from 'developer-toolcamp-header';
+
 import './MyComponent.css';
-import Header from 'dev-toolcamp-header';
 
 const MyComponent = () => (
   <div className="my-component">
@@ -139,15 +142,19 @@ export default MyComponent;
 
 1. Run `$ npm install` to add the new component
 
-1. Test the project by starting in dev mode:
+2 Test the project by starting in dev mode:
 ```
 $ npm run dev
 ```
+
+3. Open a browser and view the React Seed Project to see the header incorporated:
+http://localhost:8080
+
 <a name="further"></a>
 ## Further reading
 [Webpack](https://webpack.js.org/)  
 [React Seed Project](https://github.ibm.com/Chris-Dalby-CIC-UK/react-seed-project)  
 [How to create a React Component and publish to NPM](https://medium.com/@BrodaNoel/how-to-create-a-react-component-and-publish-it-in-npm-668ad7d363ce)  
 [Setting up Webpack for React](https://robots.thoughtbot.com/setting-up-webpack-for-react-and-hot-module-replacement)  
-[Dev Toolcamp Header](https://github.ibm.com/Chris-Dalby-CIC-UK/dev-toolcamp-header)  
+[Dev Toolcamp Header](https://github.ibm.com/CIC-UK/developer-toolcamp-header)  
 [NPM Documentation to install a package](https://docs.npmjs.com/cli/install)
