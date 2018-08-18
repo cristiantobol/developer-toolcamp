@@ -164,3 +164,7 @@ Open a browser and type the address: http://localhost:8080
 You should see the content of the index.html file that we created earlier in the session.
 
 <img src="./resources/session_03_hello_world.png" alt="Hello World app" />
+
+
+## Further reading
+Read more on the [express website](https://expressjs.com/) if you would like to find out more.
