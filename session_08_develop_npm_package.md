@@ -109,7 +109,7 @@ $ git clone git@github.ibm.com:CIC-UK/react-seed-project.git
 
 2. To install the React Seed Project, in the terminal type:
 ```
-$ npm install`
+$ npm install
 ```
 
 <a href="add-header"></a>
@@ -124,7 +124,7 @@ $ npm install`
 
 4. Expand the following folder structure for editing `src/MyComponent/MyComponent.js`
 
-5. Import the Header and then add the <Header /> component as below:
+5. Import the Header and then add the `<Header />` component as below:
 ```javascript
 import React from 'react';
 import Header from 'developer-toolcamp-header';
@@ -144,7 +144,7 @@ export default MyComponent;
 
 1. Run `$ npm install` to add the new component
 
-2 Test the project by starting in dev mode:
+2. Test the project by starting in dev mode:
 ```
 $ npm run dev
 ```
