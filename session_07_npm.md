@@ -91,7 +91,7 @@ $ npm install --save-dev moment
 <a name="usingmoment"></a>
 ## Using Moment.js
 
-Now that we have moment.js installed, we can use it to format a `dateCreated` field that will be display with each recipe.
+Now that we have moment.js installed, we can use it to format a `dateAdded` field that will be display with each recipe.
 
 We will make the following changes to our application
 * Add the dateAdded field to the RecipeGridList component.
