@@ -60,14 +60,14 @@ Some recommended extensions:
 
 <a name="node"></a>
 ## About Node.js
-*“As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.”*
+> As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.
 
 In essence, Node is a JavaScript server implementation, allowing backend services to be coded in vanilla JavaScript, allowing for fully featured scalable webn applications to be developed totally in JavaScript.  We will cover Node.js in more detail in a later session. 
 
 <a name="npm"></a>
 ## About Node Package Manager (NPM)
 
-*“npm makes it easy for JavaScript developers to share and reuse code, and makes it easy to update the code that you’re sharing, so you can build amazing things.”*
+> npm makes it easy for JavaScript developers to share and reuse code, and makes it easy to update the code that you’re sharing, so you can build amazing things.
 
 NMP is bundled with the Node installation.
 
@@ -80,7 +80,7 @@ https://nodejs.org/en/download/
 <a name="git"></a>
 ## What is Git?
 
-*“Git is a mature, actively maintained open source project originally developed in 2005 by Linus Torvalds, the famous creator of the Linux operating system kernel. A staggering number of software projects rely on Git for version control, including commercial projects as well as open source.”*
+> it is a mature, actively maintained open source project originally developed in 2005 by Linus Torvalds, the famous creator of the Linux operating system kernel. A staggering number of software projects rely on Git for version control, including commercial projects as well as open source.
 **Atlassian.com**
 
 <a name="installinggit"></a>
@@ -105,22 +105,22 @@ https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#instal
 
 1. In the terminal, enter the following command:
 ```
-ibmcloud dev help
+$ ibmcloud dev help
 ```
 The output lists the usage instructions, the current version, and the supported commands.
 
 2. Confirm the bluemix CLI tools are also available:
 ```
-bluemix --help
+$ bluemix --help
 ```
 <a name="homebrew"></a>
 ## Install Homebrew
 
-*"Homebrew installs the stuff you need that Apple didn’t."*
+> Homebrew installs the stuff you need that Apple didn’t.
 
 1. In a terminal, paste the following command:
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 2. Visit the Homebrew website for further details:
 https://brew.sh/
@@ -129,11 +129,11 @@ https://brew.sh/
 ## Install Zsh
 Zsh is a command shell which add extra features to your regular terminal shell.
 
-1. Try `zsh --version` before installing Zsh from Homebrew. 
+1. Try `$ zsh --version` before installing Zsh from Homebrew. 
 
 2. To install from brew, type the following command:
 ```
-brew install zsh zsh-completions
+$ brew install zsh zsh-completions
 ```
 
 <a name="verifyzsh"></a>
@@ -142,13 +142,17 @@ brew install zsh zsh-completions
 1. Verify Zsh installation by running zsh --version. Expected result: zsh 5.1.1 or more recent.
 2. Make it your default shell: 
 ```
-chsh -s $(which zsh)
+$ chsh -s $(which zsh)
 ```
 3. Log out and login back again to use your new default shell.
-4. Test that it worked with `echo $SHELL`. Expected result: /bin/zsh or similar.
+4. Test that it worked with `$ echo $SHELL`. Expected result: `/bin/zsh` or similar.
 
 <a name="install-mongo"></a>
 ## Install MongoDB
+> MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need.
+
+> MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
+
 We'll use [home brew](https://brew.sh/) to install mongo.
 
 Check if MongoDB is installed by running:
@@ -163,10 +167,10 @@ $ brew install mongodb
 
 <a name="further"></a>
 ## Further reading
-[VSCode](https://code.visualstudio.com/download)  
-[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)
-[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)
-[What is Node.js?](https://www.oreilly.com/ideas/what-is-node)
-[What is Zsh?](https://ohmyz.sh/)
-[What is Homebrew?](https://brew.sh/)
-[MongoDb Docs](https://docs.mongodb.com/)
+[The VSCode website](https://code.visualstudio.com/download)  
+[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)  
+[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)  
+[What is Node.js?](https://www.oreilly.com/ideas/what-is-node)  
+[What is Zsh?](https://ohmyz.sh/)   
+[What is Homebrew?](https://brew.sh/)  
+[MongoDb Docs](https://docs.mongodb.com/)  
