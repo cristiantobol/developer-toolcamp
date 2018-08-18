@@ -5,9 +5,11 @@
 * [Fork the Header repo](#fork)
 * [Clone the Header repo](#clone)
 * [Checkout the stage-1 branch](#checkout)
+* [Create the files needed for the Header component](#create)
 * [Create the component for the header](#header)
-* [Clone the React Seed Project which will consume the header](#clone)
+* [Clone the React Seed Project which will consume the header](#consume)
 * [Install the React Seed Project](#install)
+* [Add the header package to the React Seed Project](#add-header)
 * [Further reading](#further)
 
 ## Session Objective
@@ -110,8 +112,8 @@ $ git clone git@github.ibm.com:CIC-UK/react-seed-project.git
 $ npm install`
 ```
 
-<a href="addheader"></a>
-## Add the header to the React Seed Project
+<a href="add-header"></a>
+## Add the header package to the React Seed Project
 1. Open the React Seed Project in VSCode.
 
 2. Navigate to `package.json` and add the following in the `dependences` section:
