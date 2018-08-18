@@ -110,7 +110,7 @@ Click into the **package.json** file and you will see that express is listed in 
 
 Please note that express has a lower case `'e'`! `Express` is a deprecated version.
 
-<img src="./resources/session_03_express_installed.png" alt="Express installed on package.json" />
+<img src="./resources/session_03_express.png" alt="Express installed on package.json" />
 
 3. Take a look at the version:
 
