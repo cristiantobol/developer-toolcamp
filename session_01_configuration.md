@@ -129,7 +129,7 @@ https://brew.sh/
 ## Install Zsh
 Zsh is a command shell which add extra features to your regular terminal shell.
 
-1. Try `zsh --version` before installing Zsh from Homebrew. 
+1. Try `$ zsh --version` before installing Zsh from Homebrew. 
 
 2. To install from brew, type the following command:
 ```
@@ -145,7 +145,7 @@ $ brew install zsh zsh-completions
 $ chsh -s $(which zsh)
 ```
 3. Log out and login back again to use your new default shell.
-4. Test that it worked with `echo $SHELL`. Expected result: /bin/zsh or similar.
+4. Test that it worked with `$ echo $SHELL`. Expected result: `/bin/zsh` or similar.
 
 <a name="install-mongo"></a>
 ## Install MongoDB
