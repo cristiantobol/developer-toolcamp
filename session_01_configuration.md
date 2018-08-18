@@ -105,13 +105,13 @@ https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#instal
 
 1. In the terminal, enter the following command:
 ```
-ibmcloud dev help
+$ ibmcloud dev help
 ```
 The output lists the usage instructions, the current version, and the supported commands.
 
 2. Confirm the bluemix CLI tools are also available:
 ```
-bluemix --help
+$ bluemix --help
 ```
 <a name="homebrew"></a>
 ## Install Homebrew
@@ -120,7 +120,7 @@ bluemix --help
 
 1. In a terminal, paste the following command:
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 2. Visit the Homebrew website for further details:
 https://brew.sh/
@@ -133,7 +133,7 @@ Zsh is a command shell which add extra features to your regular terminal shell.
 
 2. To install from brew, type the following command:
 ```
-brew install zsh zsh-completions
+$ brew install zsh zsh-completions
 ```
 
 <a name="verifyzsh"></a>
@@ -142,7 +142,7 @@ brew install zsh zsh-completions
 1. Verify Zsh installation by running zsh --version. Expected result: zsh 5.1.1 or more recent.
 2. Make it your default shell: 
 ```
-chsh -s $(which zsh)
+$ chsh -s $(which zsh)
 ```
 3. Log out and login back again to use your new default shell.
 4. Test that it worked with `echo $SHELL`. Expected result: /bin/zsh or similar.
@@ -163,10 +163,10 @@ $ brew install mongodb
 
 <a name="further"></a>
 ## Further reading
-[VSCode](https://code.visualstudio.com/download)  
-[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode) 
-[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git) 
-[What is Node.js?](https://www.oreilly.com/ideas/what-is-node) 
-[What is Zsh?](https://ohmyz.sh/)  
-[What is Homebrew?](https://brew.sh/) 
-[MongoDb Docs](https://docs.mongodb.com/) 
+[The VSCode website](https://code.visualstudio.com/download)  
+[VSCode Market for Extensions](https://marketplace.visualstudio.com/VSCode)  
+[What is Git?](https://www.atlassian.com/git/tutorials/what-is-git)  
+[What is Node.js?](https://www.oreilly.com/ideas/what-is-node)  
+[What is Zsh?](https://ohmyz.sh/)   
+[What is Homebrew?](https://brew.sh/)  
+[MongoDb Docs](https://docs.mongodb.com/)  
