@@ -55,7 +55,7 @@ $ touch public/index.html
 
 4. From the File Menu -> Open
 
-5. Select the *myfolder* created above and click *Open*.
+5. Select the `myfolder` created above and click *Open*.
 
 6. In your IDE, you will now how a blank project containing the `index.html` created above.
 
@@ -106,7 +106,7 @@ $ npm install express –save
 ```
 
 2. Switch back to your IDE and you will now see a new folder called “node_modules”.  
-Click into the **package.json** file and you will see that express is listed in the Dependencies section.
+Click into the `package.json` file and you will see that express is listed in the Dependencies section.
 
 Please note that express has a lower case `'e'`! `Express` is a deprecated version.
 
@@ -127,9 +127,9 @@ The “^” character means that we are telling the project to use a version of 
 <a name="confexpress"></a>
 ## Configuring Express
 
-1. Switch back to the IDE and create a new folder called “public”.
+1. Switch back to the IDE and create a new folder called `public`.
 
-2. Then, inside the “public” folder, create a new file called **server.js**.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
+2. Then, inside the `public` folder, create a new file called `server.js`.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
 
 3. Type the following text into the server.js file:
 
@@ -147,7 +147,7 @@ console.log(`Application Server listening on port ${PORT} in your browser.`);
 <a name="start"></a>
 ## Starting the application
 
-1. Open “package.json”.  Add the following text to the “start” section:
+1. Open `package.json`.  Add the following text to the `start` section:
 
 ```
 "start": "node server.js",
