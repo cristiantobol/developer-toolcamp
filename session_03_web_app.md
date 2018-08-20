@@ -102,7 +102,7 @@ Package.json is responsible for:
 1. Switch to the terminal and type the following command to install express:
 
 ```
-$ npm install express –save
+$ npm install express -save
 ```
 
 2. Switch back to your IDE and you will now see a new folder called “node_modules”.  
