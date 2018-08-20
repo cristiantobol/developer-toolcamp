@@ -1,5 +1,11 @@
 # developer-toolcamp
-The CIC Developer Toolcamp course
+## Course Overview
+This course content has been devised to provide Graduates and early professions with the skills needed to be immediately effective on projects.  
+
+The course theory is combined with a general theme of development of an application.  By the end of the week, the course participants will have various applications that they have developed, incorporating the main features that have been taught during the course.  
+
+This application could act as a ‘CV’ for potential projects to view the practitioners code on Github and the finished app on IBM Cloud.  The app can also be used as an ongoing learning vehicle, allowing practitioners to continue to develop and add new features.
+
 
 ## [Session 1: Configuring laptops and Software Installation](./session_01_configuration.md)
 Coach: Chris Dalby
