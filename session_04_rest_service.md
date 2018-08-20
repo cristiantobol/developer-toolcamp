@@ -107,7 +107,7 @@ Create the “db” directory. This is where the Mongo data
 files will live. You can create the directory in the default location by
 running:
 ```
-$ mkdir -p /data/db
+$ sudo mkdir -p /data/db
 ```
 
 Make sure that the /data/db directory has the right permissions by running:
