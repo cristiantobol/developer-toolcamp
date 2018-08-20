@@ -62,7 +62,7 @@ Some recommended extensions:
 ## About Node.js
 > As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.
 
-In essence, Node is a JavaScript server implementation, allowing backend services to be coded in vanilla JavaScript, allowing for fully featured scalable webn applications to be developed totally in JavaScript.  We will cover Node.js in more detail in a later session. 
+In essence, Node is a JavaScript server implementation, allowing backend services to be coded in vanilla JavaScript, allowing for fully featured scalable web applications to be developed totally in JavaScript.  We will cover Node.js in more detail in a later session. 
 
 <a name="npm"></a>
 ## About Node Package Manager (NPM)
