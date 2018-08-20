@@ -118,7 +118,7 @@ Please note that express has a lower case `'e'`! `Express` is a deprecated versi
 "express": "^4.16.3"
 ```
 
-The “^” character means that we are telling the project to use a version of Express that is 3.0.1 or newer, if available.  If you wish to fix the version of the package, which is quite normal on large projects where you wish to enforce consistency, then you remove the “^” character from the version:
+The “^” character means that we are telling the project to use a version of express that is 4.16.3 or newer, if available.  If you wish to fix the version of the package, which is quite normal on large projects where you wish to enforce consistency, then you remove the “^” character from the version:
 
 ```
 "express": "4.16.3"
@@ -127,9 +127,7 @@ The “^” character means that we are telling the project to use a version of 
 <a name="confexpress"></a>
 ## Configuring Express
 
-1. Switch back to the IDE and create a new folder called `public`.
-
-2. Then, inside the `public` folder, create a new file called `server.js`.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
+1. Switch back to the IDE and in the root of the project, create a new file called `server.js`.  This file will be responsible for configuring Express, which will serve our webpages, so they are accessible from a web browser.
 
 3. Type the following text into the server.js file:
 

@@ -88,12 +88,6 @@ https://nodejs.org/en/download/
 1. Download and install the latest version of Git
 https://git-scm.com/downloads
 
-1. Set your username in Git
-https://help.github.com/articles/setting-your-username-in-git
-
-1. Set your commit email address in Git
-https://help.github.com/articles/setting-your-commit-email-address-in-git
-
 <a name="ibmcloud"></a>
 ## Installing the stand-alone IBM Cloud CLI
 
@@ -104,12 +98,6 @@ https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#instal
 ## Verify the Installation
 
 1. In the terminal, enter the following command:
-```
-$ ibmcloud dev help
-```
-The output lists the usage instructions, the current version, and the supported commands.
-
-2. Confirm the bluemix CLI tools are also available:
 ```
 $ bluemix --help
 ```
