@@ -152,6 +152,14 @@ $ npm run dev
 3. Open a browser and view the React Seed Project to see the header incorporated:
 http://localhost:8080
 
+<a name="exercise"></a>
+## Exercise - Add a Material-UI 
+Your task is to use Material-UI to add some visual elements to the new header package.
+
+* [Add an AppBar](https://material-ui.com/demos/app-bar/)  
+* [Add a Menu to the AppBar](https://material-ui.com/demos/menus/)  
+* [Add a button to the AppBar](https://material-ui.com/demos/buttons/)  
+
 <a name="further"></a>
 ## Further reading
 [Webpack](https://webpack.js.org/)  
@@ -159,4 +167,4 @@ http://localhost:8080
 [How to create a React Component and publish to NPM](https://medium.com/@BrodaNoel/how-to-create-a-react-component-and-publish-it-in-npm-668ad7d363ce)  
 [Setting up Webpack for React](https://robots.thoughtbot.com/setting-up-webpack-for-react-and-hot-module-replacement)  
 [Dev Toolcamp Header](https://github.ibm.com/CIC-UK/developer-toolcamp-header)  
-[NPM Documentation to install a package](https://docs.npmjs.com/cli/install)
+[NPM Documentation to install a package](https://docs.npmjs.com/cli/install)  
