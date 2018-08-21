@@ -22,7 +22,8 @@ This session will cover the following:
 >
 > Simultaneously, QA, IT Operations, and Infosec are always working on ways to reduce friction for the team, creating the work systems that enable developers to be more productive and get better outcomes. By adding the expertise of QA, IT Operations, and Infosec into delivery teams and automated self-service tools and platforms, teams are able to use that expertise in their daily work without being dependent on other teams.
 >
-> This enables organizations to create a safe system of work, where small teams are able to quickly and independently develop, test, and deploy code and value quickly, safely, securely, and reliably to customers. This allows organizations to maximize developer productivity, enable organizational learning, create high employee satisfaction, and win in the marketplace.
+> This enables organizations to create a safe system of work, where small teams are able to quickly and independently develop, test, and deploy code and value quickly, safely, securely, and reliably to customers. This allows organizations to maximize developer productivity, enable organizational learning, create high employee satisfaction, and win in the marketplace.  
+
 **KIM, G., J. HUMBLE, P. DEMOIS, J. WILLIS, 2016. The DevOps Handbook. Portland, OR: IT Revolution Press**
 
 <a name="three-ways"></a>
@@ -121,7 +122,7 @@ This command creates the API key and saves to a file, which we called key_file i
 
 In the command line, view the contents of the key_file:
 ```
-$cat key_file
+$ cat key_file
 ```
 You should expect to see something similar similar to the following:
 ```javascript
