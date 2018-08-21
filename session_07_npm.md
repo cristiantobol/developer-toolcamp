@@ -1,11 +1,13 @@
 # Node Package Manager (NPM)
 
 * [Checkout the stage-4 branch](#stage-4)
-* [Finding NPM packages](#npm)
-* [What is a package and what is a module?](package-module)
+* [About Node Package Manager](#npm)
+* [What is a package and what is a module?](#package-module)
+* [What is a package?](#what-is-a-package)
+* [What is a module?](#what-is-a-module)
+* [Adding a dateAdded field to the recipes app](#adding-dateAdded)
 * [What is Moment.js?](#moment)
-* [Using Moment.js](#usingmoment)
-* [Formatting dates with Moment.js](#dateformatting)
+* [Exercise - Formatting dates with Moment.js](#date-formatting)
 * [Further reading](#further)
 
 ## Session Objective
@@ -123,7 +125,7 @@ Moment takes the hassle out of formatting dates and timestamps and is widely use
 
 The `dateAdded` field is currently an iso8601 formatted date, which is often used as a format when saving dates to a database or when passing a date to an online service.  However, it doesn't look very user friendly.
 
-<a name="dateformatting"></a>
+<a name="date-formatting"></a>
 ## Exercise - Formatting dates with Moment.js
 Your task is to use Moment.js to nicely format the `dateAdded` fields in a more user friendly way.
 
