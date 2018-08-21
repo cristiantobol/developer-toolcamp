@@ -1,9 +1,45 @@
 # Unit testing
 
+* [What is a unit test?](#unit-test)
 * [Jest](#jest)
 * [Chai](#chai)
 * [Enzyme](#enzyme)
+* [Code coverage](#coverage)
+* [Possible extensions](#extensions)
 * [Further reading](#further)
+
+## Session Objective
+This session will give an introduction to unit testing and will specifically
+focus on unit testing React components. We will setup and use a number of the
+standard unit testing libraries to test our recipes application code.
+
+<a name="unit-test"></a>
+## What is a unit test?
+Unit testing is the software development practice of aiming to the test the
+smallest part of your application in isolation (called a unit) in an individual
+and independent way to make sure it is operating properly.
+
+Unit testing is usually automated so that we can run all of our tests in one go
+and we can trigger them to run on events like developers committing code to git.
+
+They provide a health-check for the application to tell us whether things are
+working or not. Any failing tests are a sign that something in the code needs
+attention and they should be addressed and fixed as soon as possible.
+
+Benefits of unit testing:
+* We're forced to write code that is testable. Which leads to us writing code
+that is de-coupled and modular.
+* We can make changes to existing code with more confidence as to whether our
+changes have broken any of the existing functionality.
+* They can be self-documenting, by which we mean that they provide examples for
+other developers on how the code is expected to be used.
+* We can use the outcome of the tests in our automation pipelines. For example
+we might stop a pull request from being able to be merged if tests aren't all
+passing.
+* When combined with metrics like [code coverage](#coverage) (covered later) they provide an
+indication of the code quality to other developers. Would you chose to import
+the 3rd party package with _92% coverage and all tests passing_ or the one with
+_45% coverage and 2 tests failing_?
 
 <a name="jest"></a>
 ## Jest
@@ -18,11 +54,12 @@ We're already using `react-scripts` to start our application so all we need to
 do is update our `package.json` file to call `react-scripts` for testing as
 well.
 
+Update your scripts section to look like this:
 **package.json**
 ```
 "scripts": {
   "start": "react-scripts start",
-  "test": "react-scripts test"
+  "test": "react-scripts test --env=jsdom"
 },
 ```
 
@@ -143,10 +180,82 @@ passes.
 
 <a name="enzyme"></a>
 ## Enzyme
-TODO explain
+Enzyme is a JavaScript testing utility specifically built for React. It is
+developed by **airbnb**.
 
-### shallow vs mount
-TODO explain
+Enzyme offers multiple ways to render your component in order to test it. You
+can use shallow rendering or full rendering (mounting).
+
+### Shallow rendering
+Explanation from the [shallow rendering API](https://airbnb.io/enzyme/docs/api/shallow.html):
+> Shallow rendering is useful to constrain yourself to testing a component as a
+unit, and to ensure that your tests aren't indirectly asserting on behavior of
+child components.
+
+### Full rendering (mount)
+Explanation from the [full rendering API](https://airbnb.io/enzyme/docs/api/mount.html):
+> Full DOM rendering is ideal for use cases where you have components that may
+interact with DOM APIs or need to test components that are wrapped in higher
+order components.
+
+Tests using **Full DOM rendering** require a full DOM API be available. Which
+means they need to run in an environment that at least “looks like” a browser
+environment.
+
+> The recommended approach to using `mount` is to depend on a library called
+`jsdom`  which is essentially a headless browser implemented completely in
+JavaScript.
+
+**Note:** Jest actually ships with `jsdom` so we've already got it installed and
+ready.
+
+### Shallow rendering vs full rendering
+Shallow rendering will only render the components within the render method of
+the component you're using. Whereas full rendering will render all of the
+components all the way down the tree.
+
+Let's take an example from the Recipes application to compare the two:
+```javaScript
+import { shallow, mount } from 'enzyme';
+import RecipeGridList from './RecipeGridList';
+
+it('shallow renders without errors', () => {
+  const component = shallow(<RecipeGridList />);
+});
+
+it('full renders without errors', () => {
+  const component = mount(<RecipeGridList />);
+});
+```
+In the shallow test we will render the following components:
+```
+RecipeGridList
+└─┬ GridList
+  └── RecipeTile
+```
+In the mount test we will render all components beneath `RecipeGridList`:
+```
+RecipeGridList
+└─┬ GridList
+  └─┬ RecipeTile
+    └─┬ GridListTile
+      └── img
+      └─┬ GridListTileBar
+        └── ...
+```
+
+Shallow rendering is quicker and still allows you to check interactions with the
+component like click events. It also allows you to test a smaller unit of your
+code.
+
+With full rendering you can test components interacting with each other.
+
+### Rule of thumb
+Here's a rule of thumb to give some guidance on when to use shallow and when to
+use mount:
+1. Always start out using `shallow` until your test requires more.
+1. If you want to test the behaviour of the components children use `mount`
+1. If you want to update props after creating the component use `mount`
 
 ### Getting Enzyme set up
 Adding enzyme to your project is a bit more involved as it doesn't work with
@@ -210,8 +319,19 @@ describe('App component', () => {
   });
 });
 ```
-TODO explain
 
+Here we have checked that we can render the App without any errors occurring. If
+errors did occur we would probably not reach the second line of the test which
+checks that the component exists after it has been rendered.
+
+This is a really good test to add as a starting point for every React component
+you create as it will quickly cover the majority of code in your application and
+provide a basic safety net to tell you if a change you've made has broken
+something.
+
+Next we're going to add a test that interacts with the `RecipeTile` after
+rendering it. In this test we're going to check that the `onClick` prop is
+called when a user clicks on a tile:
 **RecipeTile.test.jsx**
 ```javaScript
 import React from 'react';
@@ -231,10 +351,92 @@ describe('RecipeTile component', () => {
   });
 });
 ```
-TODO explain
 
-### mount
-TODO example and explain
+We're checking that the change has happened by creating a variable called
+`changed` which is initially set to false. We then create a function which sets
+changed to `true` when the `onClick` prop is called. We then use the `...`
+spread operator to expand our props object into separate arguments. This is
+equivalent to doing:
+
+```javaScript
+const component = shallow(<RecipeTile onClick={ changed = true } />);
+```
+
+### Use Enzyme mount in unit tests
+One thing you can't do with shallow is access or update your props after you've
+created the component. So let's add some examples where we use `mount` instead
+to check the props we've set and also update the props after creating the
+component.
+
+Before we add the next test we're going to update the actual `RecipeTile` code
+to add a new id which will let us reference a sub-component within `RecipeTile`.
+
+Add an `id` prop to the `GridListTileBar` sub-component with the value
+`"recipe-tile__bar"`:  
+**RecipeTile.jsx**
+```javaScript
+<GridListTileBar
+  id="recipe-tile__bar"
+  title={this.props.title}
+  subtitle={"Difficulty: " + this.props.difficulty}
+/>
+```
+
+Going back to the test file we made for RecipeTile. Add `mount` to the imports
+from `enzyme` and then add the test below inside the `describe` section after
+the existing test:  
+**RecipeTile.test.jsx**
+```javaScript
+it('renders the title prop', () => {
+  const initialTitle = 'banana';
+  const component = mount(<RecipeTile title={initialTitle} />);
+  const text = component.find("#recipe-tile__bar").first().text();
+
+  expect(component.props().title).to.equal(initialTitle);
+  expect(text.toString().includes(initialTitle));
+});
+```
+
+This first `mount` test is:
+1. Creating a mounted `RecipeTile` with title set to 'banana'.
+1. Locating the child component with the id `recipe-tile__bar` we just added and
+getting the text of the first component it finds which matches.
+1. Checking the title prop value is set to 'banana'.
+1. Checking that the text we extracted from the child component includes
+'banana' in it somewhere too.
+
+The result of all of that is that we've now verified that when we set the title
+prop on the `RecipeTile` we see that title rendered to the user.
+
+We're going to take this a step further and add another test which changes the
+title component to something else ('orange') after creating it:
+
+**RecipeTile.test.jsx**
+```javaScript
+it('updates the rendered title when the title prop changes', () => {
+  const initialTitle = 'banana';
+  const component = mount(<RecipeTile title={initialTitle} />);  
+  const newTitle = 'orange';
+  component.setProps({ title: newTitle });
+  const text = component.find("#recipe-tile__bar").first().text();
+
+  expect(component.props().title).to.equal(newTitle);
+  expect(text.toString().includes(newTitle));
+});
+```
+
+This test uses the same approach as in the last test but goes on to verify that
+when we change the title prop on the `RecipeTile` we see the new title rendered
+to the user.
+
+<a name="coverage"></a>
+## Code coverage
+TODO - How do you know when to stop? How much is enough?
+
+<a name="extensions"></a>
+## Possible extensions
+* Add unit tests to get the code coverage as high as you can for the application
+we've developed.
 
 <a name="further"></a>
 ## Further reading
