@@ -14,6 +14,7 @@
 * [Create the Controller](#create-controller)
 * [Create the Route](#create-route)
 * [Update the server](#update-server)
+* [Possible extensions](#extensions)
 * [Further reading](#further)
 
 ## Session Objective
@@ -444,6 +445,12 @@ MongoDB database.
 
 Success!! We now have a REST API which we will be able to query from other
 applications.
+
+<a name="extensions"></a>
+## Possible extensions
+* Try adding another `GET` endpoint to get a specific recipe from the database (e.g `GET /recipes/123456`).
+* Try adding a `POST` endpoint to add new recipes to your database (e.g `POST /recipes`).
+* Install [Postman](https://www.getpostman.com/) and use it to `POST` to the endpoint you created.
 
 <a name="further"></a>
 ## Further reading
