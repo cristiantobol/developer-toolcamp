@@ -63,7 +63,10 @@ Following installation, take a look in `package.json` file and you hould now see
 ```
 
 <a name="usinglodash"></a>
-TODO - Using Lodash to remove properties from an object
+## Using Lodash to sort the recipes
+
+
+
 
 <a name="whatismoment"></a>
 ## What is Moment.js?
@@ -171,5 +174,6 @@ import moment from 'moment';
 <a name="further"></a>
 ## Further reading
 [The Lodash module on NPM](https://www.npmjs.com/package/lodash)  
+[Lodash documentation](https://lodash.com/docs/4.17.10)  
 [The Moment module on NPM](https://www.npmjs.com/package/moment)  
 More details about an [iso8601 formatted date](https://en.wikipedia.org/wiki/ISO_8601)
