@@ -36,7 +36,7 @@ Applications can make use of advanced functionality by importing packages or mod
 * Continuous updates, releasing improvements and bug fixes
 * A well developed library generally has a well supported and active community
 
-Take a look at the screenshot below, which is an example pf a very popular package on NPM called Lodash.
+Take a look at the screenshot below, which is an example of a very popular package on NPM called Lodash.
 https://www.npmjs.com/package/lodash
 
 <img src="./resources/session_07_lodash.png" alt="Lodash NPM page" />
@@ -55,9 +55,9 @@ There is a subtle difference between how NPM defines a package and a module, alt
 > a) A folder containing a program described by a package.json file.  
 > b) A gzipped tarball containing (a).  
 > c) A url that resolves to (b).  
-> d) A <name>@<version> that is published on the registry with (c).  
-> e) A <name>@<tag> that points to (d).  
-> f) A <name> that has a latest tag satisfying (e).  
+> d) A `<name>@<version>` that is published on the registry with (c).  
+> e) A `<name>@<tag>` that points to (d).  
+> f) A `<name>` that has a latest tag satisfying (e).  
 > g) A git url that, when cloned, results in (a).  
 
 You do not need to publish a package to the public NPM repository, they can be loaded from a github repository, branch, pull request or release.  We will look into this in [Session 8: Developing a Node Package](./session_08_develop_npm_package.md).
@@ -66,16 +66,16 @@ You do not need to publish a package to the public NPM repository, they can be l
 ## What is a module?
 A module is loaded by using `require()` or `imports` in a `Node.js` program. The following can be loaded as modules:
 
-A folder containing a package.json file
-A folder containing an index.js file
-Any JavaScript file
+* A folder containing a package.json file
+* A folder containing an index.js file
+* Any JavaScript file
 
 It is true to say that most NPM packages are also modules, but they do not have to be.
 
 <a name="adding-dateAdded"></a>
 ## Adding a dateAdded field to the recipes app
 
-Included in the recipes array that is returned from the rest api, is a `dateAdded` field that should be display in the meta data of each recipe.
+Included in the recipes array that is returned from the rest api, is a `dateAdded` field that should be displayed in the meta data of each recipe.
 
 We will make the following changes to our application
 * Add the dateAdded field to the RecipeGridList component.
