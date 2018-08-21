@@ -1,7 +1,10 @@
 # DevOps, Continuous Integration and Continuous Delivery(CICD)
 
 * [What is DevOps](#what-is-devops)
-
+* [The three ways](#three-ways)
+* [What is CICD?](#what-is-cicd)
+* [Example of a CICD Pipeline](#pipleine)
+* [DevOps tooling](#tooling)
 * [Further reading](#further)
 
 ## Session Objective
@@ -34,18 +37,16 @@ This session will cover the following:
 
 <a name="what-is-cicd"></a>
 ## What is CICD?
-In it's simpleist form, a CICD pipline is an automated means of deploying code automtatically with minimal manual intervention.
+In it's simpleist form, a CICD pipline is an automated means of deploying code automtatically with minimal manual intervention.  The exact nature of the pipleine will depend on the project and what you need to achieve.  However, it is quite usual for a deployment pipeline to broadly carry out the following tasks:
 
-Repository -> Build -> Test -> Deploy
+Pull code from Repository -> Build the release -> Run the Tests -> Deploy the release
 
-Example of a Jenkins Pipeline
-
+<a name="pipline"></a>
+## Example of a CICD Pipeline
+<img src="./resources/session_11_ci-pipeline.png" alt="Creating a CI pipeline with TravisCI" />
 
 <a name="devops-tooling"></a>
 ## DevOps Tooling
-
-<a name="cicd"></a>
-## Continuous Integration and Continuous Delivery
 Jenkins
 TravisCI
 Bamboo
@@ -63,7 +64,7 @@ ESLint + rules e.g. AirBnB
 
 ## Using TravisCI to deploy code to IBM Cloud
 
-<img src="./resources/session_11_ci-pipeline.png" alt="Creating a CI pipeline with TravisCI" />
+For the hands on session, we will Use TravisCI to deploy the Hello World app to IBM Cloud.  This will give a very basic CICD pipeline, but will automate the dpeloyment,  Meaning that when code is checked into the master branch of your developer-tools-hello-wrold repository, Travis will pick up the code, run the tests and deploy the code if all passes.
 
 ## Setup IBM Cloud via the CLI
 1. In the IBM Cloud dashboard, Click the IBM Cloud logo to view your list of apps.
