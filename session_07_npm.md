@@ -8,6 +8,7 @@
 * [Adding a dateAdded field to the recipes app](#adding-dateAdded)
 * [What is Moment.js?](#moment)
 * [Exercise - Formatting dates with Moment.js](#date-formatting)
+* [Possible Extensions](#extensions)
 * [Further reading](#further)
 
 ## Session Objective
@@ -198,6 +199,10 @@ Your task is to use Moment.js to nicely format the `dateAdded` fields in a more 
     3. Take a look at the app and you will now see the date formatted correctly and displayed on the tile grid and recipe details pages.  
   </p>
 </details>
+
+<a name="extensions"></a>
+## Possible Extensions
+Use [jsPDF](https://github.com/MrRio/jsPDF) to enable each recipe to be downloaded as a PDF.  Think about creating a button on the RecipeDetails.jsx component which generates a PDF for download onClick.
 
 <a name="further"></a>
 ## Further reading
