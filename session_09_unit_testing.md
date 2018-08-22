@@ -455,6 +455,10 @@ This has 2 branches. One where we return 1 and one where we return 2. We'll want
 to make sure our tests cover both ideally and code coverage will tell us if we
 are.
 
+The usual minimum % to aim for is about **80%**. Ideally your coverage is higher
+but you have to make a decision about when the costs of adding new tests
+outweigh the benefits.
+
 ### Setup code coverage
 To use code coverage with Jest we're going to add another script "test-cov" to
 the `package.json` so that the scripts section looks as follows:
