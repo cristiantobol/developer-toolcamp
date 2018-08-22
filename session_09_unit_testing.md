@@ -31,10 +31,10 @@ Benefits of unit testing:
 that is de-coupled and modular.
 * We can make changes to existing code with more confidence as to whether our
 changes have broken any of the existing functionality.
-* They can be self-documenting, by which we mean that they provide examples for
-other developers on how the code is expected to be used.
+* The tests can be self-documenting, by which we mean that they provide examples
+for other developers on how the code is expected to be used.
 * We can use the outcome of the tests in our automation pipelines. For example
-we might stop a pull request from being able to be merged if tests aren't all
+we might stop a pull request from being able to merge if tests aren't all
 passing.
 * When combined with metrics like [code coverage](#coverage) (covered later) they provide an
 indication of the code quality to other developers. Would you chose to import
@@ -74,8 +74,8 @@ export function add(a, b) {
 }
 ```
 
-Now let's create a file with a unit test in. Named `add.test.js` after the
-`add.js` file it is testing also within the `src/` folder:  
+Now let's create a file with a unit test in. We'll name it `add.test.js` after
+the `add.js` file it is testing (also within the `src/` folder):  
 
 **add.test.js**
 ```javaScript
@@ -88,13 +88,23 @@ describe('add', () => {
 });
 ```
 
+We can run the test we wrote with the following command:
+```
+$ npm test
+```
+
+We have our first passing unit test!
+
+The process will also continue running as we make changes to the code so we can
+check back and see if the tests are passing at any point.
+
 ### The 'it' keyword
 The `it` keyword wraps a single unit test. Each time an `it` is encountered it
 will be treated as a new test.
 
 ### The 'describe' keyword
 We can use `describe` to describe, nest and organise our tests. You can have a
-describe nested inside another describe e.g.
+`describe` nested inside another `describe` e.g.
 ```javaScript
 describe('add', () => {
   describe('integers', () => {
@@ -115,23 +125,12 @@ describe('add', () => {
 });
 ```
 
-We can run the test we wrote with the following command:
-```
-$ npm test
-```
-
-We have our first passing unit test!
-
-The process will also continue running as we make changes to the code so we can
-check back and see if the tests are passing at any point.
-
 <a name="chai"></a>
 ## Chai
-Chai provides chain-able language extensions to the JavaScript that you can
-using in your assertion statements where you are checking the result of you
-test.
+Chai provides chain-able language extensions to JavaScript that you can use in
+your assertion statements where you are checking the result of your test.
 
-It's main purpose is to make your tests read more like sentences. This makes
+Its main purpose is to make your tests read more like sentences. This makes
 the tests easier for less technical team members or stake-holders to understand.
 
 It gives you two BDD (Behaviour Driven Development) options for how you
@@ -254,8 +253,8 @@ With full rendering you can test components interacting with each other.
 Here's a rule of thumb to give some guidance on when to use shallow and when to
 use mount:
 1. Always start out using `shallow` until your test requires more.
-1. If you want to test the behaviour of the components children use `mount`
-1. If you want to update props after creating the component use `mount`
+1. If you want to test the behaviour of the components children use `mount`.
+1. If you want to update props after creating the component use `mount`.
 
 ### Getting Enzyme set up
 Adding enzyme to your project is a bit more involved as it doesn't work with
@@ -331,7 +330,8 @@ something.
 
 Next we're going to add a test that interacts with the `RecipeTile` after
 rendering it. In this test we're going to check that the `onClick` prop is
-called when a user clicks on a tile:
+called when a user clicks on a tile. Create a new file called
+`RecipeTile.test.jsx`:  
 **RecipeTile.test.jsx**
 ```javaScript
 import React from 'react';
@@ -434,8 +434,8 @@ to the user.
 Code coverage helps to answer the question of how much unit testing is enough
 and gives you an indication of the quality of your code currently.
 
-It will measure which lines of code you have touched with your tests and which
-ones you haven't and will then give you a % of how much code is covered.
+It will measure which lines of code you have touched by running your tests and
+which ones you haven't. It will then give you a % of how much code is covered.
 
 It will also look at individual branches within the code to make sure you are
 covering all the different ways the code can be called.
@@ -486,7 +486,7 @@ where you've cloned the `developer-toolcamp-ui` repository to):
 Once you've found it you can bookmark it in the browser.
 
 This will allow you to click around your source code and see exactly what is
-covered by your tests and what hasn't been touched so it shows you where to
+covered by your tests and what hasn't been touched, so it shows you where to
 focus your efforts.
 
 <a name="extensions"></a>
