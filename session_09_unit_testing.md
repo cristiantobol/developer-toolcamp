@@ -473,17 +473,19 @@ the `package.json` so that the scripts section looks as follows:
 We have to use a slightly different approach to run this script as we've given
 it the custom name of `test-cov`. To run it we use the following:
 ```
-$ npm run-script test-cov
+$ npm run test-cov
 ```
 
 The coverage report then outputs to your terminal but it also creates a really
-handy HTML output if you can find it! You need to navigate to the following
+handy HTML output.. if you can find it! You need to navigate to the following
 address within your browser (replacing <your_username> and <path_to_folder> with
 where you've cloned the `developer-toolcamp-ui` repository to):
 ```
-/Users/<your_username>/<path_to_folder>/developer-toolcamp-ui/coverage/lcov-report/src/components/index.html
+/Users/<your_username>/<path_to_folder>/developer-toolcamp-ui/coverage/lcov-report/index.html
 ```
-Once you've found it you can bookmark it in the browser.
+You could also navigate to it in your file browser and choose to open it with your
+browser of choice.
+Once you've found it you can bookmark it in your browser.
 
 This will allow you to click around your source code and see exactly what is
 covered by your tests and what hasn't been touched, so it shows you where to
