@@ -10,6 +10,7 @@
 * [Clone the React Seed Project which will consume the header](#consume)
 * [Install the React Seed Project](#install)
 * [Add the header package to the React Seed Project](#add-header)
+* [Exercise - Add a Material-UI element](#exercise)
 * [Further reading](#further)
 
 ## Session Objective
@@ -153,7 +154,7 @@ $ npm run dev
 http://localhost:8080
 
 <a name="exercise"></a>
-## Exercise - Add a Material-UI 
+## Exercise - Add a Material-UI element
 Your task is to use Material-UI to add some visual elements to the new header package.
 
 * [Add an AppBar](https://material-ui.com/demos/app-bar/)  
