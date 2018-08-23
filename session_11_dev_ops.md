@@ -31,15 +31,47 @@ This session will cover the following:
 
 <a name="three-ways"></a>
 ## The three ways
-1. The First Way: The principle of flow
-1. The Second Way: The principles of feedback
-1. The Third Way: The principles of continuous learning and experimentation
+The Three Ways are principles which DevOps patterns are derived from:
+1. The First Way: The principle of flow emphasises the performance of the overall system.  The focus is on ensuring that defects are not passed to downstream work centres, never allowing local optimisations to degrade a global system, always seeking to maximise flow of work and achieve understanding of the system as a whole.
+
+2. The Second Way: The principles of feedback has a goal of shortening and amplifying feedback loops so continual improvements can be made.
+
+3. The Third Way: The principles of continuous learning and experimentation fosters two things: taking risks and learning from failure; Repetition and practicing skills are necessary to improve and become an expert.
 
 <a name="what-is-cicd"></a>
 ## What is CICD?
-In it's simpleist form, a CICD pipline is an automated means of deploying code automtatically with minimal manual intervention.  The exact nature of the pipleine will depend on the project and what you need to achieve.  However, it is quite usual for a deployment pipeline to broadly carry out the following tasks:
+In it's simpleist form, Continuous Integration and Continuous Delivery (CICD) is an automated means of deploying code automtatically with minimal manual intervention.  This is quite often referred to as a DevOps pipeline.
+
+The exact nature of the pipleine will depend on the project and what you need to achieve.  However, it is quite usual for a pipeline to broadly carry out the following tasks:
 
 Pull code from Repository -> Build the release -> Run the Tests -> Deploy the release
+
+## Continuous Integration
+> In software engineering, continuous integration (CI) is the practice of merging all developer working copies to a shared mainline several times a day.
+[Wikipedia](http://wikipedia.org)  
+
+One of the main aims of CI, is to prevent integration issues or merge conflicts, often reffed to as `Integration Hell`.
+
+So one of the main tools of CI is Gitflow, which we have discussed previously in the [Github Session](./session_02_github.md).  Developers create a branch, write their code and check their code in to the branch regularly.  When the developer has completed the work, they would submit a Pull Request.
+
+At this point, depending how the pipeline is configured, the CI tool would automatically kick off a new CI job.  Broadly speaking this involves deploying the code, running tests and then if all tests and integration tests pass, then the code can be merged into the release branch.
+
+Merging code would again run the full test suite before incrementing the release version and pushing to the build repository.
+
+<a name="continuous-delivery"></a>
+## What is Continuous Delivery?
+> Continuous delivery (CD) is the logical next step from continuous integration. If your tests are run constantly, and you trust your tests to provide a guarantee of quality, then it becomes possible to release your software at any point in time. Note that continuous delivery does not always entail actually delivering as your customers may not need or want constant updates. Instead, it represents a philosophy and a commitment to ensuring that your code is always in a release-ready state.
+[Atlassian](https://www.atlassian.com/blog/continuous-delivery/practical-continuous-deployment) 
+
+<a name="deployment-environments"></a>
+## Deployment Environments
+Depending on the scale and complexity of the project, there would normally be a few different deployment environments used during the CI process:
+
+* Development - a server environment for developers to deploy code which generally would use synthetic data and could be in varioius states of broken.
+* Integration - various Integration or QA servers could be expected, allowing specific testing.
+* Staging or Reference - This is quite often a pre-production environment, allowing QA to be performed in pretty much exactly the same server environment as a production server.
+* Production - deployments to production are normally a manual release process, rather than automated and follow when the team are happy that all the QA tests have passed and the release is ready.  
+
 
 <a name="pipline"></a>
 ## Example of a CICD Pipeline
@@ -47,24 +79,47 @@ Pull code from Repository -> Build the release -> Run the Tests -> Deploy the re
 
 <a name="devops-tooling"></a>
 ## DevOps Tooling
-Jenkins
-TravisCI
-Bamboo
-Ansible
-Puppet
+There is an array of tools available when creating a DevOps pipleine.  The tools that you chose can depend upon many factors.  Quite often a client has a preference for using one product over another, or maybe your client project is part of a larger existing DevOps structure.  
 
-Testing:
-SonaCube – code coverage
-UI Testing
-Unit Testing
-Other Testing like Integration, Acceptance
+The main tools that you could use on projects are:
+* Jenkins
+* TravisCI
+* Bamboo
+* Puppet
+* Ansible
 
-Linting:
-ESLint + rules e.g. AirBnB
+This session will not give you a detailed overview of each tool.  However, you can visit each of the tools, which are linked from the [Further reading](#further) section.
+
+## Jenkins 
+> Jenkins is a self-contained Java-based program, ready to run out-of-the-box, with packages for Windows, Mac OS X and other Unix-like operating systems.
+
+Jenkins is an Open Source CI tool which is the most popular tool used on projects.  It is highly extensible, with a massive amount of plugins. So it can be used as either a simple CI server or a continuous delivery hub for multiple projects.
+
+## Jenkins on Docker
+If you would like to install and play with Jenkins, you can very quickly get a docker image up and running by using the official Jenkins Docker Image: 
+https://hub.docker.com/r/jenkins/jenkins/
+
+## Travis in IBM Toolbox
+TravisCI is another CI tool that is freely available to IBMers and is part of the IBM Toolbox (previously known as Whitewater).  A benefit of this over Jenkins is that you do not need to install TravisCI, as it is a cloud based service.
+
+The demo at the end of this session uses TravisCI with IBM Github Enterprise and deploys to IBM Cloud.
+
+## Bamboo
+Bamboo is a continuous integration and continuous deployment server developed by Atlassian, which complements Jira and Confluence, which are widely used on client projects.
+ 
+## Puppet
+> The Puppet platform offers everything you need to dynamically know what’s in your cloud and on-premises hybrid infrastructure, manage it consistently and securely, and deploy software quickly and efficiently using the latest in continuous integration and continuous delivery (CI/CD)
+[Puppet](https://puppet.com/products/why-puppet)  
+
+## Ansible
+> Ansible is an open source software that automates software provisioning, configuration management, and application deployment.
+[Wikipedia](https://en.wikipedia.org/wiki/Ansible_(software))  
+
+Ansible is widely used by DevOps teams, to automate the deployment of releases and server environments.  
 
 ## Using TravisCI to deploy code to IBM Cloud
 
-For the hands on session, we will Use TravisCI to deploy the Hello World app to IBM Cloud.  This will give a very basic CICD pipeline, but will automate the dpeloyment,  Meaning that when code is checked into the master branch of your developer-tools-hello-wrold repository, Travis will pick up the code, run the tests and deploy the code if all passes.
+For the hands on session, we will Use TravisCI to deploy the Hello World app to IBM Cloud.  This will create a basic CICD pipeline, and will automate the deployment,  Meaning that when code is checked into the master branch of your developer-tools-hello-world repository, Travis will pick up the code, run the tests and deploy the code if all passes.
 
 ## Setup IBM Cloud via the CLI
 1. In the IBM Cloud dashboard, Click the IBM Cloud logo to view your list of apps.
@@ -195,5 +250,12 @@ $ git push
 ## Further reading
 [The Phoenix Project](https://www.safaribooksonline.com/library/view/the-phoenix-project/9781457191350/)  
 [The DevOps Handbook](https://www.safaribooksonline.com/library/view/the-devops-handbook/9781457191381/)  
+[Bamboo](https://www.atlassian.com/software/bamboo)  
+[Ansible](https://www.ansible.com/integrations/devops-tools)  
+[Jenkins](https://jenkins.io/)  
+[Jenkins Docker Image](https://github.com/jenkinsci/docker)  
+[TravisCI on IBM](https://travis.ibm.com/)  
+[A Github repo to deploy Jenkins to IBM Cloud](https://github.ibm.com/ix-london/jenkins-nginx-container)  
+
 
 
