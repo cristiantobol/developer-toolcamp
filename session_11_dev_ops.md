@@ -3,8 +3,17 @@
 * [What is DevOps](#what-is-devops)
 * [The three ways](#three-ways)
 * [What is CICD?](#what-is-cicd)
+* [What is Continuous Integration?](#continuous-integration)
+* [What is Continuous Delivery?](#continuous-delivery)
+* [Deployment Environments](#deployment-environments)
 * [Example of a CICD Pipeline](#pipleine)
 * [DevOps tooling](#tooling)
+* [Using TravisCI to deploy code to IBM Cloud](#using-travisci)
+* [Setup IBM Cloud via the CLI](#setup-ibm-cloud)
+* [Creating the API Key for deployment](#api-key)
+* [Log into TravisCI](#login-travis)
+* [Add the .travis.yml settings file to the VSCode project](#add-travis-file)
+* [Pushing code and watching the deployment](#pushing-code)
 * [Further reading](#further)
 
 ## Session Objective
@@ -46,7 +55,8 @@ The exact nature of the pipleine will depend on the project and what you need to
 
 Pull code from Repository -> Build the release -> Run the Tests -> Deploy the release
 
-## Continuous Integration
+<a name="continuous-integration"></a>
+## What is Continuous Integration?
 > In software engineering, continuous integration (CI) is the practice of merging all developer working copies to a shared mainline several times a day.
 [Wikipedia](http://wikipedia.org)  
 
@@ -117,10 +127,12 @@ Bamboo is a continuous integration and continuous deployment server developed by
 
 Ansible is widely used by DevOps teams, to automate the deployment of releases and server environments.  
 
+<a name="using-travis-ci"></a>
 ## Using TravisCI to deploy code to IBM Cloud
 
 For the hands on session, we will Use TravisCI to deploy the Hello World app to IBM Cloud.  This will create a basic CICD pipeline, and will automate the deployment,  Meaning that when code is checked into the master branch of your developer-tools-hello-world repository, Travis will pick up the code, run the tests and deploy the code if all passes.
 
+<a name="setup-ibm-cloud"></a>
 ## Setup IBM Cloud via the CLI
 1. In the IBM Cloud dashboard, Click the IBM Cloud logo to view your list of apps.
 
@@ -151,6 +163,7 @@ One Time Code (Get one at https://iam-id-2.eu-gb.bluemix.net/identity/passcode)
 
 <img src="./resources/session_10_passcode.png" alt="One time passcode" />
 
+<a name="api-key"></a>
 ## Creating the API Key for deployment
 After logging in and setting up the CLI, we now need to create an API key which TravisCI will use to Authenticate with IBM cloud when doing a deployment.
 
@@ -161,6 +174,7 @@ $ bluemix iam api-key-create MyKey -d "this is my API key" --file key_file
 
 This command creates the API key and saves to a file, which we called key_file in this case.  We will use this API key shortly when setting up TravisCI.
 
+<a name="login-travis"></a>
 ## Log into TravisCI
 1. Visit https://travis.ibm.com/ and login with your IBM credentials.
 
@@ -196,6 +210,7 @@ Copy the value of the `apikey` and paste into the `value` field.
 
 Click the `Add button`.
 
+<a name="add-travis-file"></a>
 ## Add the .travis.yml settings file to the VSCode project
 1. In the root of the `developer-toolcamp-hello-world` app, create a `.travis.yml` file which is responsible for supplying the settings used by TravisCI.  Paste the following code into the file:
 ```yml
@@ -203,7 +218,6 @@ language: node_js
 node_js:
   - '8.6.0'
 
-# Deploy
 deploy:
   edge: true
   provider: cloudfoundry
@@ -222,6 +236,7 @@ deploy:
 
 Everything should now be configured correctly.
 
+<a name="pushing-code"></a>
 ## Pushing code and watching the deployment
 1. In TravisCI, click the `Repositories` tab.
 
