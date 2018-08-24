@@ -74,7 +74,7 @@ applications:
     instances: 1
     memory: 256M
 ```
-5. Edit the `host` and `name` values to be the name of your app that you created in IBM Cloiud.
+5. Edit the `host` and `name` values to be the name of your app that you created in IBM Cloud in Step 5 above.
 
 <a name="connect-to-ibm-cloud"></a>
 ## Connect to the IBM Cloud Environment with the CLI
