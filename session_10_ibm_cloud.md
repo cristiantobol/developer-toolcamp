@@ -26,12 +26,12 @@ IBM Cloud, formerly known as Bluemix, allows you to develop and deploy innovativ
 
 1. Follow the instructions to create the account.
 
-1. Once you have created your account, browse the IBM Cloud catalogue of services at the following URL: https://console.bluemix.net/catalog/.x
+1. Once you have created your account, browse the IBM Cloud catalogue of services at the following URL: https://console.bluemix.net/catalog/
 
 1. Spend a few minutes exploring the types of services and platforms that you can create.
 
 <a name="create"></a>
-## Create an IBM Cloud project using the Node.js Starter Kit
+## Create an IBM Cloud project using the SDK for Node.js
 1. Visit IBM Cloud and browse the catalogue of services at the following URL:
 https://console.bluemix.net/catalog/
 
@@ -61,9 +61,9 @@ When deploying an app to IBM Cloud, a `manifest.yml` file is required to be incl
 ```
 $ touch manifest.yml
 ```
-11. Open the project in VSCode.
+3. Open the project in VSCode.
 
-12. Select the `manifest.yml` file and paste the following into the file:
+4. Select the `manifest.yml` file and paste the following into the file:
 ```yml
 applications:
   - disk_quota: 1024M
@@ -74,6 +74,7 @@ applications:
     instances: 1
     memory: 256M
 ```
+5. Edit the `host` and `name` values to be the name of your app that you created in IBM Cloiud.
 
 <a name="connect-to-ibm-cloud"></a>
 ## Connect to the IBM Cloud Environment with the CLI
