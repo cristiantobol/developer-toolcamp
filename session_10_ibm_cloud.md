@@ -67,8 +67,8 @@ $ touch manifest.yml
 ```yml
 applications:
   - disk_quota: 1024M
-    host: <the-name-of-your-ibm-cloud-app>
-    name: <the-name-of-your-ibm-cloud-app>
+    host: <change-to-the-name-of-your-ibm-cloud-app>
+    name: <change-to-the-name-of-your-ibm-cloud-app>
     path: .
     domain: eu-gb.mybluemix.net
     instances: 1
