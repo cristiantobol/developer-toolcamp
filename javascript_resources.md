@@ -8,7 +8,7 @@ This session has been included to provide practitioners with a collection of res
 
 <a name="beginners"></a>
 ## Take a JavaScript Beginners Course on Udemy
-There is a 6.5 hour training course on Udemy, which gives a fast overview of the basuc concepts of JavaScript.  
+There is a 6.5 hour training course on Udemy, which gives a fast overview of the basic concepts of JavaScript.  
 https://ibm-learning.udemy.com/javascript-basics-for-beginners/
 
 <a name="new"></a>
