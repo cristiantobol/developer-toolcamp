@@ -14,6 +14,8 @@
 * [Installing Zsh](#zsh)
 * [Verify Zsh installation](#verifyzsh)
 * [Install MongoDb](#install-mongo)
+* [Installing Docker](#docker)
+* [Verify Docker Installation](#verifydocker)
 * [Further reading](#further)
 
 ## Session Objective
@@ -151,6 +153,18 @@ $ mongo --version
 If MongoDB is not installed run the following:
 ```
 $ brew install mongodb
+```
+<a name="docker"></a>
+## Install Docker
+Visit the Docker website and select the platform according to whether you have a MAC or Windows PC. https://docs.docker.com/install/#supported-platforms
+
+Download the installer and follow the instructions on the Docker website to complete the installation.
+
+<a name="verifydocker"></a>
+## Verify the Docker Installation
+In a terminal, type the following command to check that docker is installed correctly:
+```
+docker --version
 ```
 
 <a name="further"></a>
