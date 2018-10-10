@@ -7,10 +7,10 @@ The course theory is combined with a general theme of development of an applicat
 This application could act as a ‘CV’ for potential projects to view the practitioners code on Github and the finished app on IBM Cloud.  The app can also be used as an ongoing learning vehicle, allowing practitioners to continue to develop and add new features.
 
 ## Prior to starting the course
-### [Create an IBM Cloud account](./ibm_cloud)
+### [Create an IBM Cloud account](./ibm_cloud.md)
 After requesting an IBM Cloud account, it can take a couple of days to come through so please kick 
 off the process before the course.
-### [Familiarise yourself with JavaScript (ES2015)](./javascript_resources)
+### [Familiarise yourself with JavaScript (ES2015)](./javascript_resources.md)
 If you're new to JavaScript take a look at these resources to help you get up to speed.
 
 ## Course Sessions
