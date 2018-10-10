@@ -4,7 +4,7 @@
 * [What's new in ES2015](#new)  
 
 ## Session Objective
-This session has been included to provide practitioners with a collection of resources and tutorials that would be good to do prior to joining the course.  It is not a pre-requisite for the course, but having a prior iunderstanding of JavaScript would be advantageous.
+This session has been included to provide practitioners with a collection of resources and tutorials that would be good to do prior to joining the course.  It is not a pre-requisite for the course, but having a prior understanding of JavaScript would be advantageous.
 
 <a name="beginners"></a>
 ## Take a JavaScript Beginners Course on Udemy
