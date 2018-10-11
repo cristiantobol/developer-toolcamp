@@ -99,6 +99,8 @@ https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#instal
 <a name="verifyibmcloud"></a>
 ## Verify the Installation
 
+### N.B. Windows users should skip this step
+
 1. In the terminal, enter the following command:
 ```
 $ bluemix --help
@@ -117,6 +119,9 @@ https://brew.sh/
 
 <a name="zsh"></a>
 ## Install Zsh
+
+### N.B. Windows users should skip this step
+
 Zsh is a command shell which add extra features to your regular terminal shell.
 
 1. Try `$ zsh --version` before installing Zsh from Homebrew. 
@@ -128,6 +133,8 @@ $ brew install zsh zsh-completions
 
 <a name="verifyzsh"></a>
 ## Verify Zsh Installation
+
+### N.B. Windows users should skip this step
 
 1. Verify Zsh installation by running zsh --version. Expected result: zsh 5.1.1 or more recent.
 2. Make it your default shell: 
@@ -143,6 +150,7 @@ $ chsh -s $(which zsh)
 
 > MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time.
 
+### MAC Users should install Mongo with Homebrew using the following instructions:
 We'll use [home brew](https://brew.sh/) to install mongo.
 
 Check if MongoDB is installed by running:
@@ -154,6 +162,26 @@ If MongoDB is not installed run the following:
 ```
 $ brew install mongodb
 ```
+
+### Windows users should install Mongo using the following instructions:
+1. Download the .msi package from the Mongo website and save to a memorable location e.g. Downloads folder: https://www.mongodb.com/download-center?initial=true#community
+
+1. Locate the .msi file downloaded in step 1.  Double click the .msi file and follow the on screen instructions to install Mongo.
+
+* Mongo is self contained and has no requirement on other system resources.  You could install it in any folder you wish.
+
+1. Make the directory that will be used for the Mongo data.  In a command prompt, type the following:
+```
+$ md \data\db
+```
+
+1. To specify an alternate path for data files:
+```
+$ "C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe" --dbpath "d:\test\mongo db data"
+```
+
+1. To start MongoDB, run mongod.exe.
+
 <a name="docker"></a>
 ## Install Docker
 Visit the Docker website and select the platform according to whether you have a MAC or Windows PC. https://docs.docker.com/install/#supported-platforms
