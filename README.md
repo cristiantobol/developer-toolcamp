@@ -50,3 +50,6 @@ Coach: Chris Dalby
 
 ### [Session 12: Introduction to Redux](./session_12_redux.md)
 Coach: Stephen Kitchen
+
+### [Session 13: Introduction to Docker](./session_13_docker.md)
+Coach: Chris Dalby
