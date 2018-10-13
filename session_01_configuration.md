@@ -164,7 +164,7 @@ Download the installer and follow the instructions on the Docker website to comp
 ## Verify the Docker Installation
 In a terminal, type the following command to check that docker is installed correctly:
 ```
-docker --version
+$ docker --version
 ```
 
 <a name="further"></a>
