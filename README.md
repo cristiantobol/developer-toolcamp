@@ -12,7 +12,8 @@ After requesting an IBM Cloud account, it can take a couple of days to come thro
 off the process before the course.
 ### [Familiarise yourself with JavaScript (ES2015)](./javascript_resources.md)
 If you're new to JavaScript take a look at these resources to help you get up to speed.
-
+## [Install the software from Session 1](./session_01_configuration.md)
+Please install the software prior to the course.
 ## Course Sessions
 ### [Session 1: Configuring laptops and Software Installation](./session_01_configuration.md)
 Coach: Chris Dalby
