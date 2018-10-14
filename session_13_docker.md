@@ -91,7 +91,7 @@ $ docker run --name Rest-Api -p 27017:27017 -v /data/db:/data/db -d mongo
 
 Let's break down what this command does:  
 `--name Rest-Api` sets the name of the docker container to Rest-Api  
-`-p 27017:27017` maps the external port of the Docker container to the internal port  of the copntainer.  This is the standard port for Mongo connectivity  
+`-p 27017:27017` maps the external port of the Docker container to the internal port  of the container.  This is the standard port for Mongo connectivity  
 `-v /data/db` sets the host machines volume used for storing the Mongo data  
 `-d` runs the container as a daemon  
 `mongo` the name of the image to use. If no version is requested, the latest is used  
