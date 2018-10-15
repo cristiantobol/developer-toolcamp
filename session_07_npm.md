@@ -206,13 +206,8 @@ Use [jsPDF](https://github.com/MrRio/jsPDF) to enable each recipe to be download
 
 <a name="further"></a>
 ## Further reading
-<<<<<<< HEAD
-[The Lodash module on NPM](https://www.npmjs.com/package/lodash)  
-[Lodash documentation](https://lodash.com/docs/4.17.10)  
-=======
 [Creating Node Modules](https://docs.npmjs.com/getting-started/creating-node-modules)  
 [How to publish and update an NPM package](https://docs.npmjs.com/getting-started/publishing-npm-packages)  
 [Understanding package and modules](https://docs.npmjs.com/getting-started/packages)  
->>>>>>> master
 [The Moment module on NPM](https://www.npmjs.com/package/moment)  
 More details about an [iso8601 formatted date](https://en.wikipedia.org/wiki/ISO_8601)

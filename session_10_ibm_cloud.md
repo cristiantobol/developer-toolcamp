@@ -22,9 +22,7 @@ IBM Cloud, formerly known as Bluemix, allows you to develop and deploy innovativ
 
 <a name="create-account"></a>
 ## Create a free IBM Cloud account
-1. Head over to the IBM Cloud homepage and click [Create a free account](https://console.bluemix.net/).
-
-1. Follow the instructions to create the account.
+1. If you haven't done so already, [please follow the instructions to create an IBM Cloud account](./ibm_cloud.md).  
 
 1. Once you have created your account, browse the IBM Cloud catalogue of services at the following URL: https://console.bluemix.net/catalog/
 
