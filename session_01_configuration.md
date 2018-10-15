@@ -139,7 +139,7 @@ $ brew install zsh zsh-completions
 1. Verify Zsh installation by running zsh --version. Expected result: zsh 5.1.1 or more recent.
 2. Make it your default shell: 
 ```
-$ chsh -s $(which zsh)
+$ chsh -s  /bin/zsh
 ```
 3. Log out and login back again to use your new default shell.
 4. Test that it worked with `$ echo $SHELL`. Expected result: `/bin/zsh` or similar.
