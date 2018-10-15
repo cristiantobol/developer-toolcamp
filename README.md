@@ -53,3 +53,10 @@ Coach: Stephen Kitchen
 
 ### [Session 13: Introduction to Docker](./session_13_docker.md)
 Coach: Chris Dalby
+
+### Cheatsheets
+[Common git commands](./git_cheatsheet.md)
+
+[Common linux commands](./linux_cheatsheet.md)
+
+[Common npm commands](./npm_cheatsheet.md)
