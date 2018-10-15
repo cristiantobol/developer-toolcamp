@@ -78,7 +78,7 @@ cd ~/<path>/<To>/<Directory>/<File>
 
 Creates an empty file in the current directory
 ```
-Touch <FileName>
+touch <FileName>
 ```
 
 Removes a specific files
