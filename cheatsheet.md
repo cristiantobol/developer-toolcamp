@@ -1,6 +1,8 @@
 
 This file contains a list of common commands that will be used throughout the sessions
 
+#Git
+
 Clones a repo to your local git
 ```
 $ git clone git@github.ibm.com:<Username>/<RepositoryName>.git
@@ -46,7 +48,8 @@ Pulls any changes from a remote into your local branch
 $ git pull
 ```
 
-Linux
+#Linux
+
 List all files in the current folder
 ```
 ls -al
