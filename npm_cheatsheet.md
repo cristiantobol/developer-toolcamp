@@ -1,24 +1,24 @@
-<!-- NPM
+# NPM
 ```
-npm init
-```
-
-```
-npm install <PackageName> -save
+$ npm init
 ```
 
 ```
-npm start
+$ npm install <PackageName> -save
 ```
 
 ```
-npm test
+$ npm start
 ```
 
 ```
-npm run <ScriptName>
+$ npm test
 ```
 
 ```
-npm install
-``` -->
+$ npm run <ScriptName>
+```
+
+```
+$ npm install
+```

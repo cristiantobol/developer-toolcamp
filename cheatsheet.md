@@ -1,1 +1,0 @@
-This contains a collection of different cheatsheets
