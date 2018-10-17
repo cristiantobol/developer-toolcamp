@@ -122,11 +122,10 @@ Docker Compose allows you to spin up multiple containers with one command.  This
 
 1. Open the `developer-toolcamp-rest-api` project in VSCode.
 2. In the terminal, cd to the directory of the `developer-toolcamp-rest-api`
-3. Create a new branch called mongo
 ```
-$ git checkout -b mongo
+$ git checkout completed-all-endpoints
 ```
-4. Using VSCode, create a new file called `docker-compose.yml` in the `developer-toolcamp-rest-api` project. Copy the following into the file:
+3. Using VSCode, create a new file called `docker-compose.yml` in the `developer-toolcamp-rest-api` project. Copy the following into the file:
 ```
 version: "3"
 services:
@@ -142,8 +141,8 @@ services:
     links:
       - mongo
 ```
-5. We are spinning up two containers.  The `mongo` container doesn't use a Dockerfile, as we are simply using the latest mongo image from Docker Hub.  The `mongo-seed` container is responsible for copying over the data and importing the data into Mongo.  You would think that this could be done in one container, but if you try that, the container will error and exit.  So we use two containers, but following the data import, the mongo-seed container will exit.
-6. Create a new file called `Dockerfile`.  Copy the following into the file:
+4. We are spinning up two containers.  The `mongo` container doesn't use a Dockerfile, as we are simply using the latest mongo image from Docker Hub.  The `mongo-seed` container is responsible for copying over the data and importing the data into Mongo.  You would think that this could be done in one container, but if you try that, the container will error and exit.  So we use two containers, but following the data import, the mongo-seed container will exit.
+5. Create a new file called `Dockerfile`.  Copy the following into the file:
 ```
 FROM mongo:latest
 
