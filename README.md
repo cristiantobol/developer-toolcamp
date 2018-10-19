@@ -53,3 +53,5 @@ Coach: Stephen Kitchen
 
 ### [Session 13: Introduction to Docker](./session_13_docker.md)
 Coach: Chris Dalby
+
+### [There is a coding challenege](./coding_challenge_01.md)
