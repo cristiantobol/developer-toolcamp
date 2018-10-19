@@ -54,4 +54,12 @@ Coach: Stephen Kitchen
 ### [Session 13: Introduction to Docker](./session_13_docker.md)
 Coach: Chris Dalby
 
-### [There is a coding challenege](./coding_challenge_01.md)
+### Coding Challenges
+[Code challenge to update the recipes app](./coding_challenge_01.md)
+
+### Cheatsheets
+[Common git commands](./git_cheatsheet.md)
+
+[Common linux commands](./linux_cheatsheet.md)
+
+[Common npm commands](./npm_cheatsheet.md)
